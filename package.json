@@ -1,4 +1,14 @@
 {
+  "name": "1plus1-webpack-build",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yarik-vv/1plus1.git"
+  },
   "author": "Yarik Vashchuk",
   "license": "ISC",
   "devDependencies": {
