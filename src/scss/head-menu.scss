@@ -1,0 +1,124 @@
+.nav-head {
+   @include flex(row, flex-start, center);
+
+   position: fixed;
+
+   max-width: 1400px;
+   min-width: 990px;
+
+   width: 100%;
+   height: 50px;
+   background: transparent;
+   background: black;
+}
+
+.nav-wrapper {
+   @include flex(row, space-between, center);
+
+   width: 100%;
+}
+
+.logo a {
+   @include flex(row,center,center);
+
+   width: 50px;
+   height: 50px;
+   padding: 0 5px 0 5px;
+   background-color: #b60007;
+}
+
+.nav-left {
+   @include flex(row, space-between, center);
+
+   a {
+      @include flex(row, space-around, center);
+
+      width: 150px;
+      height: 30px;
+
+      color: rgb(255, 255, 255);
+      font-size: 12px;
+      border-right: 1px solid #999;
+
+      div{
+         @include flex(row, center, center);
+
+         p{
+            font-size: 14px;
+         }
+         span{
+            font-size: 18px;
+         }
+      }
+      span{
+         font-size: 14px;
+      }
+   }
+}
+
+
+.nav-right {
+   @include flex(row, space-between, center);
+   //height: 30px;
+
+   #kek{
+      height: 50px;
+      width: 50px;
+      //background: url('../images/2.svg') no-repeat center center;
+      // svg{
+      //    transform: rotateY(180deg);
+      // }
+   }
+
+   form{
+      @include flex(row, center, center);
+      border-right: 1px solid #999;
+      height: 30px;
+      //width: 50px;
+
+      input{
+         width: 50px;
+         height: 36px;
+         border-radius: 10px;
+         transition: .3s;
+         background: transparent;
+         border: none;
+         font-size: 14px;
+         padding: 0 10px 0 43px;
+         outline: 0;
+      }
+
+      &:hover { 
+         justify-content: flex-start;
+
+         input {
+            width: 350px;
+            border: 1px solid rgb(225, 225, 211);
+            background: rgb(255, 255, 255); 
+            margin-right: 15px;
+
+            &:focus {
+               border-color: #66afe9;
+            }
+         }
+
+         svg {
+            margin-left: 10px;
+            fill: #666;
+         }
+      }
+
+      button {
+         position: absolute;
+      }
+   }
+}
+
+
+
+
+
+
+
+
+
