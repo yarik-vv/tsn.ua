@@ -2,7 +2,11 @@
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+//const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 
 module.exports = {
    context: __dirname + '/src',
@@ -55,9 +59,11 @@ module.exports = {
       }),
       new CleanWebpackPlugin(__dirname + '/www/*'),
       new HtmlWebpackPlugin({
+         //chunks: ['index'],
          filename: 'index.html',
          template: 'index.html',
-      })
+      }),
+      //new HtmlWebpackInlineSVGPlugin(),
    ],
 
    devServer: {
