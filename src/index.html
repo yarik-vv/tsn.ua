@@ -163,7 +163,7 @@
       <!--   end top menu   -->
 <div class="menu-wrap" id="test">
   <div id="top-menu">
-    <!--<div class="logo"></div>-->
+    <div id="wrap-logo"></div>
     <a href="">Україна</a>
     <a href="">Політика</a>
     <a href="">Відео</a>
@@ -216,8 +216,8 @@
       </div>
       
       <div class="info">
-        <p id="slide-title">lol</p>
-        <span id="slide-data">lol</span>
+        <p id="slide-title">Title slide</p>
+        <span id="slide-data">data slide</span>
       </div>
       
     <!--</a>-->
@@ -354,6 +354,7 @@ var topMenu = document.getElementById('top-menu');
 var topRight = document.getElementById('nav-right');
 var topLogo = document.getElementById('top-logo');
 var topLeft = document.getElementById('nav-left');
+var wrapLogo = document.getElementById('wrap-logo');
 
 
 
@@ -366,7 +367,7 @@ var topLeft = document.getElementById('nav-left');
       topHead.style.background = 'transparent';
     }
     ///////////////
-    if (document.body.scrollTop > 450) {
+    if (document.body.scrollTop > 400) {
       topMenu.parentNode.style.position = 'fixed';
       topMenu.parentNode.style.top = '50px';
     }
@@ -376,7 +377,7 @@ var topLeft = document.getElementById('nav-left');
       topMenu.parentNode.style.top = '400px';
     }
     //////
-    if (document.body.scrollTop < 500 && document.body.scrollTop > 450){
+    if (document.body.scrollTop < 500 && document.body.scrollTop > 400){
       topMenu.parentNode.style.top = '50px';
       topHead.style.display = 'flex';
     }
@@ -385,13 +386,18 @@ var topLeft = document.getElementById('nav-left');
       topMenu.parentNode.style.top = '0';
       topHead.style.display = 'none';
       topMenu.parentNode.appendChild(topRight);
-      topMenu.insertBefore(topLogo, topMenu.firstChild);
-      topMenu.style.paddingLeft = 0;
+      //topMenu.previousSibling.display = 
+      //topMenu.insertBefore(topLogo, topMenu.firstChild);
+      wrapLogo.appendChild(topLogo);
+      topMenu.parentNode.style.border = 'none';
+      topMenu.parentNode.style.boxShadow = '0px 3px 5px 0px rgba(0, 0, 0, 0.75)';
     }
     else{
       topLeft.parentNode.appendChild(topRight);
       topHead.insertBefore(topLogo, topHead.firstChild);
-      topMenu.style.paddingLeft = '50px'; 
+      topMenu.parentNode.style.border = 'border-bottom: 1px solid #e6e6df';
+      topMenu.parentNode.style.boxShadow = 'none';
+      //topMenu.style.paddingLeft = '50px'; 
     }
   }
 
