@@ -46,7 +46,7 @@ module.exports = {
          })
       }, 
       {
-         test:   /\.(png|jpg|svg|otf)$/,
+         test:   /\.(png|jpg|svg|otf|mp4)$/,
          exclude: /(node_modules)/,
          loader: 'file-loader?name=[path][name].[ext]',
       }]
@@ -62,8 +62,32 @@ module.exports = {
          //chunks: ['index'],
          filename: 'index.html',
          template: 'index.html',
+         minify: {
+            // minifyCSS:true,
+            // minifyJS:true,
+            // useShortDoctype: true,
+            // removeAttributeQuotes: true,
+            // removeComments:true,
+            // collapseWhitespace: true,
+            // collapseInlineTagWhitespace: true,
+            // collapseBooleanAttributes: true,
+            // removeEmptyAttributes: true,
+            // caseSensitive: true,
+            // sortAttributes: true,
+            // sortClassName: true,
+            // removeScriptTypeAttributes: true,
+            // removeStyleLinkTypeAttributes: true,
+            // removeRedundantAttributes: true,
+            // keepClosingSlash: true,
+            // minifyURLs: true,
+            // preventAttributesEscaping: true
+         }
       }),
       //new HtmlWebpackInlineSVGPlugin(),
+      new ExtractTextPlugin({
+         filename:  'styles.css',
+         allChunks: true
+      })
    ],
 
    devServer: {
@@ -87,6 +111,7 @@ if (NODE_ENV == 'production') {
             'NODE_ENV': JSON.stringify('production')
          }
       }),
+      new StyleExtHtmlWebpackPlugin('styles.css'),
       new webpack.optimize.UglifyJsPlugin({
          beautify: false,
          mangle: {
