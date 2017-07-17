@@ -3,10 +3,10 @@
    min-width: 990px;
    width: 100%;
    height: 400px;
-   background: url('../2slide.jpg');
+   //background: url('../2slide.jpg');
 
    video {
-   display: none;
+   //display: none;
       position: absolute;
       top: 0px;
       max-width: 1400px;
@@ -73,9 +73,16 @@
          //line-height: 1.2;
       }
       span{
-         margin: 10px 0px 20px 0px;
+         //@include flex(row, flex-start, flex-start);
+         margin: 10px 6px 20px 0px;
          color: rgb(204, 204, 204);
+         // i {
+         //    margin-right: 2px;
+         // }
       }
+      // .slide-data span{
+      //    margin: 10px 0px 20px 0px;
+      // }
    }
 
    .active div{

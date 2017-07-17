@@ -171,12 +171,12 @@
 
       <div id="controll">
     
-          <button class="arrow slide" id="slide1" >
+          <button class="arrow slide active" id="slide1" >
             <span></span>
             <div></div>
           </button>
 
-          <button class="arrow active slide" id="slide2">
+          <button class="arrow slide" id="slide2">
             <span></span>
             <div></div>
           </button>
@@ -198,10 +198,8 @@
       </div>
       
       <div class="info">
-        <p>Макрон пригрозив Путіну
-              посиленням санкцій у разі ескалації на Донбасі
-        </p>
-        <span>Світ  29 травня, 2017 19:00</span>
+        <p id="slide-title">lol</p>
+        <span id="slide-data">lol</span>
       </div>
       
     <!--</a>-->
@@ -216,61 +214,62 @@ var slides =
 [
   {
     name:'slide1',
-    src:'slide-video',
-    title: '',
-    desc: ''
+    src:'/images/slide2.jpg',
+    badge: 'ТСН День',
+    title: 'Внаслідок потужного вибуху підземної труби у Києві ушкоджені машини та будівлі',
+    data: '29 травня, 2017 14:05'
   },
   {
     name:'slide2',
+    badge: 'Світ',
     src:'/images/slide2.jpg',
-    title: '',
-    desc: ''
+    title: 'Макрон пригрозив Путіну посиленням санкцій у разі ескалації на Донбасі',
+    data: '29 травня, 2017 19:00'
   },
   {
     name:'slide3',
+    badge: 'Світ',
     src:'/images/slide3.jpg',
-    title: '',
-    desc: ''
+    title: 'В Україні курить чверть дорослих: як відмовитися від згубної звички яка вбиваэ понад 6 ...',
+    data: '29 травня, 2017 12:47'
   },
   {
     name:'slide4',
+    badge: 'Світ',
     src:'/images/slide4.jpg',
-    title: '',
-    desc: ''
+    title: 'В останній день весни Україну накриють потужні зливи з грозами та градом',
+    data: '29 травня, 2017 12:11'
   },
   {
     name:'slide5',
+    badge: 'Світ',
     src:'/images/slide5.jpg',
-    title: '',
-    desc: ''
+    title: 'Убитий на Позняках чоловік був виконувачем обов\'язків директора «Укрспирту»',
+    data: '29 травня, 2017 12:11'
   }
 ]
 
-    function slider(slide) {
-      //console.log(id);
-      var videoSlide = document.getElementById('slide-video');
-      var wrapSlide = document.getElementById('slider');
 
-      for (var i = 0; i < slides.length; i++) {
-        if (slide === slides[i].name) {
-          if (slides[i].name === 'slide1') {
-            wrapSlide.style.background = 'none';
-            videoSlide.style.display = 'block';
-            //console.log('video epta');
-          } 
-          else{
-            videoSlide.style.display = 'none';
-            //console.log('image');
-            wrapSlide.style.background = 'url(' + slides[i].src + ')';
-            //slider back ground
-            //slider title
-            //sloder desc 
-          } 
-          //console.log('kek'); 
-        }
-      }
+
+
+  var videoSlide = document.getElementById('slide-video');
+  var wrapSlide = document.getElementById('slider');
+  var titleSlide = document.getElementById('slide-title');
+  var dataSlide = document.getElementById('slide-data');
+  var startSlide = slides[0];
+
+  const initSlider = function() {
+    //wrapSlide.style.background = 'none';
+    //videoSlide.style.display = 'block';
+    titleSlide.innerHTML = startSlide.title;
+    dataSlide.innerHTML = '<span id="slide-badge" style="color:red">' 
+                            + startSlide.badge + '</span>' + startSlide.data;
   }
+  initSlider();
 
+
+
+//cooooooooontroooooooollllllll
   var controll = document.getElementById('controll');
   controll.addEventListener('click', controlls);
   
@@ -281,6 +280,7 @@ var slides =
       clearControlls();
       idSlide = event.target.id;
       event.target.className = 'arrow slide active';
+      //console.log(idSlide);
       slider(idSlide);
     }
     else {
@@ -298,6 +298,29 @@ var slides =
       controll.childNodes[a].className = 'arrow slide';
     }
   }
+
+///slider
+  function slider(slide) {
+    for (var i = 0; i < slides.length; i++) {
+      if(slide === slides[i].name) {
+        if (slides[i].name == 'slide1') {
+          wrapSlide.style.background = 'none';
+          videoSlide.style.display = 'block';
+          titleSlide.innerHTML = slides[0].title;
+          dataSlide.innerHTML = '<span id="slide-badge" style="color:red">' 
+                                + slides[0].badge + '</span>' + slides[0].data;
+        }
+        else{
+          videoSlide.style.display = 'none';
+          wrapSlide.style.background = 'url(' + slides[i].src + ')';
+          titleSlide.innerHTML = slides[i].title;
+          dataSlide.innerHTML = '<span id="slide-badge" style="color:rgb(204, 204, 204)">' 
+                                  + slides[i].badge + '</span>' + slides[i].data;
+        } 
+      }
+    }
+  }
+
 </script>
 
 </body>
