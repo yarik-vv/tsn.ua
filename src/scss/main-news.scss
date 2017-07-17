@@ -1,0 +1,103 @@
+.news-wrap{
+   width: 100%;
+   //background:  #999;
+   @extend .max-min-width;
+   @include flex(row, flex-start, center);
+}
+.main-news{
+   //border: 1px solid black;
+
+   padding: 20px 36px 20px 50px;
+   width: 64%;
+
+   background: white; 
+   @include flex(column, flex-start, flex-start);
+
+}
+
+.news-card{
+   height: 297px;
+   //background: yellow;
+   width: 100%;
+   @include flex(column, space-between, flex-start);
+   //padding-bottom: 17px;
+   padding: 0 7px 0px 7px;
+  // border: 1px solid black;
+   padding-right: 14px;
+  img{
+     height: 100%;
+     width: 100%;
+
+     max-height: 190px;
+     max-width: 280px;
+  }
+  h4{
+     font-weight: normal;
+     font-size: 16px;
+     color: black;
+     margin-top: 14px;
+  }
+}
+
+.top-news,
+.bot-news{
+  //height: 100%;
+   width: 100%;
+   @include flex(row, space-between, center);
+   //border: 1px solid black;
+}
+.top-news{
+   margin-bottom: 30px;
+}
+
+.card-top{
+   width: 100%;
+   @include flex(column, space-between, flex-start);
+   margin-bottom: 15px;
+
+}
+.card-bot{
+   width: 100%;
+   @include flex(row, space-between, flex-start);
+   font-size: 14px;
+   color: #bfbfbf;
+   span{
+      margin-right: 6px;
+   }
+}
+
+.reviews,
+.comments{
+   font-size: 12px;
+
+   svg{
+      margin-right: 2px;
+   }
+}
+
+
+.comments {
+   margin-right: 8px;
+   svg{
+      position: relative;
+      top: 1.5px;  
+   }
+}
+
+.card-info{
+   @include flex(row, flex-end, center);
+   width: 80px;
+}
+
+@each $number, $item-color in $top-news-colors {
+   .top-news a:nth-child(#{$number}) span{
+      color: $item-color;
+   }
+}
+@each $number, $item-color in $bot-news-colors {
+   .bot-news a:nth-child(#{$number}) span{
+      color: $item-color;
+   }
+}
+
+
