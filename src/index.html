@@ -161,10 +161,144 @@
       </div>
       <!--   end main menu   -->
    </header>
-   <article class="slider">
-    <a href="http://">
-      <img src="" alt="novina">
-    </a>
+   <article id="slider">
+    <!--<a href="http://">-->
+      <video autoplay loop  muted id="slide-video">
+        <source src="/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="shadow"></div>
+
+      <div id="controll">
+    
+          <button class="arrow slide" id="slide1" >
+            <span></span>
+            <div></div>
+          </button>
+
+          <button class="arrow active slide" id="slide2">
+            <span></span>
+            <div></div>
+          </button>
+
+          <button class="arrow slide" id="slide3">
+            <span></span>
+            <div></div>
+          </button>
+
+          <button class="arrow slide" id="slide4">
+            <span></span>
+            <div></div>
+          </button>
+
+          <button class="arrow slide" id="slide5">
+            <span></span>
+            <div></div>
+          </button>
+      </div>
+      
+      <div class="info">
+        <p>Макрон пригрозив Путіну
+              посиленням санкцій у разі ескалації на Донбасі
+        </p>
+        <span>Світ  29 травня, 2017 19:00</span>
+      </div>
+      
+    <!--</a>-->
+     
    </article>
+   <div class="test">
+  </div>
+
+<script>
+
+var slides =
+[
+  {
+    name:'slide1',
+    src:'slide-video',
+    title: '',
+    desc: ''
+  },
+  {
+    name:'slide2',
+    src:'/images/slide2.jpg',
+    title: '',
+    desc: ''
+  },
+  {
+    name:'slide3',
+    src:'/images/slide3.jpg',
+    title: '',
+    desc: ''
+  },
+  {
+    name:'slide4',
+    src:'/images/slide4.jpg',
+    title: '',
+    desc: ''
+  },
+  {
+    name:'slide5',
+    src:'/images/slide5.jpg',
+    title: '',
+    desc: ''
+  }
+]
+
+    function slider(slide) {
+      //console.log(id);
+      var videoSlide = document.getElementById('slide-video');
+      var wrapSlide = document.getElementById('slider');
+
+      for (var i = 0; i < slides.length; i++) {
+        if (slide === slides[i].name) {
+          if (slides[i].name === 'slide1') {
+            wrapSlide.style.background = 'none';
+            videoSlide.style.display = 'block';
+            //console.log('video epta');
+          } 
+          else{
+            videoSlide.style.display = 'none';
+            //console.log('image');
+            wrapSlide.style.background = 'url(' + slides[i].src + ')';
+            //slider back ground
+            //slider title
+            //sloder desc 
+          } 
+          //console.log('kek'); 
+        }
+      }
+  }
+
+  var controll = document.getElementById('controll');
+  controll.addEventListener('click', controlls);
+  
+  function controlls(event) {
+    var idSlide = 0;
+
+    if(event.target.nodeName === 'BUTTON'){
+      clearControlls();
+      idSlide = event.target.id;
+      event.target.className = 'arrow slide active';
+      slider(idSlide);
+    }
+    else {
+      if(event.target.id !== 'controll') {
+        clearControlls();
+        idSlide = event.target.parentNode.id;
+        event.target.parentNode.className = 'arrow slide active';
+        slider(idSlide);
+      }
+    }
+  }
+
+  function clearControlls() {
+    for (var a = 0; a < controll.childNodes.length; a++) {
+      controll.childNodes[a].className = 'arrow slide';
+    }
+  }
+</script>
+
 </body>
 </html>
