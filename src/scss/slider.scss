@@ -62,12 +62,13 @@
 
       position: absolute;
       height: 400px;
-      width: 833px;
+      width: 778px;
       margin-left: 100px;
       //border: 1px solid white;
       font-size: 14px;
 
       p {
+         text-shadow: 0.5px 0.5px 0.5px #000;
          color: white;
          font-size: 36px;
          //line-height: 1.2;

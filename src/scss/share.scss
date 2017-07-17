@@ -48,18 +48,33 @@
          width: 203px;
          height: 45px;
          margin-left: 42px;
-      }
 
-      svg{
-         fill: rgb(204, 204, 204);
-      }
+         svg{
+            fill: rgb(204, 204, 204);
+         }
 
-      @each $name-icon, $icon-color in $icon-hover-colors {
-         .#{$name-icon}:hover{
-            fill: $icon-color;
+         @each $name-icon, $icon-color in $icon-hover-colors {
+            .#{$name-icon}:hover{
+               fill: $icon-color;
+            }
          }
       }
    }
+}
+.close{
+   @include flex(row, flex-end, flex-start);
+   position: absolute;
+   width: 100%;
+
+   svg{
+      margin: 13px;
+      fill: white;
+      
+      &:hover{
+         fill: red;
+      }
+   }
+
 }
 
 

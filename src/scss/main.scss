@@ -15,7 +15,7 @@ h1{
 }
 
 button{
-   @include flex(row, center, center);
+   //@include flex(row, center, center);
    background: none;
    border: none;
 }
@@ -29,6 +29,7 @@ html{
 svg{
    fill: white;
 }
+
 body{
    @include flex(column, flex-end, center);
    

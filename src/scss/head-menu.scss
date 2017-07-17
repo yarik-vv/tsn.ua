@@ -1,4 +1,4 @@
-.nav-head {
+#top-head {
    @include flex(row, flex-start, center);
 
    position: fixed;
@@ -19,7 +19,7 @@
    width: 100%;
 }
 
-.logo a {
+.logo {
    @include flex(row,center,center);
 
    width: 50px;
@@ -28,7 +28,7 @@
    background-color: #b60007;
 }
 
-.nav-left {
+#nav-left {
    @include flex(row, space-between, center);
 
    a {
@@ -58,11 +58,16 @@
 }
 
 
-.nav-right {
+#nav-right {
+   //border: 1px solid blue;
    @include flex(row, space-between, center);
    //height: 30px;
+   
+   //scroll
+   width: 100%;
+   @include flex(row, flex-end, center);
 
-   #kek{
+   #share{
       height: 50px;
       width: 50px;
       //background: url('../images/2.svg') no-repeat center center;
@@ -93,6 +98,7 @@
          justify-content: flex-start;
 
          input {
+            //position: relative;
             width: 350px;
             border: 1px solid rgb(225, 225, 211);
             background: rgb(255, 255, 255); 
@@ -105,7 +111,7 @@
 
          svg {
             margin-left: 10px;
-            fill: #666;
+            fill: black;
          }
       }
 
