@@ -70,6 +70,27 @@ header{
    
 }
 
+main{
+   //@include flex(column, flex-start, center);
+   margin-top: 50px;
+   //max-width: 1400px;
+   //min-width: 990px;
+   //height: 500px;
+   //width: 100%;
+   //border: 1px solid red;
+   
+   .main-wrap{
+      //margin-top: 50px;
+      @include flex(column, flex-start, center);
+      //position: absolute;
+      //height: 500px;
+      //max-width: 1400px;
+      //min-width: 990px;
+      //border: 1px solid red;
+      //width: 100%;
+   }
+}
+
 // .content-wrapper{
 //    width: 1920px;
 //    height: 990px;

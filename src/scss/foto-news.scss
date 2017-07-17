@@ -1,0 +1,16 @@
+.foto-wrap{
+    @include flex(row, center, center);
+   height: 500px;
+   //position: absolute;
+   width: 100%;
+   background:  black;
+}
+
+
+.foto-news{
+   background: white;
+   max-width: 1400px;
+   min-width: 990px;
+   width: 100%;
+   height: 500px;
+}
