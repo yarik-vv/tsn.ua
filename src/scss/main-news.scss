@@ -2,12 +2,13 @@
    width: 100%;
    //background:  #999;
    @extend .max-min-width;
-   @include flex(row, flex-start, center);
+   @include flex(column, flex-start, flex-start);
+   //border: 1px solid black;
 }
 .main-news{
    //border: 1px solid black;
-
-   padding: 20px 36px 20px 50px;
+   margin: 20px 0 20px 43px;
+   //padding: 20px 36px 20px 45px;
    width: 64%;
 
    background: white; 
@@ -16,7 +17,7 @@
 }
 
 .news-card{
-   height: 297px;
+   //height: 297px;
    //background: yellow;
    width: 100%;
    @include flex(column, space-between, flex-start);
@@ -37,13 +38,16 @@
      color: black;
      margin-top: 14px;
   }
+  &:hover img{
+    opacity: .7;
+  }
 }
 
 .top-news,
 .bot-news{
   //height: 100%;
    width: 100%;
-   @include flex(row, space-between, center);
+   @include flex(row, space-between, stretch);
    //border: 1px solid black;
 }
 .top-news{
@@ -98,6 +102,45 @@
    .bot-news a:nth-child(#{$number}) span{
       color: $item-color;
    }
+}
+
+
+.news-menu {
+   width: 64%;
+   margin: 21px 0 0 50px;
+   
+   //margin-top: 21px;
+   //margin-left: 50px;
+   padding: 11px 0 11px 0;
+   border-bottom: 1px solid #ccccb8;
+   position: relative;
+   a{
+      color: black;
+      margin-right: 18px;
+
+      &:hover{
+         color: red;
+      }
+   }
+}
+.news-menu::before, .news-menu::after {
+   content: ''; 
+   position: absolute;
+   left: 44px; 
+   bottom: -20px;
+   border: 10px solid transparent;
+   border-top: 10px solid #ccccb8;
+}
+.news-menu::after {
+   border-top: 10px solid white;
+   bottom: -19px; 
+}
+
+.news-menu-2::before, .news-menu-2::after{
+   left: 153px;
+}
+.news-menu-3::before, .news-menu-3::after{
+   left: 252px;
 }
 
 

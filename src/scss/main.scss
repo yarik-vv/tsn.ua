@@ -22,7 +22,7 @@ button{
 
 html{
    overflow-x: hidden;
-   height: 3600px;
+   //height: 3600px;
    font-family: $regular;
 }
 
@@ -76,7 +76,7 @@ main{
    //max-width: 1400px;
    //min-width: 990px;
    //height: 500px;
-   //width: 100%;
+   width: 100%;
    //border: 1px solid red;
    
    .main-wrap{

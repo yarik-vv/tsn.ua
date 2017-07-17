@@ -12,6 +12,7 @@
    width: 100%;
 
    position: absolute;
+  // opacity: 1 !important;
    top: 400px;
 
    #nav-right {
@@ -27,6 +28,7 @@
 }
 
 #top-menu{
+
    //transition: 0.5s;
    @include flex(row, center, center);
    //border: 1px solid red;
