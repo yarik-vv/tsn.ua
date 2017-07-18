@@ -1,3 +1,20 @@
-.right-sidebar{
+.sidebar-wrap{
    position: absolute;
+   //background: red;
+   top: 200px;
+
+   //height: 2000px !important;
+   height: 270%;
+   width: 30%;
+   z-index: 3;
+   align-self: flex-end;
+
+  // padding-right: 20px;
+
+   @include flex(row, flex-start, stretch)
+}
+.sidebar{
+   width: 330px;
+   ///height: 500px;
+   background: gray;
 }

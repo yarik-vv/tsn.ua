@@ -71,7 +71,7 @@ header{
 }
 
 main{
-   //@include flex(column, flex-start, center);
+   @include flex(column, flex-start, center);
    margin-top: 50px;
    //max-width: 1400px;
    //min-width: 990px;
@@ -79,16 +79,26 @@ main{
    width: 100%;
    //border: 1px solid red;
    
-   .main-wrap{
-      //margin-top: 50px;
-      @include flex(column, flex-start, center);
-      //position: absolute;
-      //height: 500px;
-      //max-width: 1400px;
-      //min-width: 990px;
-      //border: 1px solid red;
-      //width: 100%;
-   }
+   // .main-wrap{
+   //    //margin-top: 50px;
+   //    //@include flex(column, flex-start, center);
+   //    //position: absolute;
+   //    //height: 500px;
+   //    //max-width: 1400px;
+   //    //min-width: 990px;
+   //    //border: 1px solid red;
+   //    //width: 100%;
+
+
+
+
+
+   // width: 100%;
+   // //background:  #999;
+   // @extend .max-min-width;
+   // @include flex(column, flex-start, flex-start);
+   // //border: 1px solid black;
+   // }
 }
 
 // .content-wrapper{
