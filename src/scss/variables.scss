@@ -1,22 +1,22 @@
-// $primary-font: 'Regular', sans-serif;
-// $secondary-font: 'Light', sans-serif;
-// $bold-font: 'Bold', sans-serif;
+//fonts
+$regular: 'MyriadPro-Regular', sans-serif;
+// $semibold: 'MyriadPro-Semibold', sans-serif;
+// $bold-font: 'MyriadPro-Bold', sans-serif;
+// $cond: 'MyriadPro-Cond', sans-serif;
+// $bold-cond: 'MyriadPro-BoldCond', sans-serif;
+// $condIt: 'MyriadPro-CondIt', sans-serif;
+// $bold-condIt: 'MyriadPro-BoldCondIt', sans-serif;
+// $boldIt: 'MyriadPro-BoldIt', sans-serif;
+// $it: 'MyriadPro-It', sans-serif;
+// $semiboldIt: 'MyriadPro-SemiboldIt', sans-serif;
 
-// $background: url("../img/background.jpg") center fixed;
+$max-width: 1400px;
+$min-width: 990px;
 
-// $primary-color: #ffffff;
-// $secondary-color: #000000;
-
-$icon-hover-colors: (
-  vk: rgb(92, 109, 140),
-  facebook: rgb(90, 106, 161),
-  twitter: rgb(108, 173, 227),
-  odnoklasniki: rgb(235, 114, 46),
-  google: rgb(227, 117, 99)
-);
-
-$top-news-colors: (1: #30b3bf, 2: #ffd400, 3: #ba39e6);
-$bot-news-colors: (1: #73cc33, 2: #30b3bf, 3: #30b3bf);
+%max-min-width {
+  max-width: $max-width;
+  min-width: $min-width;
+}
 
 $top-menu-colors: (
   2: #ffd400,
@@ -31,9 +31,27 @@ $top-menu-colors: (
   11: #f2b600
 );
 
-//obichniy
-$regular: 'MyriadPro-Regular', sans-serif;
+$top-news-colors: (
+  1: #30b3bf, 
+  2: #ffd400, 
+  3: #ba39e6
+);
 
+$bot-news-colors: (
+  1: #73cc33, 
+  2: #30b3bf, 
+  3: #30b3bf
+);
+
+$icon-hover-colors: (
+  vk: rgb(92, 109, 140),
+  facebook: rgb(90, 106, 161),
+  twitter: rgb(108, 173, 227),
+  odnoklasniki: rgb(235, 114, 46),
+  google: rgb(227, 117, 99)
+);
+
+/*
 //poluzhirniy
 $semibold: 'MyriadPro-Semibold', sans-serif;
 
@@ -50,11 +68,4 @@ $bold-condIt: 'MyriadPro-BoldCondIt', sans-serif;
 $boldIt: 'MyriadPro-BoldIt', sans-serif;
 $it: 'MyriadPro-It', sans-serif;
 $semiboldIt: 'MyriadPro-SemiboldIt', sans-serif;
-
-$max-width: 1400px;
-$min-width: 990px;
-
-%max-min-width {
-  max-width: $max-width;
-  min-width: $min-width;
-}
+*/

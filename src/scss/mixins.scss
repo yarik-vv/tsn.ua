@@ -9,12 +9,6 @@
    }
 }
 
-// @mixin icon($url-icon, $width-icon, $height-icon) {
-//    background: url($url-icon) no-repeat center center;
-//    width: $width-icon;
-//    height: $height-icon;
-// }
-
 @mixin flex($direction: row, $justify-content: flex-start, $align-items: flex-start){
    display: flex;
    flex-direction: $direction;

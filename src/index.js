@@ -1,5 +1,4 @@
 window.onload = function() {
-
   //расчет длины для сайдбара
   var sidebarHeight = document.querySelector('.sidebar-wrap');
   sidebarHeight.style.height =
@@ -134,70 +133,32 @@ window.onload = function() {
   //open window
   share.onclick = function() {
     shareWindow.style.display = 'flex';
+    document.onmousewheel = document.onwheel = function() {
+      return false;
+    };
+    document.addEventListener('MozMousePixelScroll', function() {
+      return false;
+    }, false);
+    document.onkeydown = function(e) {
+      if (e.keyCode >= 33 && e.keyCode <= 40) return false;
+    };
   };
 
   //close window
   shareClose.onclick = function() {
     shareWindow.style.display = 'none';
+    document.onmousewheel = document.onwheel = function() {
+      return true;
+    };
+    document.addEventListener('MozMousePixelScroll', function() {  
+      return true;
+    }, true);
+    document.onkeydown = function(e) {
+      if (e.keyCode >= 33 && e.keyCode <= 40) return true;
+    };
   };
 
-  /* --------- end share window code, start menus scrooll transformation code --------- */
-
-  var topHead = document.getElementById('top-head');
-  var topMenu = document.getElementById('top-menu');
-  var topRight = document.getElementById('nav-right');
-  var topLogo = document.getElementById('top-logo');
-  var topLeft = document.getElementById('nav-left');
-  var wrapLogo = document.getElementById('wrap-logo');
-  var videoWindow = document.querySelector('.video-window');
-
-  window.onscroll = function() {
-
-    //затемнение  top head меню при скроле 70px _SCROLL > Above TOP MENU
-    if (document.body.scrollTop > 70) {
-      topHead.style.background = 'black';
-    } else {
-      topHead.style.background = 'transparent';
-    }
-
-    //меню с рубриками отлипает
-    if (document.body.scrollTop > 400) {
-      topMenu.parentNode.style.position = 'fixed';
-      videoWindow.style.top = '100px';
-      topMenu.parentNode.style.zIndex = '3';
-      topMenu.parentNode.style.top = '50px';
-    } else {
-      topHead.style.display = 'flex';
-      topMenu.parentNode.style.zIndex = '1';
-      topMenu.parentNode.style.position = 'absolute';
-      topMenu.parentNode.style.top = '400px';
-      videoWindow.style.top = '50px';
-    }
-
-    if (document.body.scrollTop < 500 && document.body.scrollTop > 400) {
-      topMenu.parentNode.style.top = '50px';
-      topHead.style.display = 'flex';
-    }
-
-    //меню с рубриками трансформируеться в топ меню _SCROLL > After TOP MENU
-    if (document.body.scrollTop > 500) {
-      topMenu.parentNode.style.top = '0';
-      topHead.style.display = 'none';
-      videoWindow.style.top = '50px';
-      topMenu.parentNode.appendChild(topRight);
-      wrapLogo.appendChild(topLogo);
-      topMenu.parentNode.style.border = 'none';
-      topMenu.parentNode.style.boxShadow =
-        '0px 3px 5px 0px rgba(0, 0, 0, 0.75)';
-    } else {
-      topLeft.parentNode.appendChild(topRight);
-      topHead.insertBefore(topLogo, topHead.firstChild);
-      topMenu.parentNode.style.border = 'border-bottom: 1px solid #e6e6df';
-      topMenu.parentNode.style.boxShadow = 'none';
-    }
-  };
-
-  /* --------- menus scrooll transformation code, start news menu code --------- */
+  /* -------------- end start share window code, start news menu code -------------- */
 
   //перемещение треугольника в меню новостей при ховере
   var newsMenu = document.querySelector('.news-menu');
@@ -206,13 +167,90 @@ window.onload = function() {
   document.head.appendChild(style);
   sheet = style.sheet;
 
-  newsMenu.childNodes[1].onmouseover = function() {
+  newsMenu.firstChild.onmouseover = function() {
     sheet.addRule('.news-menu::after', 'left: 47.5px');
   };
-  newsMenu.childNodes[3].onmouseover = function() {
-    sheet.addRule('.news-menu::after', 'left: 158px');
+  newsMenu.firstChild.nextSibling.onmouseover = function() {
+    sheet.addRule('.news-menu::after', 'left: 155px');
   };
-  newsMenu.childNodes[5].onmouseover = function() {
-    sheet.addRule('.news-menu::after', 'left: 257px');
+  newsMenu.lastChild.onmouseover = function() {
+    sheet.addRule('.news-menu::after', 'left: 251px');
   };
+
+  /* --------- end news menu code, start video vindow code --------- */
+
+  var videoWindow = document.getElementById('video-window');
+  var videoWindowPlay = document.getElementsByClassName('play-in-window');
+  var videoUrl = '/video.mp4';
+
+  for (var i = 0; i < videoWindowPlay.length; i++) {
+    videoWindowPlay[i].onclick = function() {
+      videoWindow.style.display = 'flex';
+      videoWindow.innerHTML =
+        '<video autoplay loop muted> <source src=' +
+        videoUrl +
+        ' type="video/mp4"> Ваш браузер не підтрімує відео</video>';
+    };
+  }
+};
+
+/* --------- end onload window script, start menus scrooll transformation code --------- */
+
+var topHead = document.getElementById('top-head');
+var topMenu = document.getElementById('top-menu');
+var topRight = document.getElementById('nav-right');
+var topLogo = document.getElementById('top-logo');
+var topLeft = document.getElementById('nav-left');
+var wrapLogo = document.getElementById('wrap-logo');
+var videoWindow = document.getElementById('video-window');
+
+window.onscroll = function() {
+  //затемнение  top head меню при скроле 70px _SCROLL > Above TOP MENU
+  if (document.body.scrollTop > 70) {
+    topHead.style.background = 'black';
+  } else {
+    topHead.style.background = 'transparent';
+    // topMenu.parentNode.style.zIndex = '2';
+  }
+
+  if (document.body.scrollTop > 70 && document.body.scrollTop < 400) {
+    //topHead.style.background = 'transparent';
+    //topMenu.parentNode.style.zIndex = '0';
+    topMenu.parentNode.style.zIndex = '1';
+  }
+
+  //меню с рубриками отлипает
+  if (document.body.scrollTop > 400) {
+    topMenu.parentNode.style.position = 'fixed';
+    videoWindow.firstChild.style.top = '100px';
+    topMenu.parentNode.style.zIndex = '3';
+    topMenu.parentNode.style.top = '50px';
+  } else {
+    topHead.style.display = 'flex';
+    //topMenu.parentNode.style.zIndex = '1';
+    topMenu.parentNode.style.position = 'absolute';
+    topMenu.parentNode.style.top = '400px';
+    videoWindow.firstChild.style.top = '50px';
+  }
+
+  if (document.body.scrollTop < 500 && document.body.scrollTop > 400) {
+    topMenu.parentNode.style.top = '50px';
+    topHead.style.display = 'flex';
+  }
+
+  //меню с рубриками трансформируеться в топ меню _SCROLL > After TOP MENU
+  if (document.body.scrollTop > 500) {
+    topMenu.parentNode.style.top = '0';
+    topHead.style.display = 'none';
+    videoWindow.firstChild.style.top = '50px';
+    topMenu.parentNode.appendChild(topRight);
+    wrapLogo.appendChild(topLogo);
+    topMenu.parentNode.style.border = 'none';
+    topMenu.parentNode.style.boxShadow = '0px 3px 5px 0px rgba(0, 0, 0, 0.75)';
+  } else {
+    topLeft.parentNode.appendChild(topRight);
+    topHead.insertBefore(topLogo, topHead.firstChild);
+    topMenu.parentNode.style.border = 'border-bottom: 1px solid #e6e6df';
+    topMenu.parentNode.style.boxShadow = 'none';
+  }
 };
