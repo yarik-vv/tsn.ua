@@ -1,16 +1,17 @@
 window.onload = function() {
-  //расчет длины для сайдбара
-  var sidebarHeight = document.querySelector('.sidebar-wrap');
-  sidebarHeight.style.height =
-    document.querySelector('main').scrollHeight + 200 + 'px';
 
-  /* -------------- end sidebar code, start slider code------------------ */
+  //shared insert video function, used for slider and video window
+  function insertVideo (insertVideo, insertUrl) {
+    insertVideo.innerHTML = '<video autoplay loop muted> <source src=' + insertUrl
+    + ' type="video/mp4"> Вибачте, ваш браузер не підтрімує відео :( </video>';
+  }
 
   //slider data
   var slides = [
     {
       name: 'slide1',
-      src: '/images/slide-2.jpg',
+      video: '/video.mp4',
+      img: false,
       badge: 'ТСН День',
       title:
         'Внаслідок потужного вибуху підземної труби у Києві ушкоджені машини та будівлі',
@@ -18,74 +19,60 @@ window.onload = function() {
     },
     {
       name: 'slide2',
+      video: false,
       badge: 'Світ',
-      src: '/images/slide-2.jpg',
+      img: '/images/slide-2.jpg',
       title:
         'Макрон пригрозив Путіну посиленням санкцій у разі ескалації на Донбасі',
       data: '29 травня, 2017 19:00'
     },
     {
       name: 'slide3',
+      video: false,
       badge: 'Світ',
-      src: '/images/slide-3.jpg',
+      img: '/images/slide-3.jpg',
       title:
         'В Україні курить чверть дорослих: як відмовитися від згубної звички яка вбиваэ понад 6 ...',
       data: '29 травня, 2017 12:47'
     },
     {
       name: 'slide4',
+      video: false,
       badge: 'Світ',
-      src: '/images/slide-4.jpg',
+      img: '/images/slide-4.jpg',
       title:
         'В останній день весни Україну накриють потужні зливи з грозами та градом',
       data: '29 травня, 2017 12:11'
     },
     {
       name: 'slide5',
+      video: false,
       badge: 'Світ',
-      src: '/images/slide-5.jpg',
+      img: '/images/slide-5.jpg',
       title:
         "Убитий на Позняках чоловік був виконувачем обов'язків директора «Укрспирту»",
       data: '29 травня, 2017 12:11'
     }
   ];
 
-  //slider variables
-  var videoSlide = document.getElementById('slide-video');
-  var wrapSlide = document.getElementById('slider');
-  var titleSlide = document.getElementById('slide-title');
-  var dataSlide = document.getElementById('slide-data');
-  var startSlide = slides[0];
-
-  //start slider function
-  var initSlider = function() {
-    titleSlide.innerHTML = startSlide.title;
-    dataSlide.innerHTML =
-      '<span id="slide-badge" style="color:red">' +
-      startSlide.badge +
-      '</span>' +
-      startSlide.data;
-  };
-  initSlider();
-
   //slider controlls function
   var controll = document.getElementById('controll');
   controll.addEventListener('click', controlls);
 
-  function controlls(event) {
+  function controlls (event) {
     var idSlide = 0;
 
     if (event.target.nodeName === 'BUTTON') {
       clearControlls();
       idSlide = event.target.id;
       event.target.className = 'arrow slide active';
-      slider(idSlide);
+      select(idSlide);
     } else {
       if (event.target.id !== 'controll') {
         clearControlls();
         idSlide = event.target.parentNode.id;
         event.target.parentNode.className = 'arrow slide active';
-        slider(idSlide);
+        select(idSlide);
       }
     }
   }
@@ -96,29 +83,36 @@ window.onload = function() {
     }
   }
 
+  //slider select
+  var slider = document.getElementById('slider');
+  var videoSlide = document.querySelector('#slider .slider-video');
+  var titleSlide = document.querySelector('#slider .title');
+  var dataSlide = document.querySelector('#slider .datatime');
+  var badgeSlide = document.querySelector('#slider .badge'); 
+
+  //init slider
+  var startSlide = slides[0];
+  select(startSlide.name);
+
   //select slide function
-  function slider(slide) {
+  function select (slide) {
     for (var i = 0; i < slides.length; i++) {
       if (slide === slides[i].name) {
-        if (slides[i].name == 'slide1') {
-          wrapSlide.style.background = 'none';
-          videoSlide.style.display = 'block';
-          titleSlide.innerHTML = slides[0].title;
-          dataSlide.innerHTML =
-            '<span id="slide-badge" style="color:red">' +
-            slides[0].badge +
-            '</span>' +
-            slides[0].data;
-        } else {
+        if (slides[i].video === false) { 
           videoSlide.style.display = 'none';
-          wrapSlide.style.background = 'url(' + slides[i].src + ')';
-          titleSlide.innerHTML = slides[i].title;
-          dataSlide.innerHTML =
-            '<span id="slide-badge" style="color:rgb(204, 204, 204)">' +
-            slides[i].badge +
-            '</span>' +
-            slides[i].data;
+          slider.style.background = 'url(' + slides[i].img + ')';
+        } else {
+          videoSlide.style.display = 'flex';
+          slider.style.background = 'none';
+          insertVideo (videoSlide, slides[i].video);
         }
+          
+        titleSlide.innerHTML = slides[i].title;
+        badgeSlide.innerHTML = slides[i].badge;
+        if (slides[i].name == 'slide1') {
+          badgeSlide.style.color = 'red';
+        }
+        dataSlide.innerHTML = slides[i].data;
       }
     }
   }
@@ -186,10 +180,7 @@ window.onload = function() {
   for (var i = 0; i < videoWindowPlay.length; i++) {
     videoWindowPlay[i].onclick = function() {
       videoWindow.style.display = 'flex';
-      videoWindow.innerHTML =
-        '<video autoplay loop muted> <source src=' +
-        videoUrl +
-        ' type="video/mp4"> Ваш браузер не підтрімує відео</video>';
+      insertVideo (videoWindow, videoUrl);
     };
   }
 };
@@ -210,24 +201,17 @@ window.onscroll = function() {
     topHead.style.background = 'black';
   } else {
     topHead.style.background = 'transparent';
-    // topMenu.parentNode.style.zIndex = '2';
-  }
-
-  if (document.body.scrollTop > 70 && document.body.scrollTop < 400) {
-    //topHead.style.background = 'transparent';
-    //topMenu.parentNode.style.zIndex = '0';
-    topMenu.parentNode.style.zIndex = '1';
   }
 
   //меню с рубриками отлипает
   if (document.body.scrollTop > 400) {
     topMenu.parentNode.style.position = 'fixed';
     videoWindow.firstChild.style.top = '100px';
-    topMenu.parentNode.style.zIndex = '3';
+    topMenu.parentNode.style.zIndex = '2';
     topMenu.parentNode.style.top = '50px';
   } else {
     topHead.style.display = 'flex';
-    //topMenu.parentNode.style.zIndex = '1';
+    topMenu.parentNode.style.zIndex = '0';
     topMenu.parentNode.style.position = 'absolute';
     topMenu.parentNode.style.top = '400px';
     videoWindow.firstChild.style.top = '50px';

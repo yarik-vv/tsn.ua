@@ -20,6 +20,10 @@ h1 {
 button {
   background: none;
   border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 html {
@@ -41,7 +45,13 @@ body {
 
   background: black;
   opacity: 1;
-  z-index: 5;
+  z-index: 3;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 header {
@@ -55,6 +65,7 @@ main {
   @include flex(column, flex-start, center);
   margin-top: 50px;
   width: 100%;
+  position: relative;
 
   .main-wrap {
     @extend %max-min-width;
