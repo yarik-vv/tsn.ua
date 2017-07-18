@@ -6,6 +6,10 @@ import js from 'file-loader?name=[path][name].[ext]!./index.js';
 import favicon from 'file-loader?name=[path][name].[ext]!./favicon.ico';
 import sharePoster from './images/share-poster.jpg';
 
+import sidebarBanner from './images/banner-sidebar1.jpg';
+import sidebarNews1 from './images/sidebar-news-1.jpg';
+import sidebarNews2 from './images/sidebar-news-2.jpg';
+
 import video from './video.mp4';
 import slide2 from './images/slide-2.jpg';
 import slide3 from './images/slide-3.jpg';

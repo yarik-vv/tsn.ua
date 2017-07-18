@@ -1,5 +1,12 @@
 window.onload = function() {
 
+
+  var sidebarHeight = document.querySelector('.sidebar');
+  sidebarHeight.style.height =
+    document.querySelector('main').scrollHeight + 210 + 'px';
+
+
+
   //shared insert video function, used for slider and video window
   function insertVideo(insertVideo, insertUrl) {
     insertVideo.innerHTML =
