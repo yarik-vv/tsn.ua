@@ -888,26 +888,43 @@ var wrapLogo = document.getElementById('wrap-logo');
 
 
 var newsMenu = document.querySelector('.news-menu');
+// Create a new style tag
+var style = document.createElement("style");
+// Append the style tag to head
+document.head.appendChild(style);
+// Grab the stylesheet object
+sheet = style.sheet
+//menu news 1
+newsMenu.childNodes[1].onmouseover = function () {
+  sheet.addRule('.news-menu::after','left: 47.5px');
+}
+//menu news 2
+newsMenu.childNodes[3].onmouseover = function () {
+  sheet.addRule('.news-menu::after','left: 158px');
+};
+//menu news 3
+newsMenu.childNodes[5].onmouseover = function () {
+  sheet.addRule('.news-menu::after','left: 257px');
+}
+
+/*
 
 function NewsMenuOne(){
-  newsMenu.className = 'news-menu';
+  //document.styleSheets[0].addRule('.news-menu::after', 'left: "162.5px";');
+  sheet.addRule('.news-menu::after','left: 47.5px');
+  //newsMenu.className = 'news-menu';
 }
 function NewsMenuTwo(){
-  newsMenu.className = 'news-menu news-menu-2';
+  sheet.addRule('.news-menu::after','left: 158px');
+  //newsMenu.className = 'news-menu news-menu-2';
 }
 function NewsMenuThree(){
-  newsMenu.className = 'news-menu news-menu-3';
+  sheet.addRule('.news-menu::after','left: 257px');
+  //newsMenu.className = 'news-menu news-menu-3';
 }
-
-//menu news 1
-newsMenu.childNodes[1].onmouseover = NewsMenuOne;
-//newsMenu.childNodes[1].onclick = NewsMenuOne;
-//menu news 2
-newsMenu.childNodes[3].onmouseover = NewsMenuTwo;
 //newsMenu.childNodes[3].onclick = NewsMenuTwo;
-//menu news 3
-newsMenu.childNodes[5].onmouseover = NewsMenuThree;
-//newsMenu.childNodes[5].onclick  = NewsMenuThree;
+
+*/
 
 
 
