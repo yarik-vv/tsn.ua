@@ -22,3 +22,14 @@ import news3 from './images/news-3.jpg';
 import news4 from './images/news-4.jpg';
 import news5 from './images/news-5.jpg';
 import news6 from './images/news-6.jpg';
+
+import newsFoto1 from './images/foto-news-1.jpg';
+import newsFoto2 from './images/foto-news-2.jpg';
+import newsFoto3 from './images/foto-news-3.jpg';
+import newsFoto4 from './images/foto-news-4.jpg';
+import newsFoto5 from './images/foto-news-5.jpg';
+import newsFoto6 from './images/foto-news-6.jpg';
+import newsFoto7 from './images/foto-news-7.jpg';
+import newsFoto8 from './images/foto-news-8.jpg';
+import newsFoto9 from './images/foto-news-9.jpg';
+import newsFoto10 from './images/foto-news-10.jpg';

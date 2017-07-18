@@ -223,105 +223,124 @@
           date: "29 Травня, 2017",
           time: "17:22",
           title: "У \"Київпастрансі\" пояснили, навіщо підвищують вартість проїзду у столиці",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "17:03",
           title: "Водій легковика, який врізався в маршрутку у Вишгороді, був напідпитку – поліція",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "16:58",
           title: "Кронпринцеса Данії вбралася в українську вишиванку вартістю у понад тисячу доларів",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "17:22",
           title: "Вона робить це на зло: психолог проаналізував мову тіла Меланії Трамп і розповів, що не так з її сумом",
-          poster : '/images/sidebar-news-1.jpg' ,
+          image: true,
+          poster : '/images/sidebar-news-1.jpg',
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "16:02",
           title: "Де дешевше: порівняння цін на продукти в супермаркетах Києва",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "15:47",
           title: "На Буковині затримали слідчого поліції під час отримання хабара у $ 3 тисячі",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "15:13",
           title: "У Молдові пояснили, чому вислали російських дипломатів",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "15:03",
           title: "Це якийсь перевернутий світ: російський журналіст шокований затриманням школяра за читання \"Гамлета\" на ...",
-          poster : '/images/sidebar-news-2.jpg',
+          image: false,
+          video: '/video.mp4', 
+          poster: '/images/sidebar-news-2.jpg',
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "16:58",
           title: "Кронпринцеса Данії вбралася в українську вишиванку вартістю у понад тисячу доларів",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "17:22",
           title: "Вона робить це на зло: психолог проаналізував мову тіла Меланії Трамп і розповів, що не так з її сумом",
-          poster : '/images/sidebar-news-1.jpg' ,
+          image: true,
+          poster : '/images/sidebar-news-1.jpg',
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "16:02",
           title: "Де дешевше: порівняння цін на продукти в супермаркетах Києва",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "15:47",
           title: "На Буковині затримали слідчого поліції під час отримання хабара у $ 3 тисячі",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "15:13",
           title: "У Молдові пояснили, чому вислали російських дипломатів",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         },
         {
           date: "29 Травня, 2017",
           time: "15:03",
           title: "Це якийсь перевернутий світ: російський журналіст шокований затриманням школяра за читання \"Гамлета\" на ...",
+          image: false,
           poster : '/images/sidebar-news-2.jpg',
+          video: '/video.mp4', 
           url: "/"
         },  
         {
           date: "29 Травня, 2017",
           time: "15:47",
           title: "На Буковині затримали слідчого поліції під час отримання хабара у $ 3 тисячі",
-          poster : false,
+          image: false,
+          video: false, 
           url: "/"
         }
       ]%>
@@ -335,12 +354,35 @@
 
                   <article class="sidebar-item">
 
-                    <% if(!SidebarData[i].poster===false) {%>
+                    <% if(SidebarData[i].image===true) {%>
                     <div class="poster">
                       <a href="<%= SidebarData[i].url %>">
                         <img src="<%= SidebarData[i].poster %>" alt="poster">
                       </a>
                     </div>
+                      <% } %>
+
+                    <% if(!SidebarData[i].video===false) {%>
+                    <div class="poster">
+                      <!--<a href="<%= SidebarData[i].url %>">-->
+                        <video width="290" height="115" poster="<%= SidebarData[i].poster %>">
+                          <source src="<%= SidebarData[i].video %>" type="video/mp4">
+                          
+                        </video>
+
+                        <!--<div id="sidebar-play" >-->
+                          <svg id="sidebar-play"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            width="16px" height="17px">
+                            <path
+                            d="M12.335,7.999 C12.335,7.759 12.210,7.541 12.001,7.426 L6.330,4.095 C6.132,3.970 5.871,3.970 5.663,4.084 C5.454,4.209 5.329,4.428 5.329,4.667 L5.329,11.330 C5.329,11.570 5.454,11.789 5.663,11.913 C5.767,11.966 5.882,11.997 5.996,11.997 C6.111,11.997 6.226,11.966 6.330,11.903 L12.001,8.572 C12.210,8.457 12.335,8.238 12.335,7.999 ZM13.669,7.999 C13.669,11.122 11.125,13.663 7.998,13.663 C4.870,13.663 2.327,11.122 2.327,7.999 C2.327,4.875 4.870,2.335 7.998,2.335 C11.125,2.335 13.669,4.875 13.669,7.999 ZM16.004,7.999 C16.004,3.585 12.418,0.003 7.998,0.003 C3.578,0.003 -0.008,3.585 -0.008,7.999 C-0.008,12.413 3.578,15.995 7.998,15.995 C12.418,15.995 16.004,12.413 16.004,7.999 Z"/>
+                          </svg>
+                        <!--</div>-->
+
+                      <!--</a>-->
+                    </div>
+
                       <% } %>
 
                         <h4>
@@ -576,33 +618,15 @@
     </div>
 
     <div class="foto-wrap">
-      <div class="foto-news">
+      <div class="foto-news-wrap">
+        <h3>Фото репортаж</h3>
 
-        <div class="left-foto">
-          <div class="left-foto-top">
+        <div class="foto-news">
 
-          </div>
-          <div class="left-foto-bot">
+          <% for(var i=1; i<11; i++) {%>
+            <article class="<%= 'f' + [i] %>"></article>
+          <% } %>
 
-          </div>
-        </div>
-
-        <div class="mid-foto">
-          <div class="mid-foto-top">
-
-          </div>
-          <div class="mid-foto-bot">
-
-          </div>
-        </div>
-
-        <div class="left-foto">
-          <div class="right-foto-top">
-
-          </div>
-          <div class="right-foto-bot">
-
-          </div>
         </div>
 
       </div>
