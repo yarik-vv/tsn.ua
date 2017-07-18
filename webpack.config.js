@@ -37,19 +37,22 @@ module.exports = {
    },
 
    module: {
-      rules: [{
-         test: /\.scss$/,
-         include: __dirname + '/src',
-         use: ExtractTextPlugin.extract({
-            fallback: 'style',
-            use:['css', 'postcss', 'sass']
-         })
-      }, 
-      {
-         test:   /\.(png|jpg|svg|otf|mp4)$/,
-         exclude: /(node_modules)/,
-         loader: 'file-loader?name=[path][name].[ext]',
-      }]
+      rules: 
+      [
+         {
+            test: /\.scss$/,
+            include: __dirname + '/src',
+            use: ExtractTextPlugin.extract({
+               fallback: 'style',
+               use:['css', 'postcss', 'sass']
+            })
+         }, 
+         {
+            test:   /\.(png|jpg|svg|otf|mp4)$/,
+            exclude: /(node_modules)/,
+            loader: 'file-loader?name=[path][name].[ext]',
+         }
+      ]
    },
    
    plugins: [
@@ -61,7 +64,7 @@ module.exports = {
       new HtmlWebpackPlugin({
          //chunks: ['index'],
          filename: 'index.html',
-         template: 'index.html',
+         template: 'index.ejs',
          minify: {
             // minifyCSS:true,
             // minifyJS:true,

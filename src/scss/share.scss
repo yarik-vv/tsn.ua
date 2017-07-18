@@ -1,7 +1,6 @@
 
 .share{
    @include flex(column, flex-start, center);
-   z-index: 3;
    display: none;
 
    .window{

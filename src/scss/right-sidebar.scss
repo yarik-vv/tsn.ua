@@ -1,20 +1,59 @@
 .sidebar-wrap{
+   @include flex(row, flex-start, stretch);
+
    position: absolute;
-   //background: red;
    top: 200px;
-
-   //height: 2000px !important;
-   height: 270%;
+   height: 100%;
    width: 30%;
-   z-index: 3;
-   align-self: flex-end;
-
-  // padding-right: 20px;
-
-   @include flex(row, flex-start, stretch)
+   z-index: 2;
+   align-self: flex-end !important;
 }
+
 .sidebar{
    width: 330px;
-   ///height: 500px;
-   background: gray;
+   height: 100%;
+
+   .srez{
+      width: 100%;
+      border-bottom: 20px solid #f2f2eb; 
+      border-right: 20px solid transparent;	
+   }
+
+   .content{
+      width: 100%;
+      height: 100%;
+      background: #f2f2eb;
+      border-bottom: 1px solid #e6e6df;
+      @include flex(column, flex-start, center);
+      //padding: 0 20px 0px 20px;
+
+      .banner img{
+         width: 300px;
+         height: 250px;
+      }
+
+      article{
+         width: 290px;
+         border-bottom: 1px solid #e6e6df;
+         //padding: 15px 20px 0px 20px;
+
+         h4 {
+            margin: 15px 0 15px 0;
+            a{
+               color: black;
+            }
+         }
+         img{
+            margin-top: 10px;
+            width: 290px;
+            height: 115px;
+         }
+         .time{
+            font-size: 12px;
+            margin-bottom: 12px;
+            color: #bfbfac;
+         }
+
+      }
+   }
 }

@@ -24,6 +24,7 @@ html{
    overflow-x: hidden;
    //height: 3600px;
    font-family: $regular;
+   @include flex(column, flex-start, center);
 }
 
 svg{
@@ -36,12 +37,12 @@ body{
    //max-width: 1400px;
    //min-width: 990px;
    
-   z-index: 1;
+
 }
 
 
 .wrap{
-   z-index: 2;
+   z-index: 4;
 
    left: 0;
    top: 0;
