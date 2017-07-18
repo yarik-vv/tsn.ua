@@ -1,15 +1,19 @@
 .sidebar-wrap{
-   @include flex(row, flex-start, stretch);
+   @include flex(row, flex-end, stretch);
 
+   border: 1px solid green;
    position: absolute;
    top: 200px;
    height: 100%;
-   width: 30%;
-   z-index: 2;
-   align-self: flex-end !important;
+   width: 90%;
+   z-index: 0;
+   //align-self: flex-end !important;
+   //float: right;
+   //transform: translateX(220%);
 }
 
 .sidebar{
+   //z-index: 2 !important;
    width: 330px;
    height: 100%;
 

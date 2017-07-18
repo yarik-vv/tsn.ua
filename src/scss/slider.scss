@@ -36,6 +36,7 @@
    }
 
       #controll{
+          z-index: 1;
       position: absolute;
       width: 30px;
       //left: 10px;
@@ -60,6 +61,7 @@
    }
 
    .info{
+       z-index: 1;
       @include flex(column, flex-end, flex-start);
 
       position: absolute;

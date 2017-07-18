@@ -23,7 +23,7 @@ html {
   overflow-x: hidden;
   //height: 3600px;
   font-family: $regular;
-  @include flex(column, flex-start, center);
+// @include flex(column, flex-start, center);
 }
 
 svg {
@@ -31,8 +31,9 @@ svg {
 }
 
 body {
-  @include flex(column, flex-end, center);
-
+  @include flex(column, flex-start, center);
+  
+  //width: 100%;
   //max-width: 1400px;
   //min-width: 990px;
 }
@@ -53,8 +54,8 @@ body {
 }
 
 header {
-  // max-width: 1400px;
-  // min-width: 990px;
+ 
+  @extend %max-min-width;
   @include flex(column, flex-start, center);
   width: 100%;
   // height: 50px;
@@ -71,25 +72,27 @@ main {
   //max-width: 1400px;
   //min-width: 990px;
   //height: 500px;
-  width: 100%;
-  //border: 1px solid red;
+  width: 100% !important;
+  border: 3px solid red;
 
-  // .main-wrap{
-  //    //margin-top: 50px;
-  //    //@include flex(column, flex-start, center);
+ .main-wrap{
+   
+    //margin-top: 50px;
+  //@include flex(column, center, center);
   //    //position: absolute;
   //    //height: 500px;
-  //    //max-width: 1400px;
-  //    //min-width: 990px;
+//max-width: 1400px;
+//min-width: 990px;
   //    //border: 1px solid red;
-  //    //width: 100%;
+  @extend %max-min-width;
+      width: 100%;
 
   // width: 100%;
   // //background:  #999;
-  // @extend .max-min-width;
+
   // @include flex(column, flex-start, flex-start);
-  // //border: 1px solid black;
-  // }
+  border: 3px solid yellow;
+ }
 }
 
 // .content-wrapper{

@@ -1,11 +1,18 @@
 .news-wrap{
    width: 100%;
    //background:  #999;
-   @extend .max-min-width;
+
    @include flex(column, flex-start, flex-start);
-   //border: 1px solid black;
+   border: 1px solid blue;
+  //  display: inline-flex;
+  //  flex-direction: column;
+  //  justify-content: flex-end;
+  //  align-items: flex-end;
+   //border: 
 }
+
 .main-news{
+  z-index: 1;
    //border: 1px solid black;
    margin: 20px 0 20px 43px;
    //padding: 20px 36px 20px 45px;
@@ -225,6 +232,7 @@
 }
 
 .banner-wrap{
+  z-index: 1;
   @include flex(row, center, center);
   margin: 20px 0 0 50px;
   width: 62.5%;

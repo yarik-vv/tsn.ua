@@ -54,8 +54,7 @@ $semiboldIt: 'MyriadPro-SemiboldIt', sans-serif;
 $max-width: 1400px;
 $min-width: 990px;
 
-.max-min-width {
-  //@extend .max-min-width
+%max-min-width {
   max-width: $max-width;
   min-width: $min-width;
 }

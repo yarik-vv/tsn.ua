@@ -6,7 +6,7 @@ footer{
 }
 .footer-content{
    @include flex(column, flex-start, flex-start);
-   @extend .max-min-width;
+   @extend %max-min-width;
    width: 100%;
    //background: gray;
 }
