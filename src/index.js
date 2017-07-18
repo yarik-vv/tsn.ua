@@ -1,4 +1,5 @@
 window.onload = function() {
+
   //shared insert video function, used for slider and video window
   function insertVideo(insertVideo, insertUrl) {
     insertVideo.innerHTML =
@@ -101,7 +102,8 @@ window.onload = function() {
       if (slide === slides[i].name) {
         if (slides[i].video === false) {
           videoSlide.style.display = 'none';
-          slider.style.background = 'url(' + slides[i].img + ')';
+          slider.style.background = 'url(' + slides[i].img + ') center';
+          slider.style.backgroundSize = 'cover';
         } else {
           videoSlide.style.display = 'flex';
           slider.style.background = 'none';
@@ -125,29 +127,33 @@ window.onload = function() {
   var shareWindow = document.getElementById('share-window');
   var shareClose = document.getElementById('close-share');
 
-  //open window
+  //функция открытия окна
   share.onclick = function() {
+
+    //открываем само окно, затемняем фон и скроллим в низ 
+    window.scroll(0,0);
     shareWindow.style.display = 'flex';
+    shareWindow.style.height = document.body.scrollHeight + 200 + 'px';
+
+    //отключаем скролл
     document.onmousewheel = document.onwheel = function() {
       return false;
     };
-    document.addEventListener(
-      'MozMousePixelScroll',
-      function() {
-        return false;
-      },
-      false
-    );
+    document.addEventListener('MozMousePixelScroll', function() {
+      return false;
+    }, false);
     document.onkeydown = function(e) {
       if (e.keyCode >= 33 && e.keyCode <= 40) return false;
     };
   };
 
-  //закрытие окна
+  //функция закрытия окна
   shareClose.onclick = function() {
-    //закрываем само окно
+
+    //закрываем само окно и тень
     shareWindow.style.display = 'none';
-    //отключаем скролл
+
+    //включаем скролл
     document.onmousewheel = document.onwheel = function() {
       return true;
     };
