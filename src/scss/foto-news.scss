@@ -1,6 +1,6 @@
 .foto-wrap {
   @include flex(row, center, center);
-  height: 597px;
+  //height: 598px;
   //position: absolute;
   width: 100%;
   background: black;
@@ -15,57 +15,73 @@
   width: 100%;
 
   h3{
-    margin-left: 50px;
+    margin: 20px 0 0 50px;
     color: white;
     font-weight: normal;
   }
 }
 .foto-news {
-  height: 541px;
-  width: 62.23%;
+  height: 100%;
+  width: 62.5%;
   margin-left: 43px;
-  border: 1px solid red;
+  //border: 1px solid red;
 
   article {
     position: relative;
     background: green;
-    margin: 0 7px 0 7px;
+    margin: 7px 7px 7px 7px;
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
 
     //border: 1px white;
 
-    height: 29.5%;
-    width: 18.3%;
+    width: 160px;
+    height: 160px;
 
+    &:hover .play-in-window {
+      cursor: pointer;
+      position: absolute;
+      opacity: .95;
+      top: 5px;
+      left: 5px;
+    }
+    h5{
+      background: transparent;
+    }
+    &:hover h5{
+      span{
+        cursor: pointer;
+        position: absolute;
+        color: white;
+        background: red;
+        padding: 9px 27px 9px 20px;
+        top: 65%;
+        left: 0;
+      }
+    }
   }
 
   .f1,
   .f9 {
-    width: 18.4%*2+1.4%;
+    //width: (160px*2)+14;
   }
 
   .f2,
   .f4,
   .f6 {
-    height: 29.5%*2+1%;
+    //height: (160px*2)+14;
   }
 
   .f5,
   .f6,
-  .f8{
-    margin-top: -150px;
-  }
-  .f7{
-    margin-top: 13.5px;
-  }
-  .f7, .f10{
-//display: none;
+  .f8,
+  .f10 {
+    //margin-top: -167px;
   }
 
   .f9 {
-    display: none;
+    //margin-left: -167px;
   }
 
 }

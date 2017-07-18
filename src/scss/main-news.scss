@@ -86,7 +86,7 @@
     }
   }
 
-  a{
+  a {
     display: flex;
   }
 }
@@ -100,7 +100,6 @@
   .poster {
     background: black;
   }
-  
 }
 
 .card-bot {
@@ -109,7 +108,7 @@
   width: 100%;
   font-size: 14px;
 
-  div{
+  div {
     color: #bfbfbf;
   }
 
@@ -119,12 +118,12 @@
 }
 
 @each $number, $item-color in $top-news-colors {
-  .top-news article:nth-child(#{$number}) span{
-    color: $item-color!important;
+  .top-news article:nth-child(#{$number}) span {
+    color: $item-color !important;
   }
 }
 @each $number, $item-color in $bot-news-colors {
-  .bot-news article:nth-child(#{$number}) span{
+  .bot-news article:nth-child(#{$number}) span {
     color: $item-color;
   }
 }
@@ -138,43 +137,12 @@
   max-height: 190px;
   max-width: 280px;
 
-  svg:hover{
+  svg:hover {
     opacity: .7;
   }
-
-  .video-shadow{
-    background: transparent;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: .83;
-
+  .video-shadow {
     max-height: 190px;
     max-width: 280px;
-
-    width: 100%;
-    height: 100%;
-
-    &:hover{
-      cursor: pointer;
-    }
-
-    .play{
-      display: none;
-
-      &:hover{
-        cursor: auto;
-        opacity: .85;
-      }
-    }
-  }
-  
-  .play {
-    cursor: pointer;
-    position: absolute;
-    opacity: .85;
-    top: 35%;
-    left: 40%;
   }
 
   .play-in-window {
@@ -186,17 +154,51 @@
   }
 }
 
+.play {
+  cursor: pointer;
+  position: absolute;
+  opacity: .85;
+  top: 35%;
+  left: 40%;
+}
+
+.video-shadow {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .83;
+
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .play {
+    display: none;
+
+    &:hover {
+      cursor: auto;
+      opacity: .85;
+    }
+  }
+}
+
+//}
+
 #video-window {
   display: none;
   position: fixed;
-  
+
   top: 50px;
   left: 50px;
 
   z-index: 1;
   height: 200px;
 
-  div{
+  div {
     position: fixed;
   }
 
@@ -208,23 +210,22 @@
     border: 1px solid black;
   }
 
-  svg{
+  svg {
     cursor: pointer;
     position: absolute;
 
     top: 10px;
     left: 325px;
 
-    &:hover{
+    &:hover {
       fill: red;
-    }  
+    }
   }
-
 }
 
 .card-info {
   @include flex(row, flex-end, center);
-  
+
   width: 80px;
 
   .reviews {

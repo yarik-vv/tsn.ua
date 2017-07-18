@@ -3,7 +3,7 @@ window.onload = function() {
 
   var sidebarHeight = document.querySelector('.sidebar');
   sidebarHeight.style.height =
-    document.querySelector('main').scrollHeight + 210 + 'px';
+    document.querySelector('main').scrollHeight + 220 + 'px';
 
 
 
