@@ -1,9 +1,10 @@
 window.onload = function() {
-
   //shared insert video function, used for slider and video window
-  function insertVideo (insertVideo, insertUrl) {
-    insertVideo.innerHTML = '<video autoplay loop muted> <source src=' + insertUrl
-    + ' type="video/mp4"> Вибачте, ваш браузер не підтрімує відео :( </video>';
+  function insertVideo(insertVideo, insertUrl) {
+    insertVideo.innerHTML =
+      '<video autoplay loop muted> <source src=' +
+      insertUrl +
+      ' type="video/mp4"> Вибачте, ваш браузер не підтрімує відео :( </video>';
   }
 
   //slider data
@@ -59,7 +60,7 @@ window.onload = function() {
   var controll = document.getElementById('controll');
   controll.addEventListener('click', controlls);
 
-  function controlls (event) {
+  function controlls(event) {
     var idSlide = 0;
 
     if (event.target.nodeName === 'BUTTON') {
@@ -88,25 +89,25 @@ window.onload = function() {
   var videoSlide = document.querySelector('#slider .slider-video');
   var titleSlide = document.querySelector('#slider .title');
   var dataSlide = document.querySelector('#slider .datatime');
-  var badgeSlide = document.querySelector('#slider .badge'); 
+  var badgeSlide = document.querySelector('#slider .badge');
 
   //init slider
   var startSlide = slides[0];
   select(startSlide.name);
 
   //select slide function
-  function select (slide) {
+  function select(slide) {
     for (var i = 0; i < slides.length; i++) {
       if (slide === slides[i].name) {
-        if (slides[i].video === false) { 
+        if (slides[i].video === false) {
           videoSlide.style.display = 'none';
           slider.style.background = 'url(' + slides[i].img + ')';
         } else {
           videoSlide.style.display = 'flex';
           slider.style.background = 'none';
-          insertVideo (videoSlide, slides[i].video);
+          insertVideo(videoSlide, slides[i].video);
         }
-          
+
         titleSlide.innerHTML = slides[i].title;
         badgeSlide.innerHTML = slides[i].badge;
         if (slides[i].name == 'slide1') {
@@ -122,7 +123,7 @@ window.onload = function() {
   //_ POPUP WINDOWS > _PUW SHARE
   var share = document.getElementById('share');
   var shareWindow = document.getElementById('share-window');
-  var shareClose = document.getElementById('close');
+  var shareClose = document.getElementById('close-share');
 
   //open window
   share.onclick = function() {
@@ -130,21 +131,27 @@ window.onload = function() {
     document.onmousewheel = document.onwheel = function() {
       return false;
     };
-    document.addEventListener('MozMousePixelScroll', function() {
-      return false;
-    }, false);
+    document.addEventListener(
+      'MozMousePixelScroll',
+      function() {
+        return false;
+      },
+      false
+    );
     document.onkeydown = function(e) {
       if (e.keyCode >= 33 && e.keyCode <= 40) return false;
     };
   };
 
-  //close window
+  //закрытие окна
   shareClose.onclick = function() {
+    //закрываем само окно
     shareWindow.style.display = 'none';
+    //отключаем скролл
     document.onmousewheel = document.onwheel = function() {
       return true;
     };
-    document.addEventListener('MozMousePixelScroll', function() {  
+    document.addEventListener('MozMousePixelScroll', function() {
       return true;
     }, true);
     document.onkeydown = function(e) {
@@ -158,9 +165,11 @@ window.onload = function() {
   var newsMenu = document.querySelector('.news-menu');
   var style = document.createElement('style');
 
+  //добавляем тег стайл, потому, что напрямую псевдоелемент ::after поменять нельзя
   document.head.appendChild(style);
   sheet = style.sheet;
 
+  //в зависимости от меню передвигаем треугольник
   newsMenu.firstChild.onmouseover = function() {
     sheet.addRule('.news-menu::after', 'left: 47.5px');
   };
@@ -173,15 +182,55 @@ window.onload = function() {
 
   /* --------- end news menu code, start video vindow code --------- */
 
-  var videoWindow = document.getElementById('video-window');
+  var videoWindowWrap = document.querySelector('#video-window');
+  var videoWindow = document.querySelector('#video-window div');
   var videoWindowPlay = document.getElementsByClassName('play-in-window');
+  var videoWindowClose = document.getElementById('close-video');
   var videoUrl = '/video.mp4';
+  var playInWindowButton = null;
+  var shadowPoster = null;
 
+  //вешаем событие клика на все кнопки открытия видео в окне
   for (var i = 0; i < videoWindowPlay.length; i++) {
-    videoWindowPlay[i].onclick = function() {
-      videoWindow.style.display = 'flex';
-      insertVideo (videoWindow, videoUrl);
-    };
+    videoWindowPlay[i].addEventListener('click', playInWindowOpen);
+  }
+
+  //функция окрытия окна
+  function playInWindowOpen(event) {
+
+    //закрываем предыдущее оуно если оно было открыто
+    if (videoWindowWrap.style.display === 'flex') {
+      playInWindowClose();
+    }
+
+    //иницилизируем переменные относительно вызова клика
+    if (event.target.nodeName === 'svg') {
+      shadowPoster = event.target.previousSibling;
+      playInWindowButton = event.target;
+    } else{
+      shadowPoster = event.target.parentNode.previousSibling;
+      playInWindowButton = event.target.parentNode;      
+    }
+
+    //показываем тень, скрываем кнопки, открываем окно и вставляем видео
+    shadowPoster.style.background = 'black';
+    shadowPoster.firstChild.style.display = 'flex';   
+    playInWindowButton.nextSibling.style.display = 'none';
+    playInWindowButton.style.display = 'none';
+    videoWindowWrap.style.display = 'flex';
+    insertVideo(videoWindow, videoUrl);
+
+    //вешаем событие на кнопку закрытия окна
+    videoWindowClose.addEventListener('click', playInWindowClose);
+
+    //функция закрытия окна
+    function playInWindowClose(event) {
+      videoWindowWrap.style.display = 'none';
+      shadowPoster.style.background = 'transparent';
+      shadowPoster.firstChild.style.display = 'none';
+      playInWindowButton.nextSibling.style.display = 'flex';
+      playInWindowButton.style.display = 'flex';
+    }
   }
 };
 
@@ -193,7 +242,8 @@ var topRight = document.getElementById('nav-right');
 var topLogo = document.getElementById('top-logo');
 var topLeft = document.getElementById('nav-left');
 var wrapLogo = document.getElementById('wrap-logo');
-var videoWindow = document.getElementById('video-window');
+var videoWindowWrap = document.getElementById('video-window');
+var videoWindow = document.querySelector('#video-window div');
 
 window.onscroll = function() {
   //затемнение  top head меню при скроле 70px _SCROLL > Above TOP MENU
@@ -203,10 +253,11 @@ window.onscroll = function() {
     topHead.style.background = 'transparent';
   }
 
-  //меню с рубриками отлипает
+  //меню с рубриками отлипает, окно видео если включено, то сдвигаеться вместе с меню
   if (document.body.scrollTop > 400) {
     topMenu.parentNode.style.position = 'fixed';
-    videoWindow.firstChild.style.top = '100px';
+    videoWindow.style.top = '100px';
+    videoWindowWrap.style.top = '100px';
     topMenu.parentNode.style.zIndex = '2';
     topMenu.parentNode.style.top = '50px';
   } else {
@@ -214,7 +265,8 @@ window.onscroll = function() {
     topMenu.parentNode.style.zIndex = '0';
     topMenu.parentNode.style.position = 'absolute';
     topMenu.parentNode.style.top = '400px';
-    videoWindow.firstChild.style.top = '50px';
+    videoWindow.style.top = '50px';
+    videoWindowWrap.style.top = '50px';
   }
 
   if (document.body.scrollTop < 500 && document.body.scrollTop > 400) {
@@ -222,11 +274,12 @@ window.onscroll = function() {
     topHead.style.display = 'flex';
   }
 
-  //меню с рубриками трансформируеться в топ меню _SCROLL > After TOP MENU
+  //меню с рубриками трансформируеться в топ меню, окно с видео если включено сьезжает с ним
   if (document.body.scrollTop > 500) {
     topMenu.parentNode.style.top = '0';
     topHead.style.display = 'none';
-    videoWindow.firstChild.style.top = '50px';
+    videoWindow.style.top = '50px';
+    videoWindowWrap.style.top = '50px';
     topMenu.parentNode.appendChild(topRight);
     wrapLogo.appendChild(topLogo);
     topMenu.parentNode.style.border = 'none';
