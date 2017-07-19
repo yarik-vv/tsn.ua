@@ -1,4 +1,3 @@
-//fonts
 $regular: 'MyriadPro-Regular', sans-serif;
 // $semibold: 'MyriadPro-Semibold', sans-serif;
 // $bold-font: 'MyriadPro-Bold', sans-serif;
@@ -10,12 +9,9 @@ $regular: 'MyriadPro-Regular', sans-serif;
 // $it: 'MyriadPro-It', sans-serif;
 // $semiboldIt: 'MyriadPro-SemiboldIt', sans-serif;
 
-$max-width: 1400px;
-$min-width: 990px;
-
 %max-min-width {
-  max-width: $max-width;
-  min-width: $min-width;
+  max-width: 1400px;
+  min-width: 990px;
 }
 
 $top-menu-colors: (
@@ -32,16 +28,19 @@ $top-menu-colors: (
 );
 
 $drop-menu-colors: (
-  1: #ffd400,
-  2: #30b3bf,
-  3: #3640b3,
-  4: #d91616,
-  5: #cca266,
-  6: #73cc33,
+  1: #30b3bf,
+  2: #ffd400,
+  3: #73cc33,
+  4: #f2b600,
+  5: #f26522,
+  6: #f2b6f2,
   7: #ba39e6,
-  8: #f2b6f2,
-  9: #f26522,
-  10: #f2b600
+  8: #73cc33,
+  9: #cca266,
+  10: #d91616,
+  11: #3640b3,
+  12: #30b3bf,
+  13: #ffd400
 );
 
 $top-news-colors: (
@@ -64,21 +63,4 @@ $icon-hover-colors: (
   google: rgb(227, 117, 99)
 );
 
-/*
-//poluzhirniy
-$semibold: 'MyriadPro-Semibold', sans-serif;
-
-//zhirniy
-$bold-font: 'MyriadPro-Bold', sans-serif;
-
-//splusheniy
-$cond: 'MyriadPro-Cond', sans-serif;
-$bold-cond: 'MyriadPro-BoldCond', sans-serif;
-
-//kosoy
-$condIt: 'MyriadPro-CondIt', sans-serif;
-$bold-condIt: 'MyriadPro-BoldCondIt', sans-serif;
-$boldIt: 'MyriadPro-BoldIt', sans-serif;
-$it: 'MyriadPro-It', sans-serif;
-$semiboldIt: 'MyriadPro-SemiboldIt', sans-serif;
-*/
+$red: #b60007;

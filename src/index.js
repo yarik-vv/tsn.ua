@@ -37,10 +37,8 @@ window.onload = function() {
 
   //общая функция вставки видео для слайдера и окна с видео 
   function insertVideo(insertVideo, insertUrl) {
-    insertVideo.innerHTML =
-      '<video autoplay loop muted> <source src=' +
-      insertUrl +
-      ' type="video/mp4"> Вибачте, ваш браузер не підтрімує відео :( </video>';
+    insertVideo.innerHTML = '<video autoplay loop muted> <source src=' +
+      insertUrl + ' type="video/mp4"> Вибачте, ваш браузер не підтрімує відео :( </video>';
   }
 
   /* -------------- end shared functions code, start search button code ------------------ */
@@ -75,7 +73,7 @@ window.onload = function() {
   }
 
   /* -------------- end search button code , start slider code ------------------ */
-////////////////////////////////////////////////////////////////////
+
   //slider data
   var slides = [
     {
@@ -124,7 +122,7 @@ window.onload = function() {
       data: '29 травня, 2017 12:11'
     }
   ];
-//////////////////////////
+
   var slider = document.getElementById('slider');
   var videoSlide = document.querySelector('#slider .slider-video');
   var titleSlide = document.querySelector('#slider .title');
@@ -428,44 +426,41 @@ window.onload = function() {
   /* --- выравниваем высоту сайдбара и главного блока --- */
   var main = document.querySelector('main');
   var sidebar = document.querySelector('.sidebar');
-if (window.matchMedia("(min-width: 990px)").matches) {
-  main.style.height = sidebar.scrollHeight - 225 + 'px';
- };
+  
+  if (window.matchMedia("(min-width: 990px)").matches) {
+    main.style.height = sidebar.scrollHeight - 225 + 'px';
+  };
 
+  /* --------- start drop down menu code --------- */
 
   var dropMenu = document.getElementById('drop-menu');
   var dropBtn = document.getElementById('drop-btn');
   var navHead = document.querySelector('#nav-right');
   var navTop = document.querySelector('.menu-wrap');
   
-  function mediaQueries(){
-    if (window.matchMedia("(max-width: 1400px)").matches) {
-      hide();
-    } 
-    if (window.matchMedia("(max-width: 1200px)").matches) {
-      hide();
-    } 
-    if (window.matchMedia("(max-width: 1050px)").matches) {
-      hide();
-    } 
-    if (window.matchMedia("(max-width: 813px)").matches) {
-      for( var i = 0; i<7; i++ ){
-        hide();
-      }
-      navHead.appendChild(dropBtn);
-    } 
-    function hide(){
-      var item = dropBtn.previousSibling;
-      //if(!item===null){
-        dropMenu.appendChild(item);
-      //}
-      //item = null;
-    }
+  //медиазапросы для скрывания категорий меню
+  if (window.matchMedia('(max-width: 1400px)').matches) {
+    hide();
   }
-
-  mediaQueries();
-  //window.onresize = mediaQueries;
-
+  if (window.matchMedia('(max-width: 1200px)').matches) {
+      hide();
+  }
+  if (window.matchMedia('(max-width: 1050px)').matches) {
+    hide();
+  }
+  if (window.matchMedia('(max-width: 813px)').matches) {
+    for (var i = 0; i < 7; i++) {
+      hide();
+    }
+    navHead.appendChild(dropBtn);
+  }
+  
+  //функция скрывания
+  function hide() {
+    var item = dropBtn.previousSibling;
+    dropMenu.appendChild(item);
+  }
+  
 };
 
 /* --------- end onload window script, start menus scrooll transformation code --------- */
@@ -480,8 +475,7 @@ var wrapLogoMargin = wrapLogo.style.marginLeft;
 var videoWindowWrap = document.getElementById('video-window');
 var videoWindow = document.querySelector('#video-window div');
 
-
-
+//все эфекты связаные со скролом
 window.onscroll = function () {
 
   //затемнение  top head меню при скроле 70px _SCROLL > Above TOP MENU
@@ -502,15 +496,14 @@ window.onscroll = function () {
     } else {
       topMenu.parentNode.style.zIndex = '1';
       topMenu.parentNode.style.position = 'absolute';
+      
       if (window.matchMedia("(max-width: 989px)").matches) {
         topMenu.parentNode.style.top = '350px';
       }
       else{
         topMenu.parentNode.style.top = '400px';
       }
-      // if (window.matchMedia("(min-width: 990px)").matches) {
-      //   topMenu.parentNode.style.top = '350px';
-      // }
+      
       videoWindow.style.top = '50px';
       videoWindowWrap.style.top = '50px';
     }

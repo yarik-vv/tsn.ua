@@ -1,57 +1,19 @@
-// .sidebar-wrap {
-//   // @include flex(row, flex-end, stretch);
-
-//   //border: 1px solid green;
-//   position: absolute;
-//   top: -250px;
-//   left: 68%;
-//   height: 111%;
-//   overflow: auto;
-//   //width: 90%;
-
-//   //align-self: flex-end !important;
-//   //float: right;
-//   //transform: translateX(220%);
-// }
-
 .sidebar {
-  //display: none;
   z-index: 1;
-  //990
-  //width: 330px;
   width: 250px;
   height: 100%;
-  //background: blue;
-  ///////
 
-  // @include flex(row, flex-end, stretch);
-
-  //border: 1px solid green;
   position: absolute;
-  //text-align: left;
-  
-  
-  //990
-  //top: -250px;
   left: 68%;
   top: -128px;
-  //top: 0;
-  //left: 720px;
-  //height: 110%;
-
-  //margin-bottom: 20px;
-  //overflow: auto;
 
   h2 {
-    //margin-left: 40px;
     width: 100%;
     text-align: left;
   }
-  ////////////
+
   button {
     width: 100%;
-
-    //height: 100%;
     height: 56px;
     color: #4d4d45;
     outline: 0;
@@ -61,7 +23,6 @@
       size: 16px;
     }
 
-    //border: 1px solid black;
     svg {
       position: relative;
       top: 1px;
@@ -69,16 +30,9 @@
       fill: #d9d9d2;
     }
 
-    &:hover {
-      //background: #e6e6df;
-      svg {
-        fill: #4d4d45;
-      }
+    &:hover svg {
+      fill: #4d4d45;
     }
-
-    // &:focus {
-    //    border-color: #66afe9;
-    // }
   }
 
   .srez {
@@ -88,64 +42,55 @@
   }
 
   .content {
+    @include flex(column, flex-start, center);
+
     width: 100%;
-    //height: inherit;
     background: #f2f2eb;
     border-bottom: 1px solid #e6e6df;
-    @include flex(column, flex-start, center);
     padding: 0 20px 0px 20px;
 
     .banner img {
-      //990
       width: 300px;
       height: 250px;
-      //display: none;
     }
 
     article {
-      //width: 290px;
-              width: 100%;
-        //height: 100%;
-
+      width: 100%;
       border-bottom: 1px solid #e6e6df;
-      //padding: 15px 20px 0px 20px;
 
       h4 {
         font-weight: normal;
         margin: 13px 0 13px 0;
+
         a {
           color: black;
         }
       }
       .poster {
         @include flex(column, flex-start, flex-start);
+
         position: relative;
         margin-top: 10px;
-        //990
-       // width: 290px;
-       // height: 115px;
         width: 100%;
-       // height: 100%;
         overflow: hidden;
 
         img {
-                   width: 100%;
-         //height: 100%;
-        //        width: 290px;
-        //height: 115px;
+          width: 100%;
           transition: all .5s ease-out;
 
           &:hover {
             transform: scale(1.15);
           }
         }
+
         .play{
-          position: absolute;
           @include flex(row, center, center);
+
+          position: absolute;
           opacity: .7;
           color: white;
           font-size: 12px;
-          top: 70%;//77% +990
+          top: 70%;
           left: 10px;
 
           svg{
@@ -153,23 +98,15 @@
             top: -1px;
             margin-right: 10px;
           }
+
           &:hover{
             opacity: 1;
           }
+
           &:hover svg{
             opacity: 1;
           }
         }
-
-        span{
-          // position: absolute;
-          // color: white;
-          // font-size: 12px;
-          // left: 35px;  
-          // top: 79%;
-        }
-        
-
       }
       .time {
         font-size: 12px;
@@ -179,15 +116,3 @@
     }
   }
 }
-
-
-// .sidebar-item{
-//   position: relative;
-// }
-// #sidebar-play {
-//   position: absolute;
-//   top: 77%;;
-//   left: 10px;
-//   //background: red;
-//   z-index: 20;
-// }

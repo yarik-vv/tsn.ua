@@ -6,7 +6,7 @@ import js from 'file-loader?name=[path][name].[ext]!./index.js';
 import favicon from 'file-loader?name=[path][name].[ext]!./favicon.ico';
 import sharePoster from './images/share-poster.jpg';
 
-import sidebarBanner from './images/banner-sidebar1.jpg';
+import sidebarBanner from './images/banner-sidebar.jpg';
 import sidebarNews1 from './images/sidebar-news-1.jpg';
 import sidebarNews2 from './images/sidebar-news-2.jpg';
 
@@ -34,5 +34,4 @@ import newsFoto8 from './images/foto-news-8.jpg';
 import newsFoto9 from './images/foto-news-9.jpg';
 import newsFoto10 from './images/foto-news-10.jpg';
 
-import gallery from './images/gallery1.jpg';
 import data from './imgGallery.json';

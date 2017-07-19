@@ -6,12 +6,7 @@
 }
 
 .news-menu {
-  //990
-  //width: 61.5%;
   width: 680px;
-
-  //990
-  //margin: 21px 0 0 50px;
   margin: 20px 0 20px 0px;
   padding: 11px 0 11px 0;
   border-bottom: 1px solid #ccccb8;
@@ -38,7 +33,7 @@
     margin-right: 18px;
 
     &:hover {
-      color: red;
+      color: $red;
     }
   }
 }
@@ -46,11 +41,6 @@
 .main-news {
   @include flex(column, flex-start, flex-start);
 
-  //margin-top: 20px;
-  //margin: 20px 0 20px 43px;
-  //margin: 20px 0 20px 0px;
-  //990px;
-  //width: 63%;
   width: 680px;
 }
 
@@ -81,9 +71,6 @@
   @include flex(column, space-between, flex-start);
 
   width: 100%;
-  //990
-  //padding: 0 7px 0px 7px;
-  //padding-right: 14px;
 
   &:hover img {
     opacity: .75;
@@ -209,16 +196,12 @@
   }
 }
 
-//}
-
 #video-window {
   display: none;
   position: fixed;
 
-  //990
   top: 50px;
   left: 50px;
-  //left: 20px;
 
   z-index: 1;
   height: 200px;
@@ -243,15 +226,15 @@
     left: 325px;
 
     &:hover {
-      fill: red;
+      fill: $red;
     }
   }
 }
 
 .card-info {
   @include flex(row, flex-end, center);
-  display: none;
 
+  display: none;
   width: 80px;
 
   .reviews {
@@ -263,8 +246,8 @@
   }
 
   .comments {
-    
     @extend .reviews;
+
     margin-right: 8px;
 
     svg {
@@ -276,7 +259,7 @@
 
 .banner-wrap {
   @include flex(row, center, center);
-//border: 1px solid green;
+
   margin: 20px 0 20px 0px;
   width: 680px;
 

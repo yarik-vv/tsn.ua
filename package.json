@@ -1,9 +1,11 @@
 {
-  "name": "1plus1-webpack-build",
+  "name": "tsn-webpack-build",
   "version": "1.0.0",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "dev build": "NODE_ENV=development webpack",
+    "build": "NODE_ENV=procuction webpack"
   },
   "repository": {
     "type": "git",

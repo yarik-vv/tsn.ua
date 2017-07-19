@@ -93,7 +93,6 @@ module.exports = {
         preventAttributesEscaping: true
       }
     }),
-    //new HtmlWebpackInlineSVGPlugin(),
     new ExtractTextPlugin({
       filename: 'styles.css',
       allChunks: true

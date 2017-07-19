@@ -1,36 +1,18 @@
 #slider {
-  //suk
-  max-width: 1400px;
-  min-width: 990px;
+  @extend %max-min-width;
+
   overflow-x: hidden;
-  //suk
   width: 100%;
-  
   height: 400px;
 
-  .slider-video{
-    //overflow-x: hidden !important;
-  //  width: 10%;
-   // margin-left: -50%;
-  }
   video {
-    //display: none;
-    //width: 1px !important;
-    //padding-right: -800px;
-         max-width: 1400px;
-     min-width: 990px;
-    //overflow-x: hidden;
+    @extend %max-min-width;
+
     position: absolute;
     top: 0px;
-    //suk
-    max-width: 1400px;
-    min-width: 990px;
-
-//suk
     width: 100%;
     height: 400px;
     border: none;
-  //  transform: scaleX(1.9);
   }
 
   .shadow {
@@ -50,12 +32,12 @@
   }
 
   #controll {
-    z-index: 1;
     @include flex(column, center, flex-start);
 
     position: absolute;
     width: 30px;
     height: 400px;
+    z-index: 1;
 
     button {
       width: 30px;
@@ -70,6 +52,7 @@
 
     .arrow {
       @include flex(row, flex-start, center);
+
       width: 100px;
       margin: 5px;
       margin-left: 0px;
@@ -106,5 +89,4 @@
       margin-right: 6px;
     }
   }
-
 }

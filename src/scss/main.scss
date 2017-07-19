@@ -2,13 +2,11 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  //overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
   color: black;
-  //overflow: auto;
 }
 
 svg {
@@ -30,24 +28,17 @@ button {
 
 html {
   overflow-x: hidden;
-  //overflow-x: hidden !important;
   font-family: $regular;
   width: 100vw;
-  
 }
 
 body {
-  //overflow-x: hidden !important;
-  
-  //ie9
   @include flex(column, flex-start, center);
+
   overflow-x: hidden;
-  //width: 100vw;
-  //margin: auto;
 }
 
 .wrap {
-  
   position: absolute;
   left: 0;
   top: 0;
@@ -56,7 +47,7 @@ body {
   height: 100vh;
 
   background: black;
-  opacity: 1;//.5;
+  opacity: 1;
   z-index: 3;
 }
 
@@ -67,49 +58,22 @@ body {
 }
 
 header {
-  //border: 3px solid red !important;
   @extend %max-min-width;
- 
-  //ie9
   @include flex(column, flex-start, center);
 
   width: 100%;
 }
 
 main {
-
-  //ie9
   @include flex(column, flex-start, flex-start);
+  
   margin-top: 50px;
   width: 100%;
-  
-  //height: 100%;
-  //height: auto;
-  //bolsh
-  //padding-bottom: 40px;
-
- // padding-bottom: 45px;
   position: relative;
-
-
 }
 
-  .main-wrap {
-    @extend %max-min-width;
-
-    //border: 1px solid red;
-
-    width: 100%;
-    //height: 100%;
-    //990
-    margin-left: 20px; 
-  }
-
-  // .play{
-  //   &:hover{
-  //     opacity: 1;
-  //   }
-  //   &:hover svg{
-  //     opacity: 1;
-  //   }
-  // }
+.main-wrap {
+  @extend %max-min-width;
+  width: 100%;
+  margin-left: 20px; 
+}
