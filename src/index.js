@@ -43,48 +43,38 @@ window.onload = function() {
       ' type="video/mp4"> Вибачте, ваш браузер не підтрімує відео :( </video>';
   }
 
-  /* -------------- end shared functions code, start slider code ------------------ */
- var sidebarHeight = document.querySelector('main');
- var sidebarHeight2 = document.querySelector('.sidebar');
+  /* -------------- end shared functions code, start search button code ------------------ */
 
-//  sidebarHeight2.clientHeight = '2000';
-//  sidebarHeight2.offsetHeight = '2000';
+  var searchInput = document.querySelector('#nav-right form input');
+  var search = document.querySelector('#nav-right form');
+  var searchButton = document.getElementById('search');
 
-  ///if (window.matchMedia("(min-width: 1400px)").matches) {
-    sidebarHeight.style.height =
-      document.querySelector('.sidebar').scrollHeight - 225 + 'px';
-  //}
-/////////////////////////////////////////////////////////////////////
+  searchButton.onclick = activeForm
 
-var searchInput = document.querySelector('#nav-right form input');
-var search = document.querySelector('#nav-right form');
-var searchButton = document.getElementById('search');
-
-searchButton.onclick = activeForm
-
-//при клике на кнопку поиска
-function activeForm(){
-  //показываем форму
-  searchInput.className = 'input-active';
-  searchButton.className = 'button-active';
-  //вешаем фокус на инпут
-  searchInput.focus();
-  //кнопка поиска наша стает сабмит кнопкой для формы
-  searchButton.onclick = function (){
-    search.submit();
+  //при клике на кнопку поиска
+  function activeForm(){
+    //показываем форму
+    searchInput.className = 'input-active';
+    searchButton.className = 'button-active';
+    //вешаем фокус на инпут
+    searchInput.focus();
+    //кнопка поиска наша стает сабмит кнопкой для формы
+    searchButton.onclick = function (){
+      search.submit();
+    }
   }
-}
 
-//проверяем после потери фокуса, или текст не был введен
-searchInput.onblur = function (){
-  if (searchInput.value === '') {
-    //если текста нет, то скрываем форму и выключааем сабмит у кнопки поиска
-    searchInput.className = ' ';
-    searchButton.className = ' ';
-    searchButton.onclick = activeForm;
+  //проверяем после потери фокуса, или текст не был введен
+  searchInput.onblur = function (){
+    if (searchInput.value === '') {
+      //если текста нет, то скрываем форму и выключааем сабмит у кнопки поиска
+      searchInput.className = ' ';
+      searchButton.className = ' ';
+      searchButton.onclick = activeForm;
+    }
   }
-}
 
+  /* -------------- end search button code , start slider code ------------------ */
 ////////////////////////////////////////////////////////////////////
   //slider data
   var slides = [
@@ -134,20 +124,34 @@ searchInput.onblur = function (){
       data: '29 травня, 2017 12:11'
     }
   ];
+//////////////////////////
+  var slider = document.getElementById('slider');
+  var videoSlide = document.querySelector('#slider .slider-video');
+  var titleSlide = document.querySelector('#slider .title');
+  var dataSlide = document.querySelector('#slider .datatime');
+  var badgeSlide = document.querySelector('#slider .badge');
 
-  //slider controlls function
+
+  //вешаем событие на блок управления слайдера
   var controll = document.getElementById('controll');
   controll.addEventListener('click', controlls);
 
   function controlls(event) {
     var idSlide = 0;
 
+    //проверяем, что была нажата кнопка слайдера, 
     if (event.target.nodeName === 'BUTTON') {
-      clearControlls();
+      //узнаем айди слайда
       idSlide = event.target.id;
-      event.target.className = 'arrow slide active';
+      //передаем айди в функцию включения слайда
       select(idSlide);
+      //убираем все активные кнопки
+      clearControlls();
+      //делаем активной кнопку
+      event.target.className = 'arrow slide active';
+
     } else {
+      //если нажатым был елемент кнопки
       if (event.target.id !== 'controll') {
         clearControlls();
         idSlide = event.target.parentNode.id;
@@ -156,38 +160,35 @@ searchInput.onblur = function (){
       }
     }
   }
-
+  //функция деактивации кнопок
   function clearControlls() {
     for (var a = 0; a < controll.childNodes.length; a++) {
       controll.childNodes[a].className = 'arrow slide';
     }
   }
 
-  //slider select
-  var slider = document.getElementById('slider');
-  var videoSlide = document.querySelector('#slider .slider-video');
-  var titleSlide = document.querySelector('#slider .title');
-  var dataSlide = document.querySelector('#slider .datatime');
-  var badgeSlide = document.querySelector('#slider .badge');
-
-  //init slider
+  //запускаем слайдер
   var startSlide = slides[0];
   select(startSlide.name);
 
-  //select slide function
+  //функция переключеня слайдов
   function select(slide) {
     for (var i = 0; i < slides.length; i++) {
+      //ищем нужный слайд
       if (slide === slides[i].name) {
+        //проверяем есть ли в нем видео если есть то добавляем видео
         if (slides[i].video === false) {
           videoSlide.style.display = 'none';
           slider.style.background = 'url(' + slides[i].img + ') center';
           slider.style.backgroundSize = 'cover';
         } else {
+          //если нет то картинку
           videoSlide.style.display = 'flex';
           slider.style.background = 'none';
           insertVideo(videoSlide, slides[i].video);
         }
 
+        //добавляем информацию о слайде
         titleSlide.innerHTML = slides[i].title;
         badgeSlide.innerHTML = slides[i].badge;
         if (slides[i].name == 'slide1') {
@@ -208,7 +209,7 @@ searchInput.onblur = function (){
   //функция открытия окна
   share.onclick = function() {
 
-    //открываем само окно, затемняем фон и скроллим в низ 
+    //открываем само окно, затемняем фон
     window.scroll(0,0);
     shareWindow.style.display = 'flex';
     shareWindow.style.height = document.body.scrollHeight + 'px';
@@ -319,14 +320,13 @@ searchInput.onblur = function (){
 
   /* --------- end video vindow code, start gallery vindow code --------- */
 
-//////////////////////////////////////////////////////
-var galleryPreview = document.querySelector('.gallery .preview');
-var galleryWrap = document.querySelector('.gallery');
-var galleryOpenButton = document.getElementsByClassName('open-gallery');
-var galleryClose = document.getElementById('close-gallery');
-var galleryTitle = document.querySelector('.gallery h1');
-var galleryView = document.querySelector('.gallery .view');
-var previewImage = document.createElement('img');
+  var galleryPreview = document.querySelector('.gallery .preview');
+  var galleryWrap = document.querySelector('.gallery');
+  var galleryOpenButton = document.getElementsByClassName('open-gallery');
+  var galleryClose = document.getElementById('close-gallery');
+  var galleryTitle = document.querySelector('.gallery h1');
+  var galleryView = document.querySelector('.gallery .view');
+  var previewImage = document.createElement('img');
 
 
   //вешаем событие клика на все кнопки открытия галереи
@@ -336,17 +336,7 @@ var previewImage = document.createElement('img');
   }
 
   function galleryOpen(event) {
-
-    //делаем высоту чорного фона в размер страницы
-    document.querySelector('.gallery').style.height = document.body.scrollHeight + 'px';
-
-    //очищаем прошлую открытую галерею, если она была
-    galleryTitle.innerHTML = ' ';
-    while (galleryPreview.firstChild) {
-      galleryPreview.removeChild(galleryPreview.firstChild);
-    }
-
-    //делаем запрос, если состоялся то открываем галерею, нет - то выводим ошибку с запроса в консоль
+    //делаем запрос, если состоялся - открываем галерею, нет - то выводим ошибку запроса
     AJAXrequest('./imgGallery.json', 'GET')
       .then(
         function (result) {
@@ -354,14 +344,37 @@ var previewImage = document.createElement('img');
           var dataGallery = JSON.parse(result);
           dataGallery = dataGallery[0].gallery;
  
+          //очищаем прошлую открытую галерею, если она была
+          galleryTitle.innerHTML = ' ';
+          while (galleryPreview.firstChild) {
+            galleryPreview.removeChild(galleryPreview.firstChild);
+          }
+
           //строим галерею
           preview(dataGallery);  
 
           //открываем и иниицлизируем первую картинку
+          galleryWrap.style.height = document.body.scrollHeight + 'px';
+          
+          //считаем высоту
+          var news = document.querySelector('.news-wrap');
+          galleryWrap.style.paddingTop = 450 + news.scrollHeight + 'px';
+          
           galleryWrap.style.display = 'flex'
           galleryPreview.firstChild.className = 'active';
           galleryView.src = dataGallery[0].images.original;
           galleryTitle.innerHTML = dataGallery[0].title;
+
+          // //отключаем скролл
+          // document.onmousewheel = document.onwheel = function() {
+          //   return false;
+          // };
+          // document.addEventListener('MozMousePixelScroll', function() {
+          //     return false;
+          // }, false);
+          // document.onkeydown = function(e) {
+          //   if (e.keyCode >= 33 && e.keyCode <= 40) return false;
+          // };
       },
         function (error) {
           console.log(error);
@@ -371,7 +384,19 @@ var previewImage = document.createElement('img');
 
   //кнопка закрытия галереи
   galleryClose.onclick = function (){
+    //убираем окно
     galleryWrap.style.display = 'none';
+    
+    //включаем скролл
+    // document.onmousewheel = document.onwheel = function() {
+    //   return true;
+    // };
+    // document.addEventListener('MozMousePixelScroll', function() {
+    //   return true;
+    // }, true);
+    // document.onkeydown = function(e) {
+    //   if (e.keyCode >= 33 && e.keyCode <= 40) return true;
+    // };
   }
 
   //функция построения галереи
@@ -399,10 +424,16 @@ var previewImage = document.createElement('img');
     }
   }
 
+
+  /* --- выравниваем высоту сайдбара и главного блока --- */
+  var main = document.querySelector('main');
+  var sidebar = document.querySelector('.sidebar');
+
+  main.style.height = sidebar.scrollHeight - 225 + 'px';
+
 };
 
 /* --------- end onload window script, start menus scrooll transformation code --------- */
-
 
 var topHead = document.getElementById('top-head');
 var topMenu = document.getElementById('top-menu');
@@ -410,11 +441,12 @@ var topRight = document.getElementById('nav-right');
 var topLogo = document.getElementById('top-logo');
 var topLeft = document.getElementById('nav-left');
 var wrapLogo = document.getElementById('wrap-logo');
+var wrapLogoMargin = wrapLogo.style.marginLeft;
 var videoWindowWrap = document.getElementById('video-window');
 var videoWindow = document.querySelector('#video-window div');
 
 window.onscroll = function () {
-  //console.log('suka');
+
   //затемнение  top head меню при скроле 70px _SCROLL > Above TOP MENU
   if (document.body.scrollTop > 70) {
     topHead.style.background = 'black';
@@ -430,7 +462,6 @@ window.onscroll = function () {
     topMenu.parentNode.style.zIndex = '2';
     topMenu.parentNode.style.top = '50px';
   } else {
-    topHead.style.display = 'flex';
     topMenu.parentNode.style.zIndex = '0';
     topMenu.parentNode.style.position = 'absolute';
     topMenu.parentNode.style.top = '400px';
@@ -438,27 +469,28 @@ window.onscroll = function () {
     videoWindowWrap.style.top = '50px';
   }
 
-  if (document.body.scrollTop < 500 && document.body.scrollTop > 400) {
-    topMenu.parentNode.style.top = '50px';
-    topHead.style.display = 'flex';
-  }
-
   //меню с рубриками трансформируеться в топ меню, окно с видео если включено сьезжает с ним
   if (document.body.scrollTop > 500) {
-    topMenu.parentNode.style.top = '0';
     topHead.style.display = 'none';
+    
     videoWindow.style.top = '50px';
     videoWindowWrap.style.top = '50px';
-    topMenu.parentNode.appendChild(topRight);
+    
     wrapLogo.style.marginLeft = '0';
     wrapLogo.appendChild(topLogo);
+
+    topMenu.parentNode.style.top = '0';
+    topMenu.parentNode.appendChild(topRight);
     topMenu.parentNode.style.border = 'none';
     topMenu.parentNode.style.boxShadow = '0px 3px 5px 0px rgba(0, 0, 0, 0.75)';
   } else {
-    topLeft.parentNode.appendChild(topRight);
+    topHead.style.display = 'flex';
+
+    wrapLogo.style.marginLeft = wrapLogoMargin;
     topHead.insertBefore(topLogo, topHead.firstChild);
-    //topHead.firstChild.style.marginLeft = '0';
-    topMenu.parentNode.style.border = 'border-bottom: 1px solid #e6e6df';
+
+    topLeft.parentNode.appendChild(topRight);
     topMenu.parentNode.style.boxShadow = 'none';
+    topMenu.parentNode.style.border = 'border-bottom: 1px solid #e6e6df';  
   }
 };

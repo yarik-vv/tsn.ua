@@ -24,12 +24,17 @@
     //    }
   }
 }
-  #wrap-logo {
-    //width: 20px;
-    margin-left: 20px;
-    //   height: 50px;
-    //   width: 50px;
-  }
+.top-menu-fixed {
+  position: fixed;
+  z-index: 2;
+  top: 50px;
+}
+#wrap-logo {
+  //width: 20px;
+  margin-left: 20px;
+  //   height: 50px;
+  //   width: 50px;
+}
 #top-menu {
   //transition: 0.5s;
   @include flex(row, center, center);
