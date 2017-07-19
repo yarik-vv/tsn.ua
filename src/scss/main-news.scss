@@ -12,7 +12,7 @@
 
   //990
   //margin: 21px 0 0 50px;
-  margin: 21px 0 0 0px;
+  margin: 20px 0 20px 0px;
   padding: 11px 0 11px 0;
   border-bottom: 1px solid #ccccb8;
   position: relative;
@@ -46,9 +46,9 @@
 .main-news {
   @include flex(column, flex-start, flex-start);
 
-
+  //margin-top: 20px;
   //margin: 20px 0 20px 43px;
-  margin: 20px 0 20px 0px;
+  //margin: 20px 0 20px 0px;
   //990px;
   //width: 63%;
   width: 680px;
@@ -277,7 +277,7 @@
 .banner-wrap {
   @include flex(row, center, center);
 border: 1px solid green;
-  margin-top: 20px;
+  margin: 20px 0 20px 0px;
   width: 680px;
 
   iframe {

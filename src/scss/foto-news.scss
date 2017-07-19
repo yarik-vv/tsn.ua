@@ -1,13 +1,16 @@
 .foto-wrap {
   @include flex(row, flex-start, flex-start);
+  margin: 20px 0 0px 0px;
+  
   //height: 598px;
   //position: absolute;
   width: 100%;
   background: black;
-  //border: 1px solid black;
+  border: 1px solid yellow;
 }
 
 .foto-news-wrap {
+  @extend %max-min-width;
   // @include flex(column, flex-start, flex-start);
   border: 1px solid blue;
   //background: gray;

@@ -43,12 +43,17 @@ window.onload = function() {
   }
 
   /* -------------- end shared functions code, start slider code ------------------ */
+ var sidebarHeight = document.querySelector('main');
+ var sidebarHeight2 = document.querySelector('.sidebar');
 
-///////////////
-  var sidebarHeight = document.querySelector('main');
-  sidebarHeight.style.height =
-    document.querySelector('.sidebar').scrollHeight - 111 + 'px';
-//108///////////////////
+//  sidebarHeight2.clientHeight = '2000';
+//  sidebarHeight2.offsetHeight = '2000';
+
+  if (window.matchMedia("(min-width: 1400px)").matches) {
+    sidebarHeight.style.height =
+      document.querySelector('.sidebar').scrollHeight - 225 + 'px';
+  }
+
   //slider data
   var slides = [
     {
