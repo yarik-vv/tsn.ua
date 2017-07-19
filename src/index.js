@@ -1,10 +1,14 @@
 window.onload = function() {
 
-  function AJAXrequest(url){
+  /* -------------- start shared functions code ------------------ */
+
+  //общая функия запроса для галереи, слайдера и подгрузки новостей правого сайдба
+  function AJAXrequest(url, method){
     return new Promise(function(resolve, reject) {
 
       var request = new XMLHttpRequest();
       
+      //обработываем ответ
       request.onreadystatechange = function() {
         if(request.readyState === 4) {
           if(request.status === 200){
@@ -16,33 +20,21 @@ window.onload = function() {
         }
       };   
 
-      request.open('GET', url, true);
-      //request.open('GET', 'http://player.hosting.1plus1.ua/tests/fe/imgGallery.php', true);
-      //request.setRequestHeader('Content-type', 'application/json');
-      //request.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1:9000");
-      //request.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Accept");
+      //открываем запрос
+      request.open(method, url, true);
+
+      //CORS заголовки для сервера
+        //request.open('GET', 'http://player.hosting.1plus1.ua/tests/fe/imgGallery.php', true);
+        //request.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1:9000");
+        //request.setRequestHeader("Access-Control-Allow-Headers", "Origin, Content-type");
+        //request.withCredentials = true
+
+      //посылаем запрос
       request.send();
     })
   };
 
-AJAXrequest('./imgGallery.json').then(
-    result  => {
-      console.log(result);
-  },
-    error => {
-      console.log(error);
-  }
-);
-
-document.querySelector('.gallery').style.height = document.body.scrollHeight + 'px';
-///////////////////////
-  var sidebarHeight = document.querySelector('.sidebar');
-  sidebarHeight.style.height =
-    document.querySelector('main').scrollHeight + 220 + 'px';
-
-
-
-  //shared insert video function, used for slider and video window
+  //общая функция вставки видео для слайдера и окна с видео 
   function insertVideo(insertVideo, insertUrl) {
     insertVideo.innerHTML =
       '<video autoplay loop muted> <source src=' +
@@ -50,6 +42,13 @@ document.querySelector('.gallery').style.height = document.body.scrollHeight + '
       ' type="video/mp4"> Вибачте, ваш браузер не підтрімує відео :( </video>';
   }
 
+  /* -------------- end shared functions code, start slider code ------------------ */
+
+///////////////
+  var sidebarHeight = document.querySelector('.sidebar');
+  sidebarHeight.style.height =
+    document.querySelector('main').scrollHeight + 220 + 'px';
+/////////////////////
   //slider data
   var slides = [
     {
@@ -280,6 +279,89 @@ document.querySelector('.gallery').style.height = document.body.scrollHeight + '
       playInWindowButton.style.display = 'flex';
     }
   }
+
+  /* --------- end video vindow code, start gallery vindow code --------- */
+
+//////////////////////////////////////////////////////
+var galleryPreview = document.querySelector('.gallery .preview');
+var galleryWrap = document.querySelector('.gallery');
+var galleryOpenButton = document.getElementsByClassName('open-gallery');
+var galleryClose = document.getElementById('close-gallery');
+var galleryTitle = document.querySelector('.gallery h1');
+var galleryView = document.querySelector('.gallery .view');
+var previewImage = document.createElement('img');
+
+
+  //вешаем событие клика на все кнопки открытия галереи
+  for (var i = 0; i < galleryOpenButton.length; i++) {
+    console.log(galleryOpenButton[i])
+    galleryOpenButton[i].addEventListener('click', galleryOpen);
+  }
+
+  function galleryOpen(event) {
+
+    //делаем высоту чорного фона в размер страницы
+    document.querySelector('.gallery').style.height = document.body.scrollHeight + 'px';
+
+    //очищаем прошлую открытую галерею, если она была
+    galleryTitle.innerHTML = ' ';
+    while (galleryPreview.firstChild) {
+      galleryPreview.removeChild(galleryPreview.firstChild);
+    }
+
+    //делаем запрос, если состоялся то открываем галерею, нет - то выводим ошибку с запроса в консоль
+    AJAXrequest('./imgGallery.json', 'GET')
+      .then(
+        function (result) {
+          //получаем данные и парсим
+          var dataGallery = JSON.parse(result);
+          dataGallery = dataGallery[0].gallery;
+ 
+          //строим галерею
+          preview(dataGallery);  
+
+          //открываем и иниицлизируем первую картинку
+          galleryWrap.style.display = 'flex'
+          galleryPreview.firstChild.className = 'active';
+          galleryView.src = dataGallery[0].images.original;
+          galleryTitle.innerHTML = dataGallery[0].title;
+      },
+        function (error) {
+          console.log(error);
+      }
+    );
+  }
+
+  //кнопка закрытия галереи
+  galleryClose.onclick = function (){
+    galleryWrap.style.display = 'none';
+  }
+
+  //функция построения галереи
+  function preview(data){
+    //перебераем все обьекты из источника
+    for(var i = 0; i < data.length; i++){
+      //выводим их маленькую картинку и ставим айдишник
+      var previewImage = document.createElement('img');
+      previewImage.src = data[i].images["80x60"];
+      previewImage.id = i;
+      galleryPreview.appendChild(previewImage);
+    }
+
+    //вешаем событие на превью блок
+    galleryPreview.addEventListener('click', view);
+
+    //перебераем масив и выводим большое фото и заголовок того елемента который вызвал событие
+    function view(event) {
+      for(var i = 0; i < data.length; i++){
+        galleryPreview.childNodes[i].className = " ";
+      }
+      event.target.className = 'active';
+      galleryView.src = data[event.target.id].images.original;
+      galleryTitle.innerHTML = data[event.target.id].title;
+    }
+  }
+
 };
 
 /* --------- end onload window script, start menus scrooll transformation code --------- */
