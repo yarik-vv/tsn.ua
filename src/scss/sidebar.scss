@@ -43,7 +43,7 @@
   //overflow: auto;
 
   h2 {
-    margin-left: 40px;
+    //margin-left: 40px;
     width: 100%;
     text-align: left;
   }
@@ -122,15 +122,17 @@
         position: relative;
         margin-top: 10px;
         //990
-        //width: 290px;
-        //height: 115px;
+       // width: 290px;
+       // height: 115px;
         width: 100%;
-        //height: 115px;
+       // height: 100%;
         overflow: hidden;
 
         img {
-                  width: 100%;
-        height: 100%;
+                   width: 100%;
+         //height: 100%;
+        //        width: 290px;
+        //height: 115px;
           transition: all .5s ease-out;
 
           &:hover {

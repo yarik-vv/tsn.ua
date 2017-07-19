@@ -53,12 +53,43 @@ window.onload = function() {
     sidebarHeight.style.height =
       document.querySelector('.sidebar').scrollHeight - 225 + 'px';
   }
+/////////////////////////////////////////////////////////////////////
 
+var searchInput = document.querySelector('#nav-right form input');
+var search = document.querySelector('#nav-right form');
+var searchButton = document.getElementById('search');
+
+searchButton.onclick = activeForm
+
+//при клике на кнопку поиска
+function activeForm(){
+  //показываем форму
+  searchInput.className = 'input-active';
+  searchButton.className = 'button-active';
+  //вешаем фокус на инпут
+  searchInput.focus();
+  //кнопка поиска наша стает сабмит кнопкой для формы
+  searchButton.onclick = function (){
+    search.submit();
+  }
+}
+
+//проверяем после потери фокуса, или текст не был введен
+searchInput.onblur = function (){
+  if (searchInput.value === '') {
+    //если текста нет, то скрываем форму и выключааем сабмит у кнопки поиска
+    searchInput.className = ' ';
+    searchButton.className = ' ';
+    searchButton.onclick = activeForm;
+  }
+}
+
+////////////////////////////////////////////////////////////////////
   //slider data
   var slides = [
     {
       name: 'slide1',
-      video: '/video.mp4',
+      video: 'video.mp4',
       img: false,
       badge: 'ТСН День',
       title:
@@ -69,7 +100,7 @@ window.onload = function() {
       name: 'slide2',
       video: false,
       badge: 'Світ',
-      img: '/images/slide-2.jpg',
+      img: 'images/slide-2.jpg',
       title:
         'Макрон пригрозив Путіну посиленням санкцій у разі ескалації на Донбасі',
       data: '29 травня, 2017 19:00'
@@ -78,7 +109,7 @@ window.onload = function() {
       name: 'slide3',
       video: false,
       badge: 'Світ',
-      img: '/images/slide-3.jpg',
+      img: 'images/slide-3.jpg',
       title:
         'В Україні курить чверть дорослих: як відмовитися від згубної звички яка вбиваэ понад 6 ...',
       data: '29 травня, 2017 12:47'
@@ -87,7 +118,7 @@ window.onload = function() {
       name: 'slide4',
       video: false,
       badge: 'Світ',
-      img: '/images/slide-4.jpg',
+      img: 'images/slide-4.jpg',
       title:
         'В останній день весни Україну накриють потужні зливи з грозами та градом',
       data: '29 травня, 2017 12:11'
@@ -96,7 +127,7 @@ window.onload = function() {
       name: 'slide5',
       video: false,
       badge: 'Світ',
-      img: '/images/slide-5.jpg',
+      img: 'images/slide-5.jpg',
       title:
         "Убитий на Позняках чоловік був виконувачем обов'язків директора «Укрспирту»",
       data: '29 травня, 2017 12:11'
@@ -238,7 +269,7 @@ window.onload = function() {
   var videoWindow = document.querySelector('#video-window div');
   var videoWindowPlay = document.getElementsByClassName('play-in-window');
   var videoWindowClose = document.getElementById('close-video');
-  var videoUrl = '/video.mp4';
+  var videoUrl = 'video.mp4';
   var playInWindowButton = null;
   var shadowPoster = null;
 
