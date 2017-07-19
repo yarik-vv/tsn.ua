@@ -26,8 +26,8 @@
 }
 
 
-  $w: 160px;
-  $h: 160px; //125 -990px////146px-1200///
+  $w: 146px;
+  $h: 146px; //125 -990px////146px-1200///
 
   $wd: ($w*2)+14;
   $hd: ($h*2)+14;
@@ -46,9 +46,7 @@
   margin-left: 13px; //-7
   border: 1px solid red;
 
-article {
-
-   //.normal{ 
+  article {
     position: relative;
     //background: green;
     margin: 7px 7px 7px 7px;
@@ -58,23 +56,15 @@ article {
 
     //border: 1px white;
 
-    //  width: $w;
-    //  height: $h;
+     width: $w;
+     height: $h;
 
-    .open-gallery{
+    &:hover .open-gallery{
       cursor: pointer;
       position: absolute;
       opacity: .95;
       top: 5px;
       left: 5px;
-    }
-
-    &:hover .open-gallery{
-      // cursor: pointer;
-      // position: absolute;
-      // opacity: .95;
-      // top: 5px;
-      // left: 5px;
     }
     h5{
       background: transparent;
@@ -90,8 +80,7 @@ article {
         left: 0;
       }
     }
-   }
-
+  }
 
   .f0{
     width: $wd;
@@ -212,83 +201,39 @@ article {
   }
 }
 
-  
-  //}
 
 //990
-// .normal{
-//   width: 125px;
-//   height: 125px;
-// }
-// .doublewidth{
-//   width: 264;
-// }
-// .doubleheight{
-//   height: 264px;
-// }
-// .pull-top{
-//   margin-top: -132px;
-// }
-// .pull-left{
-//   margin-left: -132px;
-// }
+.normal{
+  width: 125px;
+  height: 125px;
+}
+.doublewidth{
+  width: 264;
+}
+.doubleheight{
+  height: 264px;
+}
+.pull-top{
+  margin-top: -132px;
+}
+.pull-left{
+  margin-left: -132px;
+}
 
 //1200
-// .normal{
-//   width: 146px;
-//   height: 146px;
-// }
-// .doublewidth{
-//   width: 306;
-// }
-// .doubleheight{
-//   height: 306px;
-// }
-// .pull-top{
-//   margin-top: -153px;
-// }
-// .pull-left{
-//   margin-left: -153px;
-// }
-
-//1400
-// .normal{
-//   width: 160px;
-//   height: 160px;
-// }
-// .doublewidth{
-//   width: 334зч;
-// }
-// .doubleheight{
-//   height: 334px;
-// }
-// .pull-top{
-//   margin-top: -167px;
-// }
-// .pull-left{
-//   margin-left: -167px;
-// }
-  .foto-news {
-    width: 700px; //810//900
-    margin-left: 13px; //33//43   18/23/28              36/40
-
-    //990
-    .normal {
-      width: 125px;
-      height: 125px;
-    }
-    .doublewidth {
-      width: 264px;
-      height: 125px;
-    }
-    .doubleheight {
-      width: 125px;
-      height: 264px;
-    }
-    .pull-top {
-      margin-top: -132px;
-    }
-    .pull-left {
-      margin-left: -132px;
-    }
-  }
+.normal{
+  width: 125px;
+  height: 125px;
+}
+.doublewidth{
+  width: 264;
+}
+.doubleheight{
+  height: 264px;
+}
+.pull-top{
+  margin-top: -132px;
+}
+.pull-left{
+  margin-left: -132px;
+}

@@ -666,7 +666,7 @@
          var fotoData = [
           {
             title: "Вогонь, водомети і сльозог<br>інний газ: у Венесуелі",
-            position: "doublewidth",
+            position: "width: 334px",
             image: 'images/foto-news-1.jpg',
             gallery: true, 
             url: "/"
@@ -676,35 +676,35 @@
           },
           {
             title: 'Танцював<br>із Саудами<br>і штурхав колег<br>із НАТО',
-            position: "doubleheight",
+            position: "height: 334px",
             image: 'images/foto-news-2.jpg',
             gallery: true, 
             url: "/"
           },         
           {
             title: false,
-            position: "normal",
+            position: " ",
             image: 'images/foto-news-3.jpg',
             gallery: true, 
             url: "/"
           },
           {
             title: false,
-            position: "doubleheight",
+            position: "height: 334px",
             image: 'images/foto-news-4.jpg',
             gallery: false, 
             url: "/"
           },
           {
             title: false,
-            position: "pull-top normal",
+            position: "margin-top: -167px",
             image: 'images/foto-news-5.jpg',
             gallery: false, 
             url: "/"
           },
           {
             title: false,
-            position: "doubleheight pull-top",
+            position: "height: 334px; margin-top: -167px",
             image: 'images/foto-news-6.jpg',
             gallery: false, 
             url: "/"
@@ -714,7 +714,7 @@
           },         
           {
             title: false,
-            position: "normal",
+            position: " ",
             image: 'images/foto-news-7.jpg',
             gallery: false, 
             url: "/"
@@ -724,14 +724,14 @@
           },         
           {
             title: false,
-            position: "pull-top normal",
+            position: "margin-top: -167px",
             image: 'images/foto-news-8.jpg',
             gallery: false, 
             url: "/"
           },
           {
             title: false,
-            position: 'doublewidth pull-left',
+            position: 'width: 334px; margin-left: -167px',
             image: 'images/foto-news-10.jpg',
             gallery: false, 
             url: "/"
@@ -741,7 +741,7 @@
           },         
           {
             title: false,
-            position: "pull-top normal",
+            position: "margin-top: -167px",
             image: 'images/foto-news-9.jpg',
             gallery: false, 
             url: "/"
@@ -755,8 +755,8 @@
         <div class="foto-news">
         <% for(var i=0; i<fotoData.length; i++) {%>
           <%  if(!fotoData[i].position === false) { %> 
-            <article class="<%= 'foto-news-' + [i] %> <%= fotoData[i].position %>">
-            <!--<article class="<%= 'f' + [i] %>">-->
+            <!--<article class="<%= 'foto-news-' + [i] %>" style="<%= fotoData[i].position %>">-->
+            <article class="<%= 'f' + [i] %>">
               <a href="">
                 <img src="<%= fotoData[i].image %>" alt=""> 
               </a>
