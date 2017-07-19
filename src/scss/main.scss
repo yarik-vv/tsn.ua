@@ -2,11 +2,13 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  //overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
   color: black;
+  //overflow: auto;
 }
 
 svg {
@@ -28,14 +30,24 @@ button {
 
 html {
   overflow-x: hidden;
+  //overflow-x: hidden !important;
   font-family: $regular;
+  width: 100vw;
+  
 }
 
 body {
+  //overflow-x: hidden !important;
+  
+  //ie9
   @include flex(column, flex-start, center);
+  overflow-x: hidden;
+  //width: 100vw;
+  //margin: auto;
 }
 
 .wrap {
+  
   position: absolute;
   left: 0;
   top: 0;
@@ -55,16 +67,22 @@ body {
 }
 
 header {
+  //border: 3px solid red !important;
   @extend %max-min-width;
+ 
+  //ie9
   @include flex(column, flex-start, center);
 
   width: 100%;
 }
 
 main {
+
+  //ie9
   @include flex(column, flex-start, flex-start);
   margin-top: 50px;
   width: 100%;
+  
   //height: 100%;
   //height: auto;
   //bolsh

@@ -89,7 +89,7 @@
     }
     .button-active svg {
       position: absolute;
-      left: -303px !important;
+      left: -303px;// !important;
       fill: black;
     }
 

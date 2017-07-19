@@ -1,12 +1,12 @@
 .foto-wrap {
   @include flex(row, flex-start, flex-start);
   margin: 20px 0 0px 0px;
-  
+
   //height: 598px;
   //position: absolute;
   width: 100%;
   background: black;
- // border: 1px solid yellow;
+  // border: 1px solid yellow;
 }
 
 .foto-news-wrap {
@@ -18,37 +18,69 @@
   min-width: 990px;
   width: 100%;
 
-  h3{
+  h3 {
     margin-top: 20px;
     color: white;
     font-weight: normal;
   }
 }
 
-
-  $w: 160px;
-  $h: 160px; //125 -990px////146px-1200///
-
-  $wd: ($w*2)+14;
-  $hd: ($h*2)+14;
-
-  $mintop: -($w+7);//$w+7
-  $minleft: -($w+7);
-
 .foto-news {
   height: 100%;
   //990
   //width: 62.5%;
-  width: 700px;//
+  width: 700px; //
+  //width: 700px;
+  margin-left: 13px;
+
+  .normal {
+    width: 125px;
+    height: 125px;
+
+    &:hover .open-gallery {
+      cursor: pointer;
+      position: absolute;
+      top: 105px;
+      left: 105px;
+    }
+
+    }
+  //}
+  .doublewidth {
+    width: 264px;
+    height: 125px;
+
+    &:hover .open-gallery {
+      cursor: pointer;
+      position: absolute;
+     // top: 1px;
+      left: 242px;
+    }
+  }
+  .doubleheight {
+    width: 125px;
+    height: 264px;
+
+    &:hover .open-gallery {
+      cursor: pointer;
+      position: absolute;
+      left: 105px;
+    }
+  }
+  .pull-top {
+    margin-top: -132px;
+  }
+  .pull-left {
+    margin-left: -132px;
+  }
 
   //990
   //margin-left: 43px;
   margin-left: 13px; //-7
   //border: 1px solid red;
 
-article {
-
-   //.normal{ 
+  article {
+    //.normal{
     position: relative;
     //background: green;
     margin: 7px 7px 7px 7px;
@@ -56,31 +88,19 @@ article {
     vertical-align: top;
     overflow: hidden;
 
-    //border: 1px white;
-
-    //  width: $w;
-    //  height: $h;
-
-    .open-gallery{
+    &:hover .open-gallery {
       cursor: pointer;
       position: absolute;
       opacity: .95;
       top: 5px;
       left: 5px;
     }
-
-    &:hover .open-gallery{
-      // cursor: pointer;
-      // position: absolute;
-      // opacity: .95;
-      // top: 5px;
-      // left: 5px;
-    }
-    h5{
+    
+    h5 {
       background: transparent;
     }
-    &:hover h5{
-      span{
+    &:hover h5 {
+      span {
         cursor: pointer;
         position: absolute;
         color: white;
@@ -90,205 +110,5 @@ article {
         left: 0;
       }
     }
-   }
-
-
-  .f0{
-    width: $wd;
-  }
-  .f1{
-    display: none;
-  }
-  .f2{
-    height: $hd;
-  }
-  .f3{
-    ///
-  }
-  .f4{
-    height: $hd;
-  }
-  .f5{
-    margin-top: $mintop;
-  }
-  .f6{
-    margin-top: $mintop;
-    height: $hd;
-  }
-  .f7{
-     display: none;
-  }
-  .f8{
-    //
-  }
-  .f9{
-    display: none;
-  }
-  .f10{
-    margin-top: $mintop;
-  }
-  .f11{
-    width: $wd; 
-    margin-left: $minleft;   
-  }
-  .f13{
-    margin-top: $mintop;
-  }
-
-  }
-
-  // .f1,
-  // .f5,
-  // .f7 {
-  //   height: (160px*2)+14;
-  // }
-
-  // .f6,
-  // .f7,
-  // .f9,
-  // .f11 {
-  //   margin-top: -167px;
-  // }
-
-  // .f10 {
-  //   margin-left: -167px;
-  // }
-
-//}
-
-.gallery{
-  display: none;
-}
-
-.gallery-window{
-  @include flex(column, center, center);
-
- // margin-top: 80%;
-  height: 600px;
-  width: 100%;
-  //background: green;
-  margin-left: 100px;
-  
-
-  .header{
-    @include flex(row, space-between, flex-start);
-
-    width: 100%;
-    color: white;
-    //background: red;
-    
-    h1{
-      width: 70%;
-    }
-
-    svg{
-      margin: 9px;
-
-      &:hover{
-        cursor: pointer;
-        fill: red;
-      }
-    }
-
-  }
-  .preview {
-    @include flex(row, flex-start, flex-start);
-    
-    .active{
-      border: 1px solid white;
-      opacity: 1;
-    }
-
-    img{
-      width: 90px;
-      height: 60px;
-      opacity: .4;
-
-      &:hover{
-        cursor: pointer;
-        opacity: 1;
-      }
-    }
   }
 }
-
-  
-  //}
-
-//990
-// .normal{
-//   width: 125px;
-//   height: 125px;
-// }
-// .doublewidth{
-//   width: 264;
-// }
-// .doubleheight{
-//   height: 264px;
-// }
-// .pull-top{
-//   margin-top: -132px;
-// }
-// .pull-left{
-//   margin-left: -132px;
-// }
-
-//1200
-// .normal{
-//   width: 146px;
-//   height: 146px;
-// }
-// .doublewidth{
-//   width: 306;
-// }
-// .doubleheight{
-//   height: 306px;
-// }
-// .pull-top{
-//   margin-top: -153px;
-// }
-// .pull-left{
-//   margin-left: -153px;
-// }
-
-//1400
-// .normal{
-//   width: 160px;
-//   height: 160px;
-// }
-// .doublewidth{
-//   width: 334зч;
-// }
-// .doubleheight{
-//   height: 334px;
-// }
-// .pull-top{
-//   margin-top: -167px;
-// }
-// .pull-left{
-//   margin-left: -167px;
-// }
-  .foto-news {
-    width: 700px; //810//900
-    margin-left: 13px; //33//43   18/23/28              36/40
-
-    //990
-    .normal {
-      width: 125px;
-      height: 125px;
-    }
-    .doublewidth {
-      width: 264px;
-      height: 125px;
-    }
-    .doubleheight {
-      width: 125px;
-      height: 264px;
-    }
-    .pull-top {
-      margin-top: -132px;
-    }
-    .pull-left {
-      margin-left: -132px;
-    }
-  }

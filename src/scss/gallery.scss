@@ -1,0 +1,58 @@
+
+.gallery{
+  display: none;
+}
+
+.gallery-window{
+  @include flex(column, center, center);
+
+ // margin-top: 80%;
+  height: 600px;
+  width: 100%;
+  //background: green;
+  //margin-left: 100px;
+  margin-left: 10px;
+  
+
+  .header{
+    @include flex(row, space-around, flex-start);
+
+    width: 100%;
+    color: white;
+    //background: red;
+    
+    h1{
+      width: 70%;
+      //width: 50%;
+    }
+
+    svg{
+      margin: 9px;
+
+      &:hover{
+        cursor: pointer;
+        fill: red;
+      }
+    }
+
+  }
+  .preview {
+    @include flex(row, flex-start, flex-start);
+    
+    .active{
+      border: 1px solid white;
+      opacity: 1;
+    }
+
+    img{
+      width: 90px;
+      height: 60px;
+      opacity: .4;
+
+      &:hover{
+        cursor: pointer;
+        opacity: 1;
+      }
+    }
+  }
+}

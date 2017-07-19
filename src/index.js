@@ -428,8 +428,43 @@ window.onload = function() {
   /* --- выравниваем высоту сайдбара и главного блока --- */
   var main = document.querySelector('main');
   var sidebar = document.querySelector('.sidebar');
-
+if (window.matchMedia("(min-width: 990px)").matches) {
   main.style.height = sidebar.scrollHeight - 225 + 'px';
+ };
+
+
+  var dropMenu = document.getElementById('drop-menu');
+  var dropBtn = document.getElementById('drop-btn');
+  var navHead = document.querySelector('#nav-right');
+  var navTop = document.querySelector('.menu-wrap');
+  
+  function mediaQueries(){
+    if (window.matchMedia("(max-width: 1400px)").matches) {
+      hide();
+    } 
+    if (window.matchMedia("(max-width: 1200px)").matches) {
+      hide();
+    } 
+    if (window.matchMedia("(max-width: 1050px)").matches) {
+      hide();
+    } 
+    if (window.matchMedia("(max-width: 813px)").matches) {
+      for( var i = 0; i<7; i++ ){
+        hide();
+      }
+      navHead.appendChild(dropBtn);
+    } 
+    function hide(){
+      var item = dropBtn.previousSibling;
+      //if(!item===null){
+        dropMenu.appendChild(item);
+      //}
+      //item = null;
+    }
+  }
+
+  mediaQueries();
+  //window.onresize = mediaQueries;
 
 };
 
@@ -445,6 +480,8 @@ var wrapLogoMargin = wrapLogo.style.marginLeft;
 var videoWindowWrap = document.getElementById('video-window');
 var videoWindow = document.querySelector('#video-window div');
 
+
+
 window.onscroll = function () {
 
   //затемнение  top head меню при скроле 70px _SCROLL > Above TOP MENU
@@ -454,43 +491,53 @@ window.onscroll = function () {
     topHead.style.background = 'transparent';
   }
 
-  //меню с рубриками отлипает, окно видео если включено, то сдвигаеться вместе с меню
-  if (document.body.scrollTop > 400) {
-    topMenu.parentNode.style.position = 'fixed';
-    videoWindow.style.top = '100px';
-    videoWindowWrap.style.top = '100px';
-    topMenu.parentNode.style.zIndex = '2';
-    topMenu.parentNode.style.top = '50px';
-  } else {
-    topMenu.parentNode.style.zIndex = '0';
-    topMenu.parentNode.style.position = 'absolute';
-    topMenu.parentNode.style.top = '400px';
-    videoWindow.style.top = '50px';
-    videoWindowWrap.style.top = '50px';
-  }
+  if (window.matchMedia("(min-width: 813px)").matches) {
+    //меню с рубриками отлипает, окно видео если включено, то сдвигаеться вместе с меню
+    if (document.body.scrollTop > 400) {
+      topMenu.parentNode.style.position = 'fixed';
+      videoWindow.style.top = '100px';
+      videoWindowWrap.style.top = '100px';
+      topMenu.parentNode.style.zIndex = '2';
+      topMenu.parentNode.style.top = '50px';
+    } else {
+      topMenu.parentNode.style.zIndex = '1';
+      topMenu.parentNode.style.position = 'absolute';
+      if (window.matchMedia("(max-width: 989px)").matches) {
+        topMenu.parentNode.style.top = '350px';
+      }
+      else{
+        topMenu.parentNode.style.top = '400px';
+      }
+      // if (window.matchMedia("(min-width: 990px)").matches) {
+      //   topMenu.parentNode.style.top = '350px';
+      // }
+      videoWindow.style.top = '50px';
+      videoWindowWrap.style.top = '50px';
+    }
 
-  //меню с рубриками трансформируеться в топ меню, окно с видео если включено сьезжает с ним
-  if (document.body.scrollTop > 500) {
-    topHead.style.display = 'none';
-    
-    videoWindow.style.top = '50px';
-    videoWindowWrap.style.top = '50px';
-    
-    wrapLogo.style.marginLeft = '0';
-    wrapLogo.appendChild(topLogo);
+    //меню с рубриками трансформируеться в топ меню, окно с видео если включено сьезжает с ним
+    if (document.body.scrollTop > 500) {
+      topHead.style.display = 'none';
+      
+      videoWindow.style.top = '50px';
+      videoWindowWrap.style.top = '50px';
+      
+      wrapLogo.style.marginLeft = '0';
+      wrapLogo.appendChild(topLogo);
 
-    topMenu.parentNode.style.top = '0';
-    topMenu.parentNode.appendChild(topRight);
-    topMenu.parentNode.style.border = 'none';
-    topMenu.parentNode.style.boxShadow = '0px 3px 5px 0px rgba(0, 0, 0, 0.75)';
-  } else {
-    topHead.style.display = 'flex';
+      topMenu.parentNode.style.top = '0';
+      topMenu.parentNode.appendChild(topRight);
+      topMenu.parentNode.style.border = 'none';
+      topMenu.parentNode.style.boxShadow = '0px 3px 5px 0px rgba(0, 0, 0, 0.75)';
+    } else {
+      topHead.style.display = 'flex';
 
-    wrapLogo.style.marginLeft = wrapLogoMargin;
-    topHead.insertBefore(topLogo, topHead.firstChild);
+      wrapLogo.style.marginLeft = wrapLogoMargin;
+      topHead.insertBefore(topLogo, topHead.firstChild);
 
-    topLeft.parentNode.appendChild(topRight);
-    topMenu.parentNode.style.boxShadow = 'none';
-    topMenu.parentNode.style.border = 'border-bottom: 1px solid #e6e6df';  
+      topLeft.parentNode.appendChild(topRight);
+      topMenu.parentNode.style.boxShadow = 'none';
+      topMenu.parentNode.style.border = 'border-bottom: 1px solid #e6e6df';  
+    }
   }
 };
