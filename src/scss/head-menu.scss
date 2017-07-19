@@ -24,6 +24,9 @@
   background-color: $red;
 }
 
+#nav-left a:nth-child(2){
+  width: 170px;
+}
 #nav-left {
   @include flex(row, space-between, center);
 
@@ -37,10 +40,16 @@
     font-size: 12px;
     border-right: 1px solid rgb(204, 204, 204);
 
+    
+    #city{
+      font-size: 12px;
+    }    
+
     div {
       @include flex(row, center, center);
 
       p {
+        @include flex(row, center, center);
         font-size: 14px;
       }
       span {

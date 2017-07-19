@@ -1,8 +1,50 @@
 window.onload = function() {
 
+
+/* ----------------------------- pogoda i gorod uznaem -------------------------------- */
+
+   //ищем местоположение если пользователь дал добро
+  if (navigator.geolocation) {  
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+      //получаем координаты
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+
+      //узнаем город и выводим
+      AJAXrequest('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat 
+      + ',' + lon + '&sensor=false&language=ua', 'GET')
+        .then(function(result) {
+          var address = JSON.parse(result);
+          var city = address.results[1].address_components[2].short_name;
+
+          var cityEl = document.querySelector('#city');
+          cityEl.innerHTML = city;
+        }, function(error) {
+          console.log(error);
+      });
+
+      //узнаем погоду и выводим
+      AJAXrequest('http://api.openweathermap.org/data/2.5/weather?lat=' + Math.ceil(lat) 
+      + '&lon=' + Math.ceil(lon) + '&APPID=86aff7be7c958204915e3da6581c7d21', 'GET')
+        .then(function(result) {
+          var weather = JSON.parse(result);
+          var temperatura = weather.main.temp_max / 10;
+
+          var pogoda = document.querySelector('#pogoda');
+          pogoda.innerHTML = temperatura.toFixed(1) + '&deg;C';
+        }, function(error) {
+          console.log(error);
+        });
+    });
+  } else {
+    console.log('Geolocation API не підтримується у вашому браузері');
+  };
+
+
   /* -------------- start shared functions code ------------------ */
 
-  //общая функия запроса для галереи, слайдера и подгрузки новостей правого сайдба
+  //общая функия запроса для галереи, слайдера и подгрузки новостей правого сайдба, погоды и определения города пользователя
   function AJAXrequest(url, method){
     return new Promise(function(resolve, reject) {
 
@@ -37,8 +79,8 @@ window.onload = function() {
 
   //общая функция вставки видео для слайдера и окна с видео 
   function insertVideo(insertVideo, insertUrl) {
-    insertVideo.innerHTML = '<video autoplay loop muted> <source src=' +
-      insertUrl + ' type="video/mp4"> Вибачте, ваш браузер не підтрімує відео :( </video>';
+    insertVideo.innerHTML = '<video autobuffer> <source src=' +
+      insertUrl + '> Вибачте, ваш браузер не підтрімує відео :( </video>';
   }
 
   /* -------------- end shared functions code, start search button code ------------------ */
@@ -47,7 +89,7 @@ window.onload = function() {
   var search = document.querySelector('#nav-right form');
   var searchButton = document.getElementById('search');
 
-  searchButton.onclick = activeForm
+  searchButton.onclick = activeForm;
 
   //при клике на кнопку поиска
   function activeForm(){
@@ -128,6 +170,8 @@ window.onload = function() {
   var titleSlide = document.querySelector('#slider .title');
   var dataSlide = document.querySelector('#slider .datatime');
   var badgeSlide = document.querySelector('#slider .badge');
+  var playVideo = document.querySelector('#play');
+  var pauseVideo = document.querySelector('#pause');
 
 
   //вешаем событие на блок управления слайдера
@@ -179,11 +223,15 @@ window.onload = function() {
           videoSlide.style.display = 'none';
           slider.style.background = 'url(' + slides[i].img + ') center';
           slider.style.backgroundSize = 'cover';
+          pauseVideo.style.display = 'none';
+          playVideo.style.display = 'none';
         } else {
           //если нет то картинку
+          pauseVideo.style.display = 'block';
           videoSlide.style.display = 'flex';
           slider.style.background = 'none';
           insertVideo(videoSlide, slides[i].video);
+          videoSlide.firstChild.play();
         }
 
         //добавляем информацию о слайде
@@ -195,6 +243,22 @@ window.onload = function() {
         dataSlide.innerHTML = slides[i].data;
       }
     }
+  }
+
+  // плей/пауза на видео слайде
+  var videoPause = document.getElementById('pause');
+  var videoPlay = document.getElementById('play');
+  
+  videoPause.onclick = function() {
+    videoSlide.firstChild.pause();
+    videoPause.style.display = 'none';
+    videoPlay.style.display = 'block';
+
+    videoPlay.onclick = function() {
+      videoSlide.firstChild.play();
+      videoPlay.style.display = 'none';
+      videoPause.style.display = 'block';
+    };
   }
 
   /* -------------- end slider code, start share window code ------------------ */
@@ -302,6 +366,8 @@ window.onload = function() {
     playInWindowButton.style.display = 'none';
     videoWindowWrap.style.display = 'flex';
     insertVideo(videoWindow, videoUrl);
+    videoWindow.firstChild.play();
+
 
     //вешаем событие на кнопку закрытия окна
     videoWindowClose.addEventListener('click', playInWindowClose);
@@ -329,7 +395,6 @@ window.onload = function() {
 
   //вешаем событие клика на все кнопки открытия галереи
   for (var i = 0; i < galleryOpenButton.length; i++) {
-    console.log(galleryOpenButton[i])
     galleryOpenButton[i].addEventListener('click', galleryOpen);
   }
 
@@ -362,17 +427,6 @@ window.onload = function() {
           galleryPreview.firstChild.className = 'active';
           galleryView.src = dataGallery[0].images.original;
           galleryTitle.innerHTML = dataGallery[0].title;
-
-          // //отключаем скролл
-          // document.onmousewheel = document.onwheel = function() {
-          //   return false;
-          // };
-          // document.addEventListener('MozMousePixelScroll', function() {
-          //     return false;
-          // }, false);
-          // document.onkeydown = function(e) {
-          //   if (e.keyCode >= 33 && e.keyCode <= 40) return false;
-          // };
       },
         function (error) {
           console.log(error);
@@ -384,18 +438,7 @@ window.onload = function() {
   galleryClose.onclick = function (){
     //убираем окно
     galleryWrap.style.display = 'none';
-    
-    //включаем скролл
-    // document.onmousewheel = document.onwheel = function() {
-    //   return true;
-    // };
-    // document.addEventListener('MozMousePixelScroll', function() {
-    //   return true;
-    // }, true);
-    // document.onkeydown = function(e) {
-    //   if (e.keyCode >= 33 && e.keyCode <= 40) return true;
-    // };
-  }
+  };
 
   //функция построения галереи
   function preview(data){
@@ -420,7 +463,7 @@ window.onload = function() {
       galleryView.src = data[event.target.id].images.original;
       galleryTitle.innerHTML = data[event.target.id].title;
     }
-  }
+  };
 
 
   /* --- выравниваем высоту сайдбара и главного блока --- */
@@ -459,10 +502,34 @@ window.onload = function() {
   function hide() {
     var item = dropBtn.previousSibling;
     dropMenu.appendChild(item);
-  }
+  };
+  
+  /* -------------------- added new news to sidebar ------------------------------------- */
+
+  var newsBtn = document.querySelector('#new-news');
+  var content = document.querySelector('.content');
+  
+  newsBtn.onclick = function() {
+    //делаем запрос, если состоялся - добавляем новость, нет - то выводим ошибку запроса
+    AJAXrequest('./news.json', 'GET').then(function(result) {
+        
+        //получаем данные и парсим
+        var newNews = JSON.parse(result);
+
+        //создаем елемент html новости
+        var newElement = document.createElement('article');
+        newElement, (className = 'sidebar-item');
+        newElement.innerHTML = '<div class="poster"><a href="' + newNews.url + '"><img src="' + newNews.poster + '" alt="poster"></a><h4><a href="' + newNews.url + '">' + newNews.title + '</a></h4><div class="time">' + newNews.date + ', ' + newNews.time + '</div></article>';
+
+        //меняем высоту main и добавляем элемент с новостью в сайдбар
+        main.style.height = sidebar.scrollHeight + 80 + 'px';
+        content.insertBefore(newElement, newsBtn);
+      }, function(error) {
+        console.log(error);
+      });
+  };  
   
 };
-
 /* --------- end onload window script, start menus scrooll transformation code --------- */
 
 var topHead = document.getElementById('top-head');
@@ -475,8 +542,8 @@ var wrapLogoMargin = wrapLogo.style.marginLeft;
 var videoWindowWrap = document.getElementById('video-window');
 var videoWindow = document.querySelector('#video-window div');
 
-//все эфекты связаные со скролом
-window.onscroll = function () {
+  //все эфекты связаные со скролом
+  window.onscroll = function () {
 
   //затемнение  top head меню при скроле 70px _SCROLL > Above TOP MENU
   if (document.body.scrollTop > 70) {

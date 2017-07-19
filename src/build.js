@@ -35,3 +35,4 @@ import newsFoto9 from './images/foto-news-9.jpg';
 import newsFoto10 from './images/foto-news-10.jpg';
 
 import data from './imgGallery.json';
+import newsData from './news.json';

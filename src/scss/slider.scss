@@ -90,3 +90,17 @@
     }
   }
 }
+
+#play, #pause{
+  position: absolute;
+  left: 940px;
+  top: 350px;
+  opacity: .7;
+
+  &:hover{
+    opacity: 1;
+  }
+}
+#play{
+  display: none;
+}
