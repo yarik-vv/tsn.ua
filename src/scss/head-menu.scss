@@ -1,227 +1,123 @@
 #top-head {
-   @include flex(row, flex-start, center);
+  @include flex(row, flex-start, center);
 
-   position: fixed;
-   z-index: 2;
+  position: fixed;
+  z-index: 2;
 
-   max-width: 1400px;
-   min-width: 990px;
+  max-width: 1400px;
+  min-width: 990px;
 
-   width: 100%;
-   height: 50px;
-   background: transparent;
-   //background: black;
+  width: 100%;
+  height: 50px;
+  background: transparent;
 }
 
 .nav-wrapper {
-   @include flex(row, space-between, center);
+  @include flex(row, space-between, center);
 
-   width: 100%;
+  width: 100%;
 }
 
 .logo {
-   @include flex(row,center,center);
+  @include flex(row,center,center);
 
-   width: 50px;
-   height: 50px;
-   padding: 0 5px 0 5px;
-   background-color: #b60007;
+  width: 50px;
+  height: 50px;
+  padding: 0 5px 0 5px;
+  background-color: #b60007;
 }
 
 #nav-left {
-   @include flex(row, space-between, center);
+  @include flex(row, space-between, center);
 
-   a {
-      @include flex(row, space-around, center);
+  a {
+    @include flex(row, space-around, center);
 
-      width: 150px;
-      height: 30px;
+    width: 150px;
+    height: 30px;
 
-      color: rgb(255, 255, 255);
-      font-size: 12px;
-      border-right: 1px solid rgb(204, 204, 204);;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    border-right: 1px solid rgb(204, 204, 204);
 
-      div{
-         @include flex(row, center, center);
+    div {
+      @include flex(row, center, center);
 
-         p{
-            font-size: 14px;
-         }
-         span{
-            font-size: 18px;
-         }
+      p {
+        font-size: 14px;
       }
-      span{
-         font-size: 14px;
+      span {
+        font-size: 18px;
       }
-   }
+    }
+    span {
+      font-size: 14px;
+    }
+  }
 }
-
 
 #nav-right {
-   //border: 1px solid blue;
-   @include flex(row, space-between, center);
-   //height: 30px;
-   
-   //scroll
-   width: 100%;
-   @include flex(row, flex-end, center);
+  @include flex(row, space-between, center);
 
-   #share{
-      height: 50px;
-      width: 50px;
-      //background: url('..images/2.svg') no-repeat center center;
-      // svg{
-      //    transform: rotateY(180deg);
-      // }
-   }
+  //scroll
+  width: 100%;
+  @include flex(row, flex-end, center);
 
-  //  #search{
+  #share {
+    height: 50px;
+    width: 50px;
+  }
 
-  //  }
+  form {
+    position: relative;
+    @include flex(row, center, center);
+    border-right: 1px solid rgb(204, 204, 204);
+    height: 30px;
+    width: 50px;
 
+    .input-active {
 
-   form{
-      position: relative;
-      @include flex(row, center, center);
-      border-right: 1px solid rgb(204, 204, 204);
-      height: 30px;
-      width: 50px;
-      //background: red;
+      left: -313px;
+      width: 350px;
+      border: 1px solid rgb(225, 225, 211);
+      background: rgb(255, 255, 255);
+      margin-right: 15px;
 
-
-
-    
-
-        .input-active{
-            left: -313px;
-            //top: -4px;
-            width: 350px;
-            border: 1px solid rgb(225, 225, 211);
-            background: rgb(255, 255, 255); 
-            margin-right: 15px;
-
-            &:focus {
-               border-color: #66afe9;
-            }
-         }
-        .button-active svg{
-            left: -303px;
-            fill: black;
-          }
-
-        
-
-
-
-    
-   ///////////////////////////////////////////////////      
-          input {
-            position: absolute;
-            //top: -4px;
-            left: -18px;
-                     width: 10px;
-         height: 36px;
-         border-radius: 10px;
-         border: none;
-         transition: .3s;
-         background: transparent;
-         font-size: 14px;
-         padding: 0 10px 0 43px;
-         outline: 0;
-         //    position: absolute;
-         //    left: -365px;
-         //    top: -3px;
-         //    width: 350px;
-         //    border: 1px solid rgb(225, 225, 211);
-         //    background: rgb(255, 255, 255); 
-         //    margin-right: 15px;
-
-         //    &:focus {
-         //       border-color: #66afe9;
-         //    }
-          }
-// &:hover { 
-//       input{
-//             left: -313px;
-//             top: -4px;
-//             width: 350px;
-//             border: 1px solid rgb(225, 225, 211);
-//             background: rgb(255, 255, 255); 
-//             margin-right: 15px;
-
-//             &:focus {
-//                border-color: #66afe9;
-//             }
-//       }
-//               svg{
-//             position: absolute;
-//             //left: -39px;
-//             //hover
-//             left: -303px;
-//             fill: black;
-//         }
-// }
-
-        svg{
-            position: absolute;
-            left: 13px;
-            //hover
-            //left: -355px;
-            //fill: black;
-        }
-
-      button {
-        outline: none;
-          position: absolute;
-          top: 3px;
-          left: 0px;
+      &:focus {
+        border-color: #66afe9;
       }
-   }
+    }
+    .button-active svg {
+      position: absolute;
+      left: -303px !important;
+      fill: black;
+    }
+
+    input {
+      position: absolute;
+      top: -4px;
+      left: -18px;
+      width: 10px;
+      height: 36px;
+      border-radius: 10px;
+      border: none;
+      transition: .3s;
+      background: transparent;
+      font-size: 14px;
+      padding: 0 10px 0 43px;
+      outline: 0;
+    }
+
+    button {
+      outline: none;
+      position: absolute;
+      top: 2px;
+      left: 0px;
+
+      svg {
+        position: relative;
+        left: 10px;
+      }
+    }
+  }
 }
-// //////////////
-//       input{
-//         //display: none;
-//          width: 50px;
-//          height: 36px;
-//          border-radius: 10px;
-
-//          font-size: 14px;
-//          padding: 0 10px 0 43px;
-//          outline: 0;
-
-//           position: absolute;
-//             left: -365px;
-//             top: -3px;
-//             width: 350px;
-//             border: 1px solid rgb(225, 225, 211);
-//             background: rgb(255, 255, 255); 
-//             margin-right: 15px;
-
-//             &:focus {
-//                border-color: #66afe9;
-//             }
-//       }
-      //////////////
-        //   svg {
-        //     display: none;
-        //     z-index: 1;
-        //     //position: absolute;
-        //     left: -350px;
-        //     top: 0px;
-        //     fill: red;
-        //  }
-      
-        // svg{
-        //     position: absolute;
-        //     left: -15px;
-        //     //top: -13px;
-        // }
-
-
-
-
-
-
-
-

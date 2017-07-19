@@ -130,8 +130,8 @@
         </nav>
         <nav id="nav-right">
           <form>
-            <input class=" " type="text">
-             <button class=" " id="search" type="button" >
+            <input class="" type="text">
+             <button class="" id="search" type="button" >
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="24px">
                 <path d="M15.067,18.493 C13.308,18.493 11.670,17.980 10.280,17.108 C4.400,22.986 4.394,22.992 4.378,23.006 C4.024,23.362 3.539,23.564 3.024,23.564 C2.994,23.564 2.964,23.563 2.934,23.562 C2.413,23.538 1.908,23.309 1.515,22.915 C0.700,22.100 0.700,20.774 1.515,19.959 C1.599,19.876 6.636,14.828 7.342,14.120 C6.517,12.758 6.033,11.168 6.033,9.464 C6.033,4.486 10.086,0.436 15.067,0.436 C20.045,0.436 24.096,4.486 24.096,9.464 C24.096,14.443 20.045,18.493 15.067,18.493 ZM2.181,20.703 C1.797,21.092 1.797,21.784 2.222,22.208 C2.668,22.655 3.287,22.684 3.693,22.279 C3.756,22.215 8.357,17.616 9.450,16.523 C8.877,16.067 8.364,15.541 7.916,14.959 C2.219,20.670 2.207,20.682 2.181,20.703 ZM15.067,1.635 C10.747,1.635 7.233,5.147 7.233,9.464 C7.233,13.782 10.747,17.293 15.067,17.293 C19.384,17.293 22.896,13.782 22.896,9.464 C22.896,5.147 19.384,1.635 15.067,1.635 ZM15.064,4.356 C12.247,4.356 9.956,6.647 9.956,9.464 C9.956,9.685 9.777,9.864 9.556,9.864 C9.335,9.864 9.156,9.685 9.156,9.464 C9.156,6.207 11.807,3.556 15.064,3.556 C15.285,3.556 15.464,3.735 15.464,3.956 C15.464,4.176 15.285,4.356 15.064,4.356 Z"
                 />
@@ -666,7 +666,7 @@
          var fotoData = [
           {
             title: "Вогонь, водомети і сльозог<br>інний газ: у Венесуелі",
-            position: "width: 334px",
+            position: "doublewidth",
             image: 'images/foto-news-1.jpg',
             gallery: true, 
             url: "/"
@@ -676,35 +676,35 @@
           },
           {
             title: 'Танцював<br>із Саудами<br>і штурхав колег<br>із НАТО',
-            position: "height: 334px",
+            position: "doubleheight",
             image: 'images/foto-news-2.jpg',
             gallery: true, 
             url: "/"
           },         
           {
             title: false,
-            position: " ",
+            position: "normal",
             image: 'images/foto-news-3.jpg',
             gallery: true, 
             url: "/"
           },
           {
             title: false,
-            position: "height: 334px",
+            position: "doubleheight",
             image: 'images/foto-news-4.jpg',
             gallery: false, 
             url: "/"
           },
           {
             title: false,
-            position: "margin-top: -167px",
+            position: "pull-top normal",
             image: 'images/foto-news-5.jpg',
             gallery: false, 
             url: "/"
           },
           {
             title: false,
-            position: "height: 334px; margin-top: -167px",
+            position: "doubleheight pull-top",
             image: 'images/foto-news-6.jpg',
             gallery: false, 
             url: "/"
@@ -714,7 +714,7 @@
           },         
           {
             title: false,
-            position: " ",
+            position: "normal",
             image: 'images/foto-news-7.jpg',
             gallery: false, 
             url: "/"
@@ -724,14 +724,14 @@
           },         
           {
             title: false,
-            position: "margin-top: -167px",
+            position: "pull-top normal",
             image: 'images/foto-news-8.jpg',
             gallery: false, 
             url: "/"
           },
           {
             title: false,
-            position: 'width: 334px; margin-left: -167px',
+            position: 'doublewidth pull-left',
             image: 'images/foto-news-10.jpg',
             gallery: false, 
             url: "/"
@@ -741,7 +741,7 @@
           },         
           {
             title: false,
-            position: "margin-top: -167px",
+            position: "pull-top normal",
             image: 'images/foto-news-9.jpg',
             gallery: false, 
             url: "/"
@@ -755,8 +755,8 @@
         <div class="foto-news">
         <% for(var i=0; i<fotoData.length; i++) {%>
           <%  if(!fotoData[i].position === false) { %> 
-            <!--<article class="<%= 'foto-news-' + [i] %>" style="<%= fotoData[i].position %>">-->
-            <article class="<%= 'f' + [i] %>">
+            <article class="<%= 'foto-news-' + [i] %> <%= fotoData[i].position %>">
+            <!--<article class="<%= 'f' + [i] %>">-->
               <a href="">
                 <img src="<%= fotoData[i].image %>" alt=""> 
               </a>

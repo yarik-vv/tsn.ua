@@ -6,28 +6,28 @@
   //position: absolute;
   width: 100%;
   background: black;
-  border: 1px solid yellow;
+ // border: 1px solid yellow;
 }
 
 .foto-news-wrap {
   @extend %max-min-width;
   // @include flex(column, flex-start, flex-start);
-  border: 1px solid blue;
+  //border: 1px solid blue;
   //background: gray;
   max-width: 1400px;
   min-width: 990px;
   width: 100%;
 
   h3{
-    margin: 20px 0 0 50px;
+    margin-top: 20px;
     color: white;
     font-weight: normal;
   }
 }
 
 
-  $w: 146px;
-  $h: 146px; //125 -990px////146px-1200///
+  $w: 160px;
+  $h: 160px; //125 -990px////146px-1200///
 
   $wd: ($w*2)+14;
   $hd: ($h*2)+14;
@@ -44,9 +44,11 @@
   //990
   //margin-left: 43px;
   margin-left: 13px; //-7
-  border: 1px solid red;
+  //border: 1px solid red;
 
-  article {
+article {
+
+   //.normal{ 
     position: relative;
     //background: green;
     margin: 7px 7px 7px 7px;
@@ -56,15 +58,23 @@
 
     //border: 1px white;
 
-     width: $w;
-     height: $h;
+    //  width: $w;
+    //  height: $h;
 
-    &:hover .open-gallery{
+    .open-gallery{
       cursor: pointer;
       position: absolute;
       opacity: .95;
       top: 5px;
       left: 5px;
+    }
+
+    &:hover .open-gallery{
+      // cursor: pointer;
+      // position: absolute;
+      // opacity: .95;
+      // top: 5px;
+      // left: 5px;
     }
     h5{
       background: transparent;
@@ -80,7 +90,8 @@
         left: 0;
       }
     }
-  }
+   }
+
 
   .f0{
     width: $wd;
@@ -201,39 +212,83 @@
   }
 }
 
+  
+  //}
 
 //990
-.normal{
-  width: 125px;
-  height: 125px;
-}
-.doublewidth{
-  width: 264;
-}
-.doubleheight{
-  height: 264px;
-}
-.pull-top{
-  margin-top: -132px;
-}
-.pull-left{
-  margin-left: -132px;
-}
+// .normal{
+//   width: 125px;
+//   height: 125px;
+// }
+// .doublewidth{
+//   width: 264;
+// }
+// .doubleheight{
+//   height: 264px;
+// }
+// .pull-top{
+//   margin-top: -132px;
+// }
+// .pull-left{
+//   margin-left: -132px;
+// }
 
 //1200
-.normal{
-  width: 125px;
-  height: 125px;
-}
-.doublewidth{
-  width: 264;
-}
-.doubleheight{
-  height: 264px;
-}
-.pull-top{
-  margin-top: -132px;
-}
-.pull-left{
-  margin-left: -132px;
-}
+// .normal{
+//   width: 146px;
+//   height: 146px;
+// }
+// .doublewidth{
+//   width: 306;
+// }
+// .doubleheight{
+//   height: 306px;
+// }
+// .pull-top{
+//   margin-top: -153px;
+// }
+// .pull-left{
+//   margin-left: -153px;
+// }
+
+//1400
+// .normal{
+//   width: 160px;
+//   height: 160px;
+// }
+// .doublewidth{
+//   width: 334зч;
+// }
+// .doubleheight{
+//   height: 334px;
+// }
+// .pull-top{
+//   margin-top: -167px;
+// }
+// .pull-left{
+//   margin-left: -167px;
+// }
+  .foto-news {
+    width: 700px; //810//900
+    margin-left: 13px; //33//43   18/23/28              36/40
+
+    //990
+    .normal {
+      width: 125px;
+      height: 125px;
+    }
+    .doublewidth {
+      width: 264px;
+      height: 125px;
+    }
+    .doubleheight {
+      width: 125px;
+      height: 264px;
+    }
+    .pull-top {
+      margin-top: -132px;
+    }
+    .pull-left {
+      margin-left: -132px;
+    }
+  }

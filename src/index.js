@@ -24,10 +24,11 @@ window.onload = function() {
       request.open(method, url, true);
 
       //CORS заголовки для сервера
-        //request.open('GET', 'http://player.hosting.1plus1.ua/tests/fe/imgGallery.php', true);
+        //request.withCredentials = true;
+        //request.open('POST', 'http://player.hosting.1plus1.ua/tests/fe/imgGallery.php', true);
         //request.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1:9000");
         //request.setRequestHeader("Access-Control-Allow-Headers", "Origin, Content-type");
-        //request.withCredentials = true
+        
 
       //посылаем запрос
       request.send();
@@ -49,10 +50,10 @@ window.onload = function() {
 //  sidebarHeight2.clientHeight = '2000';
 //  sidebarHeight2.offsetHeight = '2000';
 
-  if (window.matchMedia("(min-width: 1400px)").matches) {
+  ///if (window.matchMedia("(min-width: 1400px)").matches) {
     sidebarHeight.style.height =
       document.querySelector('.sidebar').scrollHeight - 225 + 'px';
-  }
+  //}
 /////////////////////////////////////////////////////////////////////
 
 var searchInput = document.querySelector('#nav-right form input');
@@ -402,6 +403,7 @@ var previewImage = document.createElement('img');
 
 /* --------- end onload window script, start menus scrooll transformation code --------- */
 
+
 var topHead = document.getElementById('top-head');
 var topMenu = document.getElementById('top-menu');
 var topRight = document.getElementById('nav-right');
@@ -411,7 +413,8 @@ var wrapLogo = document.getElementById('wrap-logo');
 var videoWindowWrap = document.getElementById('video-window');
 var videoWindow = document.querySelector('#video-window div');
 
-window.onscroll = function() {
+window.onscroll = function () {
+  //console.log('suka');
   //затемнение  top head меню при скроле 70px _SCROLL > Above TOP MENU
   if (document.body.scrollTop > 70) {
     topHead.style.background = 'black';
