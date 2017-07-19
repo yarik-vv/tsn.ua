@@ -1,98 +1,100 @@
-.menu-wrap{
-   @include flex(row, space-between, center);
+.menu-wrap {
+  @include flex(row, space-between, center);
 
-   background: #edede6;
-   border-bottom: 1px solid #e6e6df;
+  background: #edede6;
+  border-bottom: 1px solid #e6e6df;
 
-   max-width: 1400px;
-   min-width: 990px;
-   
-   width: 100%;
+  max-width: 1400px;
+  min-width: 990px;
 
-   position: absolute;
+  width: 100%;
+
+  position: absolute;
   // opacity: 1 !important;
-   top: 400px;
+  top: 400px;
 
-   #nav-right {
-       width: 420px;
+  #nav-right {
+    width: 420px;
 
-       svg{
-          fill: black;
-       }
-   //    form:hover input {
-   //       margin-right: 5px;
-   //    }
-   }
+    svg {
+      fill: black;
+    }
+    //    form:hover input {
+    //       margin-right: 5px;
+    //    }
+  }
 }
-
-#top-menu{
-   //transition: 0.5s;
-   @include flex(row, center, center);
-   //border: 1px solid red;
-   border: 1px solid red;
-   //margin-left: 20px;
-
-   //990px
-   //width: 680px;
-
-   //max-width: 1400px;
-   //min-width: 990px;
-
-   //width: 970px;
-   //width: 64%;
-   height: 50px;
-
-   //padding: 0 50px 0 50px;
-//padding-left: 50px; 
-
-   //position: absolute;
-  // align-self: flex-start;
-  #wrap-logo{
-      //width: 20px;
-      margin-left:20px 
+  #wrap-logo {
+    //width: 20px;
+    margin-left: 20px;
     //   height: 50px;
     //   width: 50px;
   }
-  .logo{
-//      //background: red;
-//      //height: 46px;
-      padding: 0 5px 0 5px !important;
-      svg{
-         fill: white;
-      }
-   }
-   a {
-      color: black;
-   }
+#top-menu {
+  //transition: 0.5s;
+  @include flex(row, center, center);
+  //border: 1px solid red;
+  border: 1px solid red;
+  //margin-left: 20px;
 
-  button, a{
-     @include flex(row, center, center);
-     
-     font-family: $regular;
-     font-size: 16px;
-     
-     //990
-     padding: 0 9px 0 9px;
-     height: 50px;
-     
-     //border: 1px solid green;
+  //990px
+  //width: 680px;
+
+  //max-width: 1400px;
+  //min-width: 990px;
+
+  //width: 970px;
+  width: 64%;
+  height: 50px;
+
+  //padding: 0 50px 0 50px;
+  //padding-left: 50px;
+
+  //position: absolute;
+  // align-self: flex-start;
+
+  .logo {
+    //      //background: red;
+    //      //height: 46px;
+    padding: 0 5px 0 5px !important;
+    svg {
+      fill: white;
+    }
   }
-   button svg{
+  a {
+    color: black;
+  }
+
+  button,
+  a {
+    @include flex(row, center, center);
+
+    font-family: $regular;
+    font-size: 16px;
+
+    //990
+    padding: 0 10px 0 10px;
+    height: 50px;
+
+    //border: 1px solid green;
+  }
+  button {
+    padding: 0 20px 0 10px;
+    svg {
       position: relative;
       top: -2px;
       margin-right: 6px;
       fill: #888;
-   }
-
+    }
+  }
 }
 
 @each $number, $item-color in $top-menu-colors {
-   #top-menu a:nth-child(#{$number}):hover{
-      background: $item-color;
-      color: white;
-   }
+  #top-menu a:nth-child(#{$number}):hover {
+    background: $item-color;
+    color: white;
+  }
 }
-
 
 ////scroooolll
 // .top-menu * {
@@ -100,5 +102,4 @@
 // }
 // .top-menu .logo{
 //    background: red !important;
-// } 
-
+// }

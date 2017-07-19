@@ -73,6 +73,9 @@ main {
   padding-bottom: 45px;
   position: relative;
 
+
+}
+
   .main-wrap {
     @extend %max-min-width;
 
@@ -82,13 +85,12 @@ main {
     //990
     margin-left: 20px; 
   }
-}
 
-  .play{
-    &:hover{
-      opacity: 1;
-    }
-    &:hover svg{
-      opacity: 1;
-    }
-  }
+  // .play{
+  //   &:hover{
+  //     opacity: 1;
+  //   }
+  //   &:hover svg{
+  //     opacity: 1;
+  //   }
+  // }

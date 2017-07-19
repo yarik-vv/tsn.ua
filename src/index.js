@@ -47,8 +47,8 @@ window.onload = function() {
 ///////////////
   var sidebarHeight = document.querySelector('main');
   sidebarHeight.style.height =
-    document.querySelector('.sidebar').scrollHeight - 108 + 'px';
-/////////////////////
+    document.querySelector('.sidebar').scrollHeight - 111 + 'px';
+//108///////////////////
   //slider data
   var slides = [
     {
