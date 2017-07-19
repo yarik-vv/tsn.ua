@@ -13,10 +13,11 @@ footer{
    width: 100%;
 
    .partners{
-      padding: 0 137px 0px 137px;
+      //990
+      //padding: 0 137px 0px 137px;
       margin: 32px 0 54px 0;
       width: 100%;
-      @include flex(row, space-between, center);
+      @include flex(row, space-around, center);
 
       a{  
          display: inline-block;

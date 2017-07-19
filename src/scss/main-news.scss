@@ -6,8 +6,13 @@
 }
 
 .news-menu {
-  width: 61.5%;
-  margin: 21px 0 0 50px;
+  //990
+  //width: 61.5%;
+  width: 680px;
+
+  //990
+  //margin: 21px 0 0 50px;
+  margin: 21px 0 0 0px;
   padding: 11px 0 11px 0;
   border-bottom: 1px solid #ccccb8;
   position: relative;
@@ -41,28 +46,44 @@
 .main-news {
   @include flex(column, flex-start, flex-start);
 
-  margin: 20px 0 20px 43px;
-  width: 63%;
+
+  //margin: 20px 0 20px 43px;
+  margin: 20px 0 20px 0px;
+  //990px;
+  //width: 63%;
+  width: 680px;
 }
 
 .bot-news {
   @include flex(row, space-between, stretch);
 
   width: 100%;
+
+  article:nth-child(2){
+    margin: 0px 15px 0px 15px;
+  }
+
 }
 
 .top-news {
   @extend .bot-news;
 
   margin-bottom: 30px;
+
+  article:nth-child(2){
+    margin: 0px 15px 0px 15px;
+  }
 }
+
+
 
 .news-card {
   @include flex(column, space-between, flex-start);
 
   width: 100%;
-  padding: 0 7px 0px 7px;
-  padding-right: 14px;
+  //990
+  //padding: 0 7px 0px 7px;
+  //padding-right: 14px;
 
   &:hover img {
     opacity: .75;
@@ -137,9 +158,6 @@
   max-height: 190px;
   max-width: 280px;
 
-  svg:hover {
-    opacity: .7;
-  }
   .video-shadow {
     max-height: 190px;
     max-width: 280px;
@@ -148,19 +166,28 @@
   .play-in-window {
     cursor: pointer;
     position: absolute;
-    opacity: .95;
+    opacity: .8;
     top: 88%;
     left: 91%;
+
+    &:hover{
+      opacity: 1;
+    }
+  }
+  .play {
+    cursor: pointer;
+    position: absolute;
+    opacity: .7;
+    top: 35%;
+    left: 40%;
+    
+    &:hover{
+      opacity: 1;
+    }
   }
 }
 
-.play {
-  cursor: pointer;
-  position: absolute;
-  opacity: .85;
-  top: 35%;
-  left: 40%;
-}
+
 
 .video-shadow {
   background: transparent;
@@ -178,11 +205,7 @@
 
   .play {
     display: none;
-
-    &:hover {
-      cursor: auto;
-      opacity: .85;
-    }
+    opacity: 1;
   }
 }
 
@@ -192,8 +215,10 @@
   display: none;
   position: fixed;
 
+  //990
   top: 50px;
   left: 50px;
+  //left: 20px;
 
   z-index: 1;
   height: 200px;
@@ -210,7 +235,7 @@
     border: 1px solid black;
   }
 
-  svg {
+  &:hover svg {
     cursor: pointer;
     position: absolute;
 
@@ -225,6 +250,7 @@
 
 .card-info {
   @include flex(row, flex-end, center);
+  display: none;
 
   width: 80px;
 
@@ -237,6 +263,7 @@
   }
 
   .comments {
+    
     @extend .reviews;
     margin-right: 8px;
 
@@ -249,9 +276,9 @@
 
 .banner-wrap {
   @include flex(row, center, center);
-
-  margin: 20px 0 0 50px;
-  width: 61%;
+border: 1px solid green;
+  margin-top: 20px;
+  width: 680px;
 
   iframe {
     width: 730px;

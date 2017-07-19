@@ -45,9 +45,9 @@ window.onload = function() {
   /* -------------- end shared functions code, start slider code ------------------ */
 
 ///////////////
-  var sidebarHeight = document.querySelector('.sidebar');
+  var sidebarHeight = document.querySelector('main');
   sidebarHeight.style.height =
-    document.querySelector('main').scrollHeight + 220 + 'px';
+    document.querySelector('.sidebar').scrollHeight - 108 + 'px';
 /////////////////////
   //slider data
   var slides = [
@@ -411,12 +411,14 @@ window.onscroll = function() {
     videoWindow.style.top = '50px';
     videoWindowWrap.style.top = '50px';
     topMenu.parentNode.appendChild(topRight);
+    wrapLogo.style.marginLeft = '0';
     wrapLogo.appendChild(topLogo);
     topMenu.parentNode.style.border = 'none';
     topMenu.parentNode.style.boxShadow = '0px 3px 5px 0px rgba(0, 0, 0, 0.75)';
   } else {
     topLeft.parentNode.appendChild(topRight);
     topHead.insertBefore(topLogo, topHead.firstChild);
+    //topHead.firstChild.style.marginLeft = '0';
     topMenu.parentNode.style.border = 'border-bottom: 1px solid #e6e6df';
     topMenu.parentNode.style.boxShadow = 'none';
   }

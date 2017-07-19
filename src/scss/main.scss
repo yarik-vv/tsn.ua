@@ -62,7 +62,7 @@ header {
 }
 
 main {
-  @include flex(column, flex-start, center);
+  @include flex(column, flex-start, flex-start);
   margin-top: 50px;
   width: 100%;
   //height: 120%;
@@ -76,6 +76,19 @@ main {
   .main-wrap {
     @extend %max-min-width;
 
+    border: 1px solid red;
+
     width: 100%;
+    //990
+    margin-left: 20px; 
   }
 }
+
+  .play{
+    &:hover{
+      opacity: 1;
+    }
+    &:hover svg{
+      opacity: 1;
+    }
+  }
