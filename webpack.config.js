@@ -16,7 +16,7 @@ module.exports = {
 
   output: {
     path: __dirname + '/www',
-    publicPath: ' ',
+    publicPath: '/',
     filename: '[name].js'
   },
 
@@ -48,7 +48,7 @@ module.exports = {
         })
       },
       {
-        test: /\.(png|jpg|svg|otf|mp4)$/,
+        test: /\.(json|png|jpg|svg|otf|mp4)$/,
         exclude: /(node_modules)/,
         loader: 'file-loader?name=[path][name].[ext]'
       }

@@ -1,6 +1,41 @@
 window.onload = function() {
 
+  function AJAXrequest(url){
+    return new Promise(function(resolve, reject) {
 
+      var request = new XMLHttpRequest();
+      
+      request.onreadystatechange = function() {
+        if(request.readyState === 4) {
+          if(request.status === 200){
+            resolve(this.responseText);
+          }
+          else{
+            reject(this.responseText);
+          }
+        }
+      };   
+
+      request.open('GET', url, true);
+      //request.open('GET', 'http://player.hosting.1plus1.ua/tests/fe/imgGallery.php', true);
+      //request.setRequestHeader('Content-type', 'application/json');
+      //request.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1:9000");
+      //request.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Accept");
+      request.send();
+    })
+  };
+
+AJAXrequest('./imgGallery.json').then(
+    result  => {
+      console.log(result);
+  },
+    error => {
+      console.log(error);
+  }
+);
+
+document.querySelector('.gallery').style.height = document.body.scrollHeight + 'px';
+///////////////////////
   var sidebarHeight = document.querySelector('.sidebar');
   sidebarHeight.style.height =
     document.querySelector('main').scrollHeight + 220 + 'px';
@@ -140,7 +175,7 @@ window.onload = function() {
     //открываем само окно, затемняем фон и скроллим в низ 
     window.scroll(0,0);
     shareWindow.style.display = 'flex';
-    shareWindow.style.height = document.body.scrollHeight + 200 + 'px';
+    shareWindow.style.height = document.body.scrollHeight + 'px';
 
     //отключаем скролл
     document.onmousewheel = document.onwheel = function() {

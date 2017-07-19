@@ -33,3 +33,6 @@ import newsFoto7 from './images/foto-news-7.jpg';
 import newsFoto8 from './images/foto-news-8.jpg';
 import newsFoto9 from './images/foto-news-9.jpg';
 import newsFoto10 from './images/foto-news-10.jpg';
+
+import gallery from './images/gallery1.jpg';
+import data from './imgGallery.json';

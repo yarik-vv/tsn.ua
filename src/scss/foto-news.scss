@@ -85,3 +85,35 @@
   }
 
 }
+
+.gallery-window{
+  margin-top: 80%;
+  height: 600px;
+  //background: green;
+  margin-left: 100px;
+  
+  @include flex(column, space-between, center);
+
+  .header{
+    @include flex(row, space-between, flex-start);
+    width: 100%;
+    color: white;
+    //background: red;
+    
+    
+    //margin-left: 100px;
+
+    svg{
+      margin: 9px;
+    }
+
+  }
+  .preview {
+    @include flex(row, flex-start, flex-start);
+    //margin-left: 100px;  
+    img{
+      width: 90px;
+      height: 60px;
+    }
+  }
+}
