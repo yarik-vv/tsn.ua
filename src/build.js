@@ -10,7 +10,7 @@ import sidebarBanner from './images/banner-sidebar.jpg';
 import sidebarNews1 from './images/sidebar-news-1.jpg';
 import sidebarNews2 from './images/sidebar-news-2.jpg';
 
-import video from './video.mp4';
+import video from './videos/video.mp4';
 import slide2 from './images/slide-2.jpg';
 import slide3 from './images/slide-3.jpg';
 import slide4 from './images/slide-4.jpg';
@@ -34,5 +34,6 @@ import newsFoto8 from './images/foto-news-8.jpg';
 import newsFoto9 from './images/foto-news-9.jpg';
 import newsFoto10 from './images/foto-news-10.jpg';
 
-import data from './imgGallery.json';
-import newsData from './news.json';
+import gallery from './data/imgGallery.json';
+import news from './data/news.json';
+import slides from './data/slides.json';
