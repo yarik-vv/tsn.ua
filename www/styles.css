@@ -3,7 +3,7 @@ header, .main-wrap, #top-head, #slider, #slider video, .menu-wrap, .foto-news-wr
   min-width: 990px; }
 
 @font-face {
-  src: url(/fonts/MyriadPro-Regular.otf) format("opentype");
+  src: url(fonts/MyriadPro-Regular.otf) format("opentype");
   font-family: MyriadPro-Regular;
   font-style: normal;
   font-weight: normal; }
@@ -1364,42 +1364,42 @@ footer {
         opacity: .4; }
 
 #oneplus {
-  background: url(/images/media.png) no-repeat -6px -5px;
+  background: url(images/media.png) no-repeat -6px -5px;
   width: 59px;
   height: 34px; }
 
 #tet {
-  background: url(/images/media.png) no-repeat -5px -44px;
+  background: url(images/media.png) no-repeat -5px -44px;
   width: 80px;
   height: 27px; }
 
 #twoplus {
-  background: url(/images/media.png) no-repeat -5px -83px;
+  background: url(images/media.png) no-repeat -5px -83px;
   width: 73px;
   height: 22px; }
 
 #plusplus {
-  background: url(/images/media.png) no-repeat -5px -118px;
+  background: url(images/media.png) no-repeat -5px -118px;
   width: 60px;
   height: 32px; }
 
 #int {
-  background: url(/images/media.png) no-repeat -103px -5px;
+  background: url(images/media.png) no-repeat -103px -5px;
   width: 61px;
   height: 31px; }
 
 #bigudi {
-  background: url(/images/media.png) no-repeat -101px -43px;
+  background: url(images/media.png) no-repeat -101px -43px;
   width: 63px;
   height: 47px; }
 
 #unian {
-  background: url(/images/media.png) no-repeat -103px -98px;
+  background: url(images/media.png) no-repeat -103px -98px;
   width: 66px;
   height: 43px; }
 
 #ovva {
-  background: url(/images/media.png) no-repeat -5px -163px;
+  background: url(images/media.png) no-repeat -5px -163px;
   width: 86px;
   height: 16px; }
 
