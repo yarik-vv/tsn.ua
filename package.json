@@ -4,7 +4,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "dev build": "NODE_ENV=development webpack",
+    "dev": "NODE_ENV=development webpack",
     "build": "NODE_ENV=procuction webpack"
   },
   "repository": {
