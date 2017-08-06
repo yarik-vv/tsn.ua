@@ -16,7 +16,7 @@ module.exports = {
 
   output: {
     path: __dirname + '/www',
-    publicPath: '',
+    publicPath: '/',
     filename: '[name].js'
   },
 
@@ -48,7 +48,12 @@ module.exports = {
         })
       },
       {
-        test: /\.(json|png|jpg|svg|otf|mp4)$/,
+        test: /\.svg$/,
+        include: __dirname + '/src',
+        loader: 'svg-sprite-loader'
+      },
+      {
+        test: /\.(json|png|jpg|otf|mp4)$/,
         exclude: /(node_modules)/,
         loader: 'file-loader?name=[path][name].[ext]'
       }
