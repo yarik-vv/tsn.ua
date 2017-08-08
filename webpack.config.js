@@ -48,11 +48,6 @@ module.exports = {
         })
       },
       {
-        test: /\.svg$/,
-        include: __dirname + '/src',
-        loader: 'svg-sprite-loader'
-      },
-      {
         test: /\.(json|png|jpg|otf|mp4)$/,
         exclude: /(node_modules)/,
         loader: 'file-loader?name=[path][name].[ext]'
