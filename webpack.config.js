@@ -48,7 +48,7 @@ module.exports = {
         })
       },
       {
-        test: /\.(json|png|jpg|otf|mp4)$/,
+        test: /\.(json|png|jpg|otf|mp4|svg)$/,
         exclude: /(node_modules)/,
         loader: 'file-loader?name=[path][name].[ext]'
       }
