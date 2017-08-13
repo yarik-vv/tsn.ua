@@ -13,7 +13,7 @@
   <link href="/favicon.ico" rel="shortcut icon">
   <% if(NODE_ENV==='development') { %>
     <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.files.css %>">
-  <% } %>
+    <% } %>
 </head>
 
 <body>
@@ -75,7 +75,7 @@
 
       <img class="view" src="" alt="view">
       <div class="preview"></div>
-     
+
     </div>
   </div>
 
@@ -117,7 +117,7 @@
         <nav id="nav-right">
           <form>
             <input class="" type="text">
-            <button class="" id="search" type="button" >
+            <button class="" id="search" type="button">
               <svg width="25px" height="24px">
                 <use xlink:href='#search-icon' />
               </svg>
@@ -175,15 +175,15 @@
       }
     ]%>
 
-    <div class="menu-wrap">
-      <div id="top-menu">
-        <div id="wrap-logo"></div>
-        <% for(var i=0; i<topMenuData.length; i++) {%>
-          <a target="_blank" href="<%= topMenuData[i].url  %>">
-            <%= topMenuData[i].name %>
-          </a>
-        <% } %>
-        <button id="drop-btn" >
+      <div class="menu-wrap">
+        <div id="top-menu">
+          <div id="wrap-logo"></div>
+          <% for(var i=0; i<topMenuData.length; i++) {%>
+            <a target="_blank" href="<%= topMenuData[i].url  %>">
+              <%= topMenuData[i].name %>
+            </a>
+            <% } %>
+              <button id="drop-btn">
           <svg width="14px" height="12px">
             <use xlink:href='#drop-down' />
           </svg>
@@ -194,8 +194,8 @@
             <a target="_blank" href="https://tsn.ua/nauka_it">Наука та ІТ</a>
           </div>
         </button>
-      </div>    
-    </div>
+        </div>
+      </div>
   </header>
 
   <!--  start slider  -->
@@ -203,16 +203,16 @@
     <div class="slider-video"></div>
     <div class="shadow"></div>
     <div id="controll">
-    <% for(var i=1; i<6; i++) {%>
-      <% if(i===1) {%>
-        <button class="arrow slide active" id="<%= 'slide'+i %>">
+      <% for(var i=1; i<6; i++) {%>
+        <% if(i===1) {%>
+          <button class="arrow slide active" id="<%= 'slide'+i %>">
       <% } else {%>
         <button class="arrow slide" id="<%= 'slide'+i %>">
       <% } %>
           <span></span>
           <div></div>
         </button>
-    <% } %>
+          <% } %>
     </div>
 
     <div class="info">
@@ -359,90 +359,92 @@
           url: "/"
         }
       ]%>
-          
-    <aside class="sidebar">
-      <div class="srez"></div>
-        <section class="content">
-          <h2>Останні новини</h2>
-          <% for(var i=0; i<SidebarData.length; i++) {%>
-            <article class="sidebar-item">
-              <% if(!SidebarData[i].poster===false) {%>
-              <div class="poster">
-                <a href="<%= SidebarData[i].url %>">
+
+        <aside class="sidebar">
+          <div class="srez"></div>
+          <section class="content">
+            <h2>Останні новини</h2>
+            <% for(var i=0; i<SidebarData.length; i++) {%>
+              <article class="sidebar-item">
+                <% if(!SidebarData[i].poster===false) {%>
+                  <div class="poster">
+                    <a href="<%= SidebarData[i].url %>">
                   <img src="<%= SidebarData[i].poster %>" alt="poster">
                 </a>
-                <% if(!SidebarData[i].video===false) {%>
-                <span class="play">
+                    <% if(!SidebarData[i].video===false) {%>
+                      <span class="play">
                   <svg width="16px" height="17px">
                     <use xlink:href='#sidebar-play' />
                   </svg>
                   <%= SidebarData[i].video %>
                 <% } %>
                 </span>
-              </div>
-              <% } %>
-              <h4>
-                <a href="<%= SidebarData[i].url %>">
-                  <%= SidebarData[i].title %>
-                </a>
-              </h4>
-              <div class="time">
-                <%= SidebarData[i].date + ' ' + SidebarData[i].time %>
-              </div>
-            </article>
-            <% if(i===1) {%>
-            <aside class="banner">
-              <a href="" >
+                  </div>
+                  <% } %>
+                    <h4>
+                      <a href="<%= SidebarData[i].url %>">
+                        <%= SidebarData[i].title %>
+                      </a>
+                    </h4>
+                    <div class="time">
+                      <%= SidebarData[i].date + ' ' + SidebarData[i].time %>
+                    </div>
+              </article>
+              <% if(i===1) {%>
+                <aside class="banner">
+                  <a href="">
                 <img src="images/banner-sidebar.jpg" alt="">
               </a>
-            </aside>
-            <% } %>
-          <% } %>
-          <button id="new-news">
+                </aside>
+                <% } %>
+                  <% } %>
+                    <button id="new-news">
             Завантажити ще
             <svg width="16px" height="14px"> 
               <use xlink:href='#download-ewe' />
             </svg>
           </button>
-        </section>
-      </aside>
+          </section>
+        </aside>
 
-      <!--  start main news  -->
-      <div class="news-wrap">
+        <!--  start main news  -->
+        <div class="news-wrap">
 
-        <!--  video window  -->
-        <div id="video-window">
-          <div></div>
+          <!--  video window  -->
+          <div id="video-window">
+            <div></div>
             <svg id="close-video" width="20px" height="20px">
               <defs>
-              <filter filterUnits="userSpaceOnUse" id="Filter_0" x="0px" y="0px" width="20px" height="20px"  >
+                <filter filterUnits="userSpaceOnUse" id="Filter_0" x="0px" y="0px" width="20px" height="20px">
                   <feOffset in="SourceAlpha" dx="0" dy="1" />
                   <feGaussianBlur result="blurOut" stdDeviation="1" />
                   <feFlood flood-color="rgb(0, 0, 0)" result="floodOut" />
                   <feComposite operator="atop" in="floodOut" in2="blurOut" />
-                  <feComponentTransfer><feFuncA type="linear" slope="1"/></feComponentTransfer>
+                  <feComponentTransfer>
+                    <feFuncA type="linear" slope="1" />
+                  </feComponentTransfer>
                   <feMerge>
-                  <feMergeNode/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
 
               </defs>
               <g filter="url(#Filter_0)">
-                <use xlink:href='#close' /> 
+                <use xlink:href='#close' />
               </g>
             </svg>
-        </div>
+          </div>
 
-        <!--  start main news menu  -->
-        <div class="news-menu">
-          <a href="">Головні новини</a>
-          <a href="">Популярні</a>
-          <a href="">Коментують</a>
-        </div>
+          <!--  start main news menu  -->
+          <div class="news-menu">
+            <a href="">Головні новини</a>
+            <a href="">Популярні</a>
+            <a href="">Коментують</a>
+          </div>
 
-        <!--  data for main news  -->
-        <%  
+          <!--  data for main news  -->
+          <%  
         var blocks = ['top','bot'];
         var cardsData = [
           {
@@ -513,80 +515,82 @@
           }]
         %>
 
-      <!--  main news top -->
-      <section class="main-news">
-        <% for(var i=0; i<blocks.length; i++) {%>
-        <div class="<%= blocks[i] %>-news">
-          <% 
+            <!--  main news top -->
+            <section class="main-news">
+              <% for(var i=0; i<blocks.length; i++) {%>
+                <div class="<%= blocks[i] %>-news">
+                  <% 
             if(blocks[i]==='top'){
               var init = [0, 3];
             } else {
               var init = [3, 6];
             }
           %>
-          <% for(var a=init[0]; a<init[1]; a++) {%>
-            <article class="news-card">
-              <div class="card-top">
-              <% if(!cardsData[a].video===false) { %>
-                <div class="news-card-video">
-                  <a class="poster" href="">
+                    <% for(var a=init[0]; a<init[1]; a++) {%>
+                      <article class="news-card">
+                        <div class="card-top">
+                          <% if(!cardsData[a].video===false) { %>
+                            <div class="news-card-video">
+                              <a class="poster" href="">
                     <img src="<%= cardsData[a].poster %>" alt="">
                   </a>
 
-                  <div class="video-shadow">
-                    <svg class='play' width="52px" height="48px">
-                      <use xlink:href='#play-shadow' />
-                    </svg> 
-                  </div>
+                              <div class="video-shadow">
+                                <svg class='play' width="52px" height="48px">
+                                  <use xlink:href='#play-shadow' />
+                                </svg>
+                              </div>
 
-                  <svg class="play-in-window" width="17px" height="17px">
-                    <use xlink:href='#play-in-window' />
-                  </svg>
+                              <svg class="play-in-window" width="17px" height="17px">
+                                <use xlink:href='#play-in-window' />
+                              </svg>
 
-                  <svg class="play" width="52px" height="54px">
-                    <use xlink:href='#play-card-video' />           
-                  </svg>
-                </div>
-                <% } else {%>
-                <a href="" class="poster">
+                              <svg class="play" width="52px" height="54px">
+                                <use xlink:href='#play-card-video' />
+                              </svg>
+                            </div>
+                            <% } else {%>
+                              <a href="" class="poster">
                   <img src="<%= cardsData[a].poster %>" alt="">
                 </a>
+                              <% } %>
+                                <a href="">
+                                  <h4>
+                                    <%= cardsData[a].title %>
+                                  </h4>
+                                </a>
+                        </div>
+
+                        <div class="card-bot">
+                          <div>
+                            <span><%= cardsData[a].badge %></span>
+                            <%= cardsData[a].date + ' ' + cardsData[a].time%>
+                          </div>
+                          <div class="card-info">
+                            <div class="comments">
+                              <svg width="12px" height="11px">
+                                <use xlink:href='#comments' />
+                              </svg>
+                              <%= cardsData[a].comments %>
+                            </div>
+                            <div class="reviews">
+                              <svg width="12px" height="8px">
+                                <use xlink:href='#reviews' />
+                              </svg>
+                              <%= cardsData[a].reviews %>
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                      <% } %>
+                </div>
                 <% } %>
-                <a href="">
-                  <h4><%= cardsData[a].title %></h4>
-                </a>
-              </div>
-              
-              <div class="card-bot">
-                <div>
-                  <span><%= cardsData[a].badge %></span>
-                  <%= cardsData[a].date + ' ' + cardsData[a].time%>
-                </div>
-                <div class="card-info">
-                  <div class="comments">
-                    <svg width="12px" height="11px">
-                      <use xlink:href='#comments' />
-                    </svg>
-                    <%= cardsData[a].comments %>
-                  </div>
-                  <div class="reviews">
-                    <svg width="12px" height="8px">
-                      <use xlink:href='#reviews' />
-                    </svg>
-                    <%= cardsData[a].reviews %>
-                  </div>
-                </div>
-              </div>
-            </article>
-            <% } %>
-          </div>
-          <% } %>
-      </section>
-      </div>
+            </section>
+        </div>
     </div>
 
     <!--  foto block  -->
-    <div class="foto-wrap">     
+    <div class="foto-wrap">
       <div class="foto-news-wrap">
         <h3>Фото репортаж</h3>
         <% 
@@ -678,43 +682,43 @@
           }  
         ]       
         %>
-        <div class="foto-news">
-        <% for(var i=0; i<fotoData.length; i++) {%>
-          <%  if(!fotoData[i].position === false) { %> 
-            <article class="<%= 'foto-news-' + [i] %> <%= fotoData[i].position %>">
-              <a href="">
+          <div class="foto-news">
+            <% for(var i=0; i<fotoData.length; i++) {%>
+              <%  if(!fotoData[i].position === false) { %>
+                <article class="<%= 'foto-news-' + [i] %> <%= fotoData[i].position %>">
+                  <a href="">
                 <img src="<%= fotoData[i].image %>" alt=""> 
               </a>
-              <% if(fotoData[i].gallery) { %>
-              <svg class="open-gallery" width="17px" height="17px">
-                  <defs>
-                      <filter filterUnits="userSpaceOnUse" id="Filter_1" x="0px" y="0px" width="17px" height="17px">
-                        <feOffset in="SourceAlpha" dx="0" dy="1" />
-                        <feGaussianBlur result="blurOut" stdDeviation="0" />
-                        <feFlood flood-color="rgb(0, 0, 0)" result="floodOut" />
-                        <feComposite operator="atop" in="floodOut" in2="blurOut" />
-                        <feComponentTransfer>
-                          <feFuncA type="linear" slope="0.75" />
-                        </feComponentTransfer>
-                        <feMerge>
-                          <feMergeNode/>
-                          <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                      </filter>
-                
-                    </defs>
-                <use xlink:href='#open-gallery' />
-              </svg>  
-              <% } %>
-              <h5>
-                <% if(!fotoData[i].title===false) { %>
-                <span><%= fotoData[i].title %></span>
+                  <% if(fotoData[i].gallery) { %>
+                    <svg class="open-gallery" width="17px" height="17px">
+                      <defs>
+                        <filter filterUnits="userSpaceOnUse" id="Filter_1" x="0px" y="0px" width="17px" height="17px">
+                          <feOffset in="SourceAlpha" dx="0" dy="1" />
+                          <feGaussianBlur result="blurOut" stdDeviation="0" />
+                          <feFlood flood-color="rgb(0, 0, 0)" result="floodOut" />
+                          <feComposite operator="atop" in="floodOut" in2="blurOut" />
+                          <feComponentTransfer>
+                            <feFuncA type="linear" slope="0.75" />
+                          </feComponentTransfer>
+                          <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+
+                      </defs>
+                      <use xlink:href='#open-gallery' />
+                    </svg>
+                    <% } %>
+                      <h5>
+                        <% if(!fotoData[i].title===false) { %>
+                          <span><%= fotoData[i].title %></span>
+                          <% } %>
+                      </h5>
+                </article>
                 <% } %>
-              </h5>
-            </article>
-          <% } %>
-        <% } %>
-        </div>
+                  <% } %>
+          </div>
       </div>
     </div>
 
@@ -728,69 +732,71 @@
         <!--  main news bot -->
         <section class="main-news">
           <% for(var i=0; i<blocks.length; i++) {%>
-          <div class="<%= blocks[i] %>-news">
-            <% 
+            <div class="<%= blocks[i] %>-news">
+              <% 
               if(blocks[i]==='top'){
                 var init = [0, 3];
               } else {
                 var init = [3, 6];
               }
             %>
-            <% for(var a=init[0]; a<init[1]; a++) {%>
-              <article class="news-card">
-                <div class="card-top">
-                <% if(!cardsData[a].video===false) { %>
-                  <div class="news-card-video">
-                    <a class="poster" href="">
+                <% for(var a=init[0]; a<init[1]; a++) {%>
+                  <article class="news-card">
+                    <div class="card-top">
+                      <% if(!cardsData[a].video===false) { %>
+                        <div class="news-card-video">
+                          <a class="poster" href="">
                       <img src="<%= cardsData[a].poster %>" alt="">
                     </a>
 
-                    <div class="video-shadow">
-                      <svg class='play' width="52px" height="48px">
-                        <use xlink:href='#play-shadow' />
-                      </svg>
-                    </div>
+                          <div class="video-shadow">
+                            <svg class='play' width="52px" height="48px">
+                              <use xlink:href='#play-shadow' />
+                            </svg>
+                          </div>
 
-                    <svg class="play-in-window" width="17px" height="17px">
-                      <use xlink:href='#play-in-window' />
-                    </svg>
+                          <svg class="play-in-window" width="17px" height="17px">
+                            <use xlink:href='#play-in-window' />
+                          </svg>
 
-                    <svg class="play" width="52px" height="54px">
-                      <use xlink:href='#play-card-video' />               
-                    </svg>
-                  </div>
-                  <% } else {%>
-                  <a href="" class="poster">
+                          <svg class="play" width="52px" height="54px">
+                            <use xlink:href='#play-card-video' />
+                          </svg>
+                        </div>
+                        <% } else {%>
+                          <a href="" class="poster">
                     <img src="<%= cardsData[a].poster %>" alt="">
                   </a>
+                          <% } %>
+                            <a href="">
+                              <h4>
+                                <%= cardsData[a].title %>
+                              </h4>
+                            </a>
+                    </div>
+
+                    <div class="card-bot">
+                      <div>
+                        <span><%= cardsData[a].badge %></span>
+                        <%= cardsData[a].date + ' ' + cardsData[a].time%>
+                      </div>
+                      <div class="card-info">
+                        <div class="comments">
+                          <svg width="12px" height="11px">
+                            <use xlink:href='#comments' />
+                          </svg>
+                          <%= cardsData[a].comments %>
+                        </div>
+                        <div class="reviews">
+                          <svg width="12px" height="8px">
+                            <use xlink:href='#reviews' />
+                          </svg>
+                          <%= cardsData[a].reviews %>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
                   <% } %>
-                  <a href="">
-                    <h4><%= cardsData[a].title %></h4>
-                  </a>
-                </div>
-                
-                <div class="card-bot">
-                  <div>
-                    <span><%= cardsData[a].badge %></span>
-                    <%= cardsData[a].date + ' ' + cardsData[a].time%>
-                  </div>
-                  <div class="card-info">
-                    <div class="comments">
-                      <svg width="12px" height="11px">
-                        <use xlink:href='#comments' /> 
-                      </svg>
-                      <%= cardsData[a].comments %>
-                    </div>
-                    <div class="reviews">
-                      <svg width="12px" height="8px">
-                        <use xlink:href='#reviews' /> 
-                      </svg>
-                      <%= cardsData[a].reviews %>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <% } %>
             </div>
             <% } %>
         </section>
@@ -820,6 +826,47 @@
     </div>
   </footer>
   <!--  end footer  -->
+  <script>
+    ; (function (window, document) {
+      'use strict';
+      var file = '/sprite.svg', // путь к файлу спрайта на сервере
+        revision = 1;            // версия спрайта для кеширования
+      if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) return true;
+      var isLocalStorage = 'localStorage' in window && window['localStorage'] !== null,
+        request,
+        data,
+        insertIT = function () {
+          document.body.insertAdjacentHTML('afterbegin', data);
+        },
+        insert = function () {
+          if (document.body) insertIT();
+          else document.addEventListener('DOMContentLoaded', insertIT);
+        };
+      if (isLocalStorage && localStorage.getItem('inlineSVGrev') == revision) {
+        data = localStorage.getItem('inlineSVGdata');
+        if (data) {
+          insert();
+          return true;
+        }
+      }
+      try {
+        request = new XMLHttpRequest();
+        request.open('GET', file, true);
+        request.onload = function () {
+          if (request.status >= 200 && request.status < 400) {
+            data = request.responseText;
+            insert();
+            if (isLocalStorage) {
+              localStorage.setItem('inlineSVGdata', data);
+              localStorage.setItem('inlineSVGrev', revision);
+            }
+          }
+        }
+        request.send();
+      } catch (e) { }
+    }(window, document));
+  </script>
   <script type="text/javascript" src="<%= htmlWebpackPlugin.options.files.js %>"></script>
 </body>
+
 </html>
