@@ -3,8 +3,10 @@
 import scss from './scss/index.scss';
 import js from 'file-loader?name=[path][name].[ext]!./index.js';
 
-import favicon from 'file-loader?name=[path][name].[ext]!./favicon.ico';
 import svgSprite from './images/sprite.svg';
+import loadSprite from 'file-loader?name=[path][name].[ext]!./loadSprite.js';
+
+import favicon from 'file-loader?name=[path][name].[ext]!./favicon.ico';
 import sharePoster from './images/share-poster.jpg';
 
 import sidebarBanner from './images/banner-sidebar.jpg';
