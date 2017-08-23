@@ -1,6 +1,10 @@
-@mixin font($font-name, $font-url){
+@mixin font($font-name, $woff2, $woff, $ttf, $eot, $otf){
    @font-face {
-      src: url($font-url) format('opentype');
+      src:  url($woff2) format('woff2'),
+            url($woff) format('woff'),
+            url($ttf) format('ttf'),  
+            url($eot) format('eot'),
+            url($otf) format('opentype');
       font: {
          family: $font-name;
          style: normal;
