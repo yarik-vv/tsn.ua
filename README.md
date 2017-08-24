@@ -1,4 +1,4 @@
-## Тестовая работа Ващука Я.В. на должность middle front-end разработчика
+## Тестовая работа на должность middle front-end разработчика
 >gh-pages demo: http://yarik-vv.github.io/tsn.ua
 
 ## Инструкция по развертыванию:
