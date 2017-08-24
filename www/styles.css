@@ -3,7 +3,7 @@ header, .main-wrap, #top-head, #slider, #slider video, .menu-wrap, .foto-news-wr
   min-width: 990px; }
 
 @font-face {
-  src: url(/fonts/MyriadPro-Regular.otf) format("opentype");
+  src: url(/fonts/MyriadPro-Regular.woff2) format("woff2"), url(/fonts/MyriadPro-Regular.woff) format("woff"), url(/fonts/MyriadPro-Regular.ttf) format("ttf"), url(/fonts/MyriadPro-Regular.eot) format("eot"), url(/fonts/MyriadPro-Regular.otf) format("opentype");
   font-family: MyriadPro-Regular;
   font-style: normal;
   font-weight: normal; }
