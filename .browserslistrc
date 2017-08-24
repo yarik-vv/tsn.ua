@@ -1,5 +1,6 @@
 [production]
-last 10 version
+last 3 version
+ie 11
 
 [development]
-last 10 version
+last 1 version
