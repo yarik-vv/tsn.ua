@@ -5,11 +5,11 @@
   "scripts": {
     "start": "webpack-dev-server",
     "dev": "NODE_ENV=development webpack",
-    "build": "NODE_ENV=procuction webpack"
+    "build": "NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yarik-vv/1plus1.git"
+    "url": "git+https://github.com/yarik-vv/tsn.ua.git"
   },
   "author": "Yarik Vashchuk",
   "license": "ISC",
@@ -26,5 +26,14 @@
     "style-loader": "^0.13.2",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
+  },
+  "browserslist": {
+    "production": [
+      "last 3 version",
+      "ie 11"
+    ],
+    "development": [
+      "last 1 version"
+    ]
   }
 }
