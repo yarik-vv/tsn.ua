@@ -62,13 +62,39 @@ module.exports = {
     }),
     new CleanWebpackPlugin(__dirname + '/www/*'),
     new HtmlWebpackPlugin({
-      files: {
-        js: 'index.js',
-        css: 'styles.css',
-        chunks: {
-          custom: {}
-        }
-      },
+      chunks: ['custom'],
+      filename: 'index.html',
+      template: 'index.ejs'
+    }),
+    new ExtractTextPlugin({
+      filename: 'styles.css',
+      allChunks: true
+    })
+  ],
+
+  devServer: {
+    port: 9000,
+    contentBase: __dirname + '/www',
+    watchContentBase: true,
+    compress: true,
+    inline: true,
+    hot: true
+  }
+};
+
+
+if (NODE_ENV == 'production') {
+  module.exports.plugins.push(
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new HtmlWebpackPlugin({
       chunks: ['custom'],
       filename: 'index.html',
       template: 'index.ejs',
@@ -93,33 +119,6 @@ module.exports = {
         preventAttributesEscaping: true
       }
     }),
-    new ExtractTextPlugin({
-      filename: 'styles.css',
-      allChunks: true
-    })
-  ],
-
-  devServer: {
-    port: 9000,
-    contentBase: __dirname + '/www',
-    watchContentBase: true,
-    compress: true,
-    inline: true,
-    hot: true
-  }
-};
-
-if (NODE_ENV == 'production') {
-  module.exports.plugins.push(
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
     new StyleExtHtmlWebpackPlugin('styles.css'),
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
@@ -133,4 +132,4 @@ if (NODE_ENV == 'production') {
       comments: false
     })
   );
-}
+};
